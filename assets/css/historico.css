@@ -1,0 +1,263 @@
+/* Configurações base para a página */
+.page-trajetoria {
+    background-color: #fafafa; /* Fundo muito leve cinza/off-white */
+    padding-bottom: 60px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Introdução */
+.trajetoria-intro {
+    padding: 80px 0 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.trajetoria-intro h1 {
+    font-size: 2.5rem;
+    color: #002244;
+    margin-bottom: 20px;
+}
+
+.underline-red {
+    border-bottom: 4px solid #990000;
+    padding-bottom: 4px;
+}
+
+.trajetoria-intro p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* Timeline Estrutura Base */
+.timeline-section {
+    padding: 40px 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* A linha central vertical */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #002244;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+/* Container de cada item */
+.timeline-item {
+    padding: 10px 50px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+/* Itens da Esquerda e Direita */
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+
+/* Ícones da Timeline */
+.timeline-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+}
+
+.timeline-item.left .timeline-icon { right: -20px; }
+.timeline-item.right .timeline-icon { left: -20px; }
+
+.icon-red { background-color: #990000; }
+.icon-blue { background-color: #002244; }
+
+/* Conteúdo do Card */
+.timeline-content {
+    padding: 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.badge-red { background-color: #990000; }
+.badge-blue { background-color: #003366; }
+
+.timeline-content h3 {
+    margin: 0 0 15px 0;
+    color: #111;
+    font-size: 1.3rem;
+}
+
+.timeline-content p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+/* Imagens dentro da timeline */
+.timeline-img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}
+.contains-logo { max-width: 250px; margin: 0 auto; }
+
+.logos-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.logos-grid img { max-width: 120px; }
+
+/* Botão Link */
+.btn-link-red {
+    display: inline-block;
+    background-color: #990000;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+.btn-link-red:hover { background-color: #7a0000; }
+
+/* Seção Futuro GESC (CTA) */
+.future-section {
+    padding: 60px 0;
+}
+
+.future-cta {
+    background-color: #001a33;
+    color: white;
+    padding: 60px 40px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.cta-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #990000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.2rem;
+}
+
+.future-cta h2 { margin-bottom: 20px; font-size: 2rem; }
+.future-cta p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+    color: #ccd6e0;
+}
+
+.btn-white {
+    background-color: white;
+    color: #002244;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+.btn-white:hover { transform: translateY(-3px); }
+
+/* Grid de Estatísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #990000;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- Responsividade (Mobile) --- */
+@media screen and (max-width: 768px) {
+    .timeline::after { left: 31px; }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 80px;
+        padding-right: 0;
+    }
+    
+    .timeline-item.right { left: 0; }
+    
+    .timeline-item.left .timeline-icon, 
+    .timeline-item.right .timeline-icon {
+        left: 11px; /* Centraliza sobre a linha na esquerda */
+        right: auto;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .logos-grid {
+        flex-direction: column;
+    }
+}

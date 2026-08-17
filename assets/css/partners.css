@@ -1,0 +1,76 @@
+/* --- Seção de Instituições / Partners Banner --- */
+.partners-banner {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.partners-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.partners-subtitle {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+/* --- Comportamento geral das logos --- */
+.partners-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Espaço entre as logos */
+}
+
+.partner-logo {
+    object-fit: contain; /* Evita que a imagem fique esticada/distorcida */
+    transition: transform 0.3s ease; /* Animação suave */
+}
+
+.partner-logo:hover {
+    transform: scale(1.05); /* Dá um leve zoom ao passar o mouse (opcional) */
+}
+
+
+.logo-unicamp {
+    height: 65px; 
+}
+
+.logo-usp {
+    height: 125px; /* Logos redondas geralmente precisam de um valor maior para equilibrar */
+}
+
+.logo-ita {
+    height: 70px; /* A do ITA é bem larga, então uma altura menor evita que ela ocupe muito espaço */
+}
+
+.logo-imes {
+    height: 125px; 
+}
+
+.logo-sciencespo {
+    height: 120px; /* Esta costuma ser mais horizontal/retangular */
+}
+
+/* --- Responsividade para celulares --- */
+@media (max-width: 768px) {
+    .partners-logos {
+        gap: 20px; /* Diminui o espaço entre elas no celular */
+    }
+    
+    /* Você pode diminuir todas proporcionalmente no celular usando a classe geral */
+    .partner-logo {
+        transform: scale(0.8); /* Reduz todas em 20% nas telas pequenas */
+    }
+    
+    .partner-logo:hover {
+        transform: scale(0.85); /* Ajusta o zoom do hover no celular */
+    }
+}

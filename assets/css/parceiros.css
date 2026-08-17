@@ -1,0 +1,259 @@
+/* --- CONFIGURAÇÕES GERAIS DA PÁGINA --- */
+.page-parceiros {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* --- INTRODUÇÃO --- */
+.parceiros-intro {
+    max-width: 900px;
+    margin-bottom: 60px;
+}
+
+.parceiros-intro h2 {
+    font-size: 2rem;
+    color: #111;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* Barrinha vermelha abaixo do título */
+.parceiros-intro .divider {
+    width: 60px;
+    height: 4px;
+    background-color: #990000;
+    margin-bottom: 20px;
+}
+
+.parceiros-intro p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* --- TÍTULOS DE SEÇÃO --- */
+h3 {
+    font-size: 1.5rem;
+    color: #1a2b4c; /* Azul escuro do GESC */
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* --- PARCEIRO EM DESTAQUE --- */
+.parceiro-destaque {
+    margin-bottom: 80px;
+}
+
+.destaque-card {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.destaque-img {
+    flex: 1;
+    min-height: 400px; /* Garante que a imagem tenha altura num PC */
+}
+
+.destaque-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destaque-content {
+    flex: 1.2;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.destaque-content h4 {
+    font-size: 1.6rem;
+    color: #1a2b4c;
+    margin-bottom: 20px;
+}
+
+.destaque-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.destaque-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 30px 0;
+}
+
+.tag {
+    background-color: #f0f4f8;
+    color: #1a2b4c;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.btn-destaque {
+    display: inline-block;
+    background-color: #8b0000;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    width: max-content;
+    transition: background 0.3s;
+}
+
+.btn-destaque:hover {
+    background-color: #660000;
+}
+
+.btn-destaque i {
+    margin-left: 8px;
+    font-size: 0.8rem;
+}
+
+/* --- OUTROS PARCEIROS (GRID) --- */
+.outros-parceiros {
+    margin-bottom: 80px;
+}
+
+.parceiros-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+    gap: 25px;
+}
+
+.card-parceiro {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-parceiro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.icon-box {
+    width: 80px;
+    height: 80px;
+    background-color: #f2f4f8;
+    color: #a0aec0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+}
+
+.card-parceiro h5 {
+    color: #1a2b4c;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.card-parceiro p {
+    color: #777;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.link-saiba-mais {
+    color: #8b0000;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.link-saiba-mais:hover {
+    text-decoration: underline;
+}
+
+.link-saiba-mais i {
+    margin-left: 5px;
+}
+
+/* --- CALL TO ACTION (CTA) --- */
+.cta-parceria {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 50px 20px;
+    text-align: center;
+    border: 1px solid #eaeaea;
+}
+
+.cta-box {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-box h3 {
+    margin-bottom: 15px;
+}
+
+.cta-box p {
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.btn-cta {
+    display: block;
+    background-color: #8b0000;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.btn-cta:hover {
+    background-color: #660000;
+}
+
+/* --- RESPONSIVIDADE (CELULARES E TABLETS) --- */
+@media screen and (max-width: 992px) {
+    .destaque-card {
+        flex-direction: column; /* Empilha a imagem e o texto no Destaque */
+    }
+    
+    .destaque-img {
+        min-height: 250px;
+    }
+
+    .parceiros-grid {
+        grid-template-columns: repeat(2, 1fr); /* Muda de 4 para 2 colunas */
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .parceiros-grid {
+        grid-template-columns: 1fr; /* 1 coluna em celulares pequenos */
+    }
+    
+    .destaque-content {
+        padding: 30px 20px;
+    }
+}

@@ -1,0 +1,170 @@
+/* 7. FOOTER */
+footer { 
+    background: #111; 
+    color: #aaa; 
+    padding: 60px 0 20px; 
+    margin-top: auto; 
+    border-top: 4px solid var(--accent-red); 
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex; /* Mudamos de grid para flex */
+    justify-content: space-between; /* Espalha as colunas */
+    align-items: flex-start; /* ALINHA TUDO VERTICALMENTE AO CENTRO */
+    gap: 30px;
+    flex-wrap: wrap; /* Permite quebrar linha no celular */
+}
+
+/* Coluna da marca/logo */
+.footer-brand {
+    flex: 1.5; /* Dá um pouco mais de espaço para o logo */
+    min-width: 250px;
+}
+
+.footer-brand strong { 
+    color: white; 
+    font-size: 1.5rem; 
+    display: block; 
+    margin-bottom: 10px; 
+}
+
+/* Colunas de texto */
+.footer-col {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Mantive o seu design de borda vermelha que já estava ótimo! */
+.footer-col h4 { 
+    color: white; 
+    margin-bottom: 20px; 
+    font-size: 1.1rem; 
+    border-left: 3px solid var(--accent-red); 
+    padding-left: 10px; 
+    line-height: 1.2;
+}
+
+.footer-col p { margin-bottom: 10px; }
+.footer-col ul { list-style: none; padding: 0; margin: 0; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { color: #aaa; transition: color 0.3s; text-decoration: none; }
+.footer-col a:hover { color: white; }
+
+/* Ícones sociais alinhados lado a lado */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a { 
+    font-size: 1.5rem; 
+    color: white; 
+    transition: 0.3s; 
+}
+
+.social-icons a:hover { 
+    color: var(--accent-red); 
+    transform: scale(1.1);
+}
+
+.copyright { 
+    text-align: center; 
+    margin-top: 50px; 
+    padding-top: 20px; 
+    border-top: 1px solid #222; 
+    font-size: 0.85rem; 
+    width: 100%;
+}
+
+/* Responsividade do Footer para celulares */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start; /* No celular, volta para o alinhamento no topo */
+        gap: 40px;
+    }
+}
+
+
+/* --- O RESTANTE DO SEU CÓDIGO INTACTO ABAIXO --- */
+
+.coordination-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.founder-block {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+/* Para inverter a ordem no segundo bloco */
+.founder-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.founder-image {
+    flex: 1;
+    min-height: 400px;
+    position: relative;
+}
+
+/* Caixa cinza (Placeholder) idêntica à imagem que você mandou */
+.placeholder-box {
+    width: 100%;
+    height: 400px;
+    background-color: #ccc; /* Cinza */
+    border-radius: 4px;
+}
+
+.founder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    position: absolute; /* Cobre a caixa cinza se a imagem existir */
+    top: 0; left: 0;
+}
+
+.founder-content {
+    flex: 1;
+}
+
+.founder-content h3 {
+    color: var(--primary-blue);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.founder-content h4 {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.founder-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.founder-social a {
+    color: #333;
+    font-size: 1.2rem;
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+
+.founder-social a:hover {
+    color: var(--accent-red);
+}

@@ -1,0 +1,70 @@
+/* 2. HEADER PROFISSIONAL (Estilo Wide + Logo Grande) */
+header {
+    background-color: var(--primary-blue);
+    height: var(--header-height);
+    position: sticky; /* Menu fixa no topo ao rolar */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    /* O segredo: permite que a logo "vaze" para fora da barra */
+    overflow: visible; 
+}
+
+.header-container {
+    width: 96%; /* Ocupa quase a tela toda (Wide) */
+    max-width: 1600px; /* Limite para monitores gigantes */
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between; /* Joga logo p/ esquerda e menu p/ direita */
+    align-items: center;
+    position: relative;
+}
+
+/* Estilo da Logo e Link */
+.logo-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 1001; /* Fica acima de tudo */
+}
+
+.main-logo {
+    height: 100px; 
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px; /* Empurra a logo para baixo para criar o efeito de brasão */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); /* Sombra para destacar do fundo */
+    transition: all 0.3s ease;
+}
+
+/* Menu de Navegação */
+#main-nav ul { display: flex; list-style: none; gap: 30px; }
+
+#main-nav a {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+#main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-red);
+    transition: width 0.3s;
+}
+
+#main-nav a:hover { color: #fff; }
+#main-nav a:hover::after { width: 100%; }
+
+.mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
