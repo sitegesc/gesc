@@ -3,432 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GESC - Unicamp</title>
-    <link rel="stylesheet" href="assets/css/style.css?v=1">
-    <link rel="stylesheet" href="assets/css/partners.css">
+    <title>Inscrição de Oficina | GESC</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="icon" type="image/png" href="assets/images/logo2.png">
+    <link rel="stylesheet" href="assets/css/inscricao-oficina.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div id="header-placeholder"></div>
 
-    <section class="hero">
-        <img src="assets/images/hero1.jpg" id="hero-img" alt="Banner GESC">
-    </section>
+    <main class="enrollment-page container">
 
-    <section class="partners-banner">
-    <div class="container">
-        <div class="partners-header">
-            <h1>Grupo de Engenharia de Sistemas Complexos</h1>
-            <br></br>
-        </div>
-        <div class="partners-logos">
-           <img src="assets/images/ft.png" alt="FT UNICAMP" class="partner-logo logo-unicamp">
-            <img src="assets/images/poli.png" alt="POLI USP" class="partner-logo logo-usp">
-            <img src="assets/images/ita.png" alt="ITA" class="partner-logo logo-ita">
-            <img src="assets/images/imes.png" alt="IMES" class="partner-logo logo-imes">
-            <img src="assets/images/sciences.png" alt="Sciences Po Paris" class="partner-logo logo-sciencespo">
-       </div>
-    </div>
-</section>
+        <section class="enrollment-hero">
+            <span class="mini-tag grey">🎓 INSCRIÇÕES ABERTAS</span>
+            <h1>Inscrição para Aplicação de Oficina</h1>
+            <p>Preencha o formulário abaixo para se inscrever como aplicador(a) de uma oficina do GESC. Os dados serão usados para organizar a agenda e entrar em contato com você.</p>
+        </section>
 
-        <div class="section-title">
-            <br></br>
-            <h2>Bem-vindos ao Portal do GESC</h2>
-        </div>
-        <div class="about-grid">
-            
-            <aside class="sidebar">
-                <h3>GESC</h3>
-                <nav aria-label="Menu da seção Sobre">
-                    <ul class="sidebar-menu">
-                        <li><a href="#coordenacao" class="active">Coordenadores</a></li>
-                        <li><a href="publicacoes.html">Publicações</a></li>
-                        <li><a href="historico.html">Histórico</a></li>
-                        <li><a href="#palavra">Palavra do Coordenador</a></li>
-                        <li><a href="#objetivos">Objetivos</a></li>
-                        <li><a href="parceiros.html">Parceiros</a></li>
-                        <li><a href="#logo">Significado do Logo</a></li>
-                        <li><a href="#mapa">Mapa do Campus</a></li>
-                    </ul>
-                </nav>
-            </aside>
+        <section class="enrollment-form-container">
+            <p class="form-disclaimer">Campos marcados com <span class="text-red">*</span> são obrigatórios.</p>
 
-            <article class="content-area">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000" alt="Equipe GESC colaborando" loading="lazy">
-                
-                <div class="text-content">
-                    <p>Sejam bem-vindos ao portal oficial do <strong>GESC – Grupo de Engenharia de Sistemas Complexos</strong>, sediado na Faculdade de Tecnologia (FT) da UNICAMP, em Limeira.</p>
-                    <p>Nosso grupo consolidou-se como um centro <strong>multidisciplinar</strong> de excelência, onde pesquisadores e alunos de graduação e pós-graduação colaboram no desenvolvimento de soluções tecnológicas e modelos matemáticos avançados. Atuamos na intersecção estratégica entre as Engenharias (Telecomunicações, Transportes, Ambiental e Produção), a Administração e os Sistemas de Informação, utilizando ferramentas de Econofísica e Teoria dos Jogos para compreender fenômenos dinâmicos em mercados e redes.</p>
-                    <p>Com o apoio fundamental de agências de fomento como <strong>FAPESP</strong> e <strong>CNPq</strong>, o GESC transforma dados em inteligência estratégica. Seja através da otimização de tarifas em telecomunicações ou do estudo de fluxos logísticos e sustentabilidade, nosso compromisso é com a inovação científica e a formação de mestres e engenheiros capacitados para liderar as transformações da sociedade moderna.</p>
-                </div>
-            </article>
+            <form id="enrollment-form" class="enrollment-form" action="#">
 
-        </div>
-    </section>
+                <div class="form-section">
+                    <h2>Dados Pessoais</h2>
 
-    <div class="bg-light">
-        <section class="container" id="linhas-pesquisa">
-    <div class="gesc-research-header text-center">
-        <span class="text-red font-bold tracking-widest text-sm uppercase">Pesquisa Interdisciplinar</span>
-        <h2 class="text-4xl font-bold mt-2 mb-4">GESC — Áreas de Atuação</h2>
-        <p class="text-gray-600 max-w-3xl mx-auto mb-10">
-            O Grupo de Engenharia de Sistemas Complexos (GESC) atua de forma interdisciplinar, integrando
-            fundamentos da física, matemática aplicada, engenharia e ciências sociais para modelar, analisar e
-            otimizar sistemas complexos em diferentes domínios.
-        </p>
-    </div>
-
-    <div class="gesc-interactive-area">
-    <div class="gesc-graph">
-        <svg viewBox="-150 0 1100 600" xmlns="http://www.w3.org/2000/svg">
-            <g class="network-lines" stroke="#e0e6ed" stroke-width="3">
-                <line x1="400" y1="100" x2="573" y2="200" />
-                <line x1="573" y1="200" x2="573" y2="400" />
-                <line x1="573" y1="400" x2="400" y2="500" />
-                <line x1="400" y1="500" x2="227" y2="400" />
-                <line x1="227" y1="400" x2="227" y2="200" />
-                <line x1="227" y1="200" x2="400" y2="100" />
-                <line x1="400" y1="100" x2="400" y2="500" />
-                <line x1="227" y1="200" x2="573" y2="400" />
-                <line x1="227" y1="400" x2="573" y2="200" />
-            </g>
-
-            <g class="gesc-nodes">
-                <g class="node-group" data-axis="1" onclick="changeAxis(1)">
-                    <circle cx="400" cy="100" r="35" class="node-circle" />
-                    <text x="400" y="106" class="node-number">1</text>
-                    <text x="400" y="45" class="node-label" text-anchor="middle">Fundamentos Mat. e Físicos</text>
-                </g>
-                <g class="node-group" data-axis="2" onclick="changeAxis(2)">
-                    <circle cx="573" cy="200" r="35" class="node-circle" />
-                    <text x="573" y="206" class="node-number">2</text>
-                    <text x="625" y="200" class="node-label" text-anchor="start" alignment-baseline="middle">Modelagem e Simulação</text>
-                </g>
-                <g class="node-group" data-axis="3" onclick="changeAxis(3)">
-                    <circle cx="573" cy="400" r="35" class="node-circle" />
-                    <text x="573" y="406" class="node-number">3</text>
-                    <text x="625" y="400" class="node-label" text-anchor="start" alignment-baseline="middle">Interação Estratégica</text>
-                </g>
-                <g class="node-group" data-axis="4" onclick="changeAxis(4)">
-                    <circle cx="400" cy="500" r="35" class="node-circle" />
-                    <text x="400" y="506" class="node-number">4</text>
-                    <text x="400" y="565" class="node-label" text-anchor="middle">Estrutura e Redes</text>
-                </g>
-                <g class="node-group" data-axis="5" onclick="changeAxis(5)">
-                    <circle cx="227" cy="400" r="35" class="node-circle" />
-                    <text x="227" y="406" class="node-number">5</text>
-                    <text x="175" y="400" class="node-label" text-anchor="end" alignment-baseline="middle">Engenharia e Aplicações</text>
-                </g>
-                <g class="node-group active" data-axis="6" onclick="changeAxis(6)">
-                    <circle cx="227" cy="200" r="35" class="node-circle" />
-                    <text x="227" y="206" class="node-number">6</text>
-                    <text x="175" y="200" class="node-label" text-anchor="end" alignment-baseline="middle">Dados e Informação</text>
-                </g>
-            </g>
-        </svg>
-    </div>
-
-    <div class="gesc-info-panel">
-        <div class="info-header">
-            <span class="red-line"></span>
-            <span class="info-subtitle" id="axis-subtitle">EIXO 6 SELECIONADO</span>
-        </div>
-        <p class="axis-counter" id="axis-counter">EIXO 6 / 6</p>
-        <h3 class="axis-title" id="axis-title">Dados, Informação e Complexidade</h3>
-        
-        <ul class="axis-list" id="axis-list">
-            <li>Teoria da Informação e Entropia</li>
-            <li>Machine Learning e Mineração de Dados</li>
-            <li>Análise de Séries Temporais Complexas</li>
-            <li>Medidas de Complexidade (Entropia Amostral, Lempel-Ziv)</li>
-            <li>Visualização e Análise de Dados de Alta Dimensão</li>
-        </ul>
-
-        <div class="axis-dots" id="axis-dots">
-            <span onclick="changeAxis(1)"></span>
-            <span onclick="changeAxis(2)"></span>
-            <span onclick="changeAxis(3)"></span>
-            <span onclick="changeAxis(4)"></span>
-            <span onclick="changeAxis(5)"></span>
-            <span class="active" onclick="changeAxis(6)"></span>
-        </div>
-    </div>
-</div>
-</section>
-    </div>
-
-    <section id="coordenacao" class="coordination-section">
-        <div class="container">
-            
-            <div class="section-title">
-                <h2>Coordenadores</h2>
-            </div>
-
-            <div class="coordination-card">
-                
-                <div class="founder-block">
-                    <div class="founder-image">
-                        <img src="assets/images/yuri.png" alt="Yuri Alexandre Meyer">
-                    </div>
-                    <div class="founder-content">
-                        <h3>FUNDADOR</h3>
-                        <h4>Yuri Alexandre Meyer</h4>
-                        <p>
-                            Professor Doutor da Faculdade de Tecnologia da UNICAMP, com formação em Física e em Ciências dos Materiais, desenvolve pesquisas interdisciplinares na interface entre Engenharia, Física e Ciências Sociais. É co-líder do Grupo de Engenharia de Sistemas Complexos (GESC), com atuação em Teoria dos Jogos, Física Estatística, Sociofísica, Dinâmica Não Linear, Cadeias de Markov e simulações de Monte Carlo aplicadas a sistemas complexos. Seus trabalhos abrangem ciência dos materiais, engenharia de transportes, risco, corrosão, sustentabilidade e planejamento sob incerteza, em diálogo com parceiros nacionais e internacionais. Também atua na pós-graduação da FT/UNICAMP, colabora com o ITA e coordena iniciativas de extensão e divulgação científica voltadas à formação de jovens talentos.
-                        </p>
-                        <div class="founder-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="input-group">
+                        <label>Você é aluno(a)? <span class="text-red">*</span></label>
+                        <div class="choice-group">
+                            <label><input type="radio" name="isStudent" value="sim" required> Sim</label>
+                            <label><input type="radio" name="isStudent" value="nao"> Não</label>
                         </div>
                     </div>
-                </div>
 
-                <div class="founder-block reverse">
-                    <div class="founder-image">
-                        <img src="assets/images/rafael.jpg" alt="Rafael Henrique de Oliveira">
+                    <div class="input-group" id="ra-group" hidden>
+                        <label for="ra">RA (Registro Acadêmico) <span class="text-red">*</span></label>
+                        <input type="text" id="ra" name="ra" placeholder="Ex: 123456">
                     </div>
-                    <div class="founder-content">
-                        <h3>FUNDADOR</h3>
-                        <h4>Rafael Henrique de Oliveira</h4>
-                        <p>
-                            Professor Doutor da Faculdade de Tecnologia da UNICAMP, atua no curso de Engenharia de Transportes com dedicação às áreas de monitoramento da infraestrutura de transporte, mobilidade ativa, cartografia digital e sistemas de posicionamento por satélite. Graduado em Engenharia Civil pela Escola Politécnica da USP, realizou intercâmbio acadêmico na École Polytechnique Fédérale de Lausanne (EPFL), na Suíça, além de desenvolver parte de seu doutorado na Università di Roma – La Sapienza, na Itália. 
-    
-    É mestre e doutor em Engenharia de Transportes com ênfase em Informações Espaciais pela USP, e desenvolve pesquisas voltadas à integração entre tecnologia, mobilidade e análise espacial aplicada a sistemas de transporte. Seus trabalhos envolvem cartografia digital, monitoramento inteligente de infraestrutura, geotecnologias e inovação em engenharia de transportes, contribuindo para projetos acadêmicos e científicos em colaboração com instituições nacionais e internacionais.
-                        </p>
-                        <div class="founder-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="fullName">Nome completo <span class="text-red">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="email">E-mail <span class="text-red">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
                         </div>
                     </div>
+
+                    <div class="input-group">
+                        <label for="whatsapp">WhatsApp <span class="text-red">*</span></label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(19) 99999-9999" required>
+                    </div>
                 </div>
 
-            </div> </div>
-    </section>
+                <div class="form-section">
+                    <h2>Dados da Oficina</h2>
 
-    <div class="bg-white">
-        <section class="container team-section">
-            <div class="section-title">
-                <h2>Nossa Equipe</h2>
-            </div>
-
-            <div class="team-grid">
-                
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
+                    <div class="input-group">
+                        <label for="workshopName">Nome da oficina <span class="text-red">*</span></label>
+                        <input type="text" id="workshopName" name="workshopName" placeholder="Ex: Introdução à Teoria dos Jogos" required>
                     </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Doutorando em Tecnologia</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+
+                    <div class="input-group">
+                        <label for="workshopDescription">Descrição rápida da oficina <span class="text-red">*</span></label>
+                        <textarea id="workshopDescription" name="workshopDescription" rows="3" placeholder="Resuma em poucas linhas o conteúdo e o objetivo da oficina" required></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Dias que tem interesse em aplicar <span class="text-red">*</span></label>
+                        <div class="choice-group">
+                            <label><input type="checkbox" name="days" value="segunda"> Segunda</label>
+                            <label><input type="checkbox" name="days" value="terca"> Terça</label>
+                            <label><input type="checkbox" name="days" value="quarta"> Quarta</label>
+                            <label><input type="checkbox" name="days" value="quinta"> Quinta</label>
+                            <label><input type="checkbox" name="days" value="sexta"> Sexta</label>
+                            <label><input type="checkbox" name="days" value="sabado"> Sábado</label>
                         </div>
                     </div>
-                </div>
 
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Mestrando em Eng.</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="preferredTime">Horário que quer aplicar <span class="text-red">*</span></label>
+                            <input type="time" id="preferredTime" name="preferredTime" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="dayDuration">Duração de cada dia (horas) <span class="text-red">*</span></label>
+                            <input type="number" id="dayDuration" name="dayDuration" min="0.5" step="0.5" placeholder="Ex: 2" required>
                         </div>
                     </div>
-                </div>
 
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Pesquisador Associado</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
+                    <div class="input-group">
+                        <label for="totalWorkshops">Quantas oficinas terão ao todo <span class="text-red">*</span></label>
+                        <input type="number" id="totalWorkshops" name="totalWorkshops" min="1" step="1" placeholder="Ex: 4" required>
+                        <span class="field-hint">Número total de encontros previstos para essa oficina.</span>
                     </div>
                 </div>
 
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Aluno de Iniciação Científica</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="far fa-paper-plane"></i> Enviar Inscrição
+                </button>
+                <p class="privacy-note">Ao enviar, você concorda com nossa política de privacidade. Não compartilharemos seus dados.</p>
+            </form>
 
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Cargo</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <div id="form-feedback" class="form-feedback" hidden></div>
+        </section>
 
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Cargo</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Cargo</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Cargo</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Cargo</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Cargo</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="assets/images/anonimo.png" alt="Membro da Equipe">
-                    </div>
-                    <div class="team-info">
-                        <h3>Nome do Pesquisador</h3>
-                        <span>Cargo</span>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div> </section>
-
-<section class="container" id="noticias">
-    <div class="section-title">
-        <h2>Novidades e Artigos</h2>
-    </div>
-
-    <div class="news-grid">
-        <div class="news-item featured">
-            <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?auto=format&fit=crop&w=1200" alt="Alunos">
-            <div class="featured-content">
-                <small>15 MAR 2024</small>
-                <h3>Projeto IDEIA da FT-Unicamp ganha destaque nacional</h3>
-                <p>Iniciativa focada no desenvolvimento de estudantes com altas habilidades recebe prêmio de inovação educacional.</p>
-                <a href="javascript:void(0)" class="btn-link">Ler Matéria Completa &rarr;</a>
-            </div>
-        </div>
-
-        <div class="news-item small">
-            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=400" alt="Pesquisa">
-            <div class="small-content">
-                <h4>Novo artigo publicado na IEEE</h4>
-                <a href="javascript:void(0)" class="btn-link">Ler mais &rarr;</a>
-            </div>
-        </div>
-        
-        <div class="news-item small">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=400" alt="Reunião">
-            <div class="small-content">
-                <h4>Workshop de Sistemas Complexos</h4>
-                <a href="javascript:void(0)" class="btn-link">Ler mais &rarr;</a>
-            </div>
-        </div>
-
-        <div class="news-item small">
-            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400" alt="Tecnologia">
-            <div class="small-content">
-                <h4>GESC expande parcerias internacionais</h4>
-                <a href="javascript:void(0)" class="btn-link">Ler mais &rarr;</a>
-            </div>
-        </div>
-    </div>
-</section>
+    </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/areas_atuacao.js"></script>
+    <script src="assets/js/inscricao-oficina.js"></script>
 </body>
 </html>
