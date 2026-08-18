@@ -1,11 +1,16 @@
 /* --- HEADER E FOOTER DESATIVADOS ---
    Nesta tela apenas o formulário deve funcionar: header e footer ficam
-   visíveis (identidade visual), mas todo link/botão neles é inerte. */
+   visíveis (identidade visual), mas todo link/botão neles é inerte.
+   Importante: NÃO usamos pointer-events:none aqui, porque isso impede o
+   navegador de mostrar o cursor "not-allowed" (o elemento sai do
+   hit-test e o cursor some). O clique em si é bloqueado via JS
+   (inscricao-oficina.js), mantendo o cursor visível no hover.
+   O botão do menu hambúrguer fica de fora: ele só abre/fecha o painel,
+   não navega para lugar nenhum. */
 #header-placeholder a,
-#header-placeholder button,
+#header-placeholder button:not(.mobile-menu-btn),
 #footer-placeholder a,
 #footer-placeholder button {
-    pointer-events: none;
     cursor: not-allowed;
 }
 
@@ -125,6 +130,87 @@
     outline: none;
     border-color: var(--primary-blue);
     background-color: #fff;
+}
+
+/* --- SELETOR DE HORÁRIO PERSONALIZADO --- */
+.time-picker {
+    position: relative;
+}
+
+.time-picker-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 16px;
+    color: #333;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.time-picker-trigger i {
+    color: var(--primary-blue);
+}
+
+.time-picker-trigger:hover,
+.time-picker-trigger[aria-expanded="true"] {
+    border-color: var(--primary-blue);
+    background-color: #fff;
+}
+
+.time-picker-panel {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 20;
+    display: flex;
+    gap: 4px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    padding: 8px;
+}
+
+.time-picker-panel[hidden] {
+    display: none;
+}
+
+.time-picker-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 56px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.time-picker-col button {
+    border: none;
+    background: none;
+    padding: 8px 0;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    color: #333;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.time-picker-col button:hover {
+    background-color: #f0f2f5;
+}
+
+.time-picker-col button.selected {
+    background-color: var(--primary-blue);
+    color: #fff;
+    font-weight: 600;
 }
 
 /* --- GRUPOS DE OPÇÕES (RADIO / CHECKBOX) --- */

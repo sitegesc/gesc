@@ -69,32 +69,54 @@ header {
 
 .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-/* --- RESPONSIVIDADE (Celular/Tablet) --- */
+/* --- RESPONSIVIDADE (Celular/Tablet) ---
+   Logo à esquerda, hambúrguer à direita; o menu vira um painel suspenso
+   que abre/fecha por baixo do header (usa a classe .active de script.js). */
 @media (max-width: 900px) {
     header {
         height: auto;
     }
 
     .header-container {
-        flex-direction: column;
-        justify-content: center;
-        padding: 14px 0;
-        gap: 10px;
+        padding: 12px 0;
     }
 
     .main-logo {
-        height: 70px;
+        height: 64px;
         margin: 0;
     }
 
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    #main-nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        max-width: 320px;
+        max-height: 0;
+        overflow: hidden;
+        background-color: var(--primary-blue);
+        border-radius: 0 0 0 8px;
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        transition: max-height 0.3s ease;
+    }
+
+    #main-nav.active {
+        max-height: 400px;
+    }
+
     #main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 20px;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 24px 16px;
     }
 
     #main-nav a {
-        font-size: 0.8rem;
-        padding: 4px 0;
+        display: block;
+        padding: 12px 0;
+        font-size: 0.85rem;
     }
 }

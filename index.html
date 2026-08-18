@@ -90,8 +90,18 @@
 
                     <div class="form-row">
                         <div class="input-group">
-                            <label for="preferredTime">Horário que quer aplicar <span class="text-red">*</span></label>
-                            <input type="time" id="preferredTime" name="preferredTime" required>
+                            <label for="time-picker-trigger">Horário que quer aplicar <span class="text-red">*</span></label>
+                            <div class="time-picker" id="time-picker">
+                                <button type="button" class="time-picker-trigger" id="time-picker-trigger" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-clock"></i>
+                                    <span id="time-picker-value">14:00</span>
+                                </button>
+                                <div class="time-picker-panel" id="time-picker-panel" hidden>
+                                    <div class="time-picker-col" id="time-picker-hours"></div>
+                                    <div class="time-picker-col" id="time-picker-minutes"></div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="preferredTime" name="preferredTime" value="14:00">
                         </div>
                         <div class="input-group">
                             <label for="dayDuration">Duração de cada dia (horas) <span class="text-red">*</span></label>
