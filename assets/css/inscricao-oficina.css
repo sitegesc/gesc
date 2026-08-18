@@ -239,7 +239,6 @@
     border-color: var(--primary-blue);
     background-color: #eef2f9;
     color: var(--primary-blue);
-    font-weight: 600;
 }
 
 .choice-group input {
