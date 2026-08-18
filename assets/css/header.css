@@ -68,3 +68,33 @@ header {
 #main-nav a:hover::after { width: 100%; }
 
 .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+/* --- RESPONSIVIDADE (Celular/Tablet) --- */
+@media (max-width: 900px) {
+    header {
+        height: auto;
+    }
+
+    .header-container {
+        flex-direction: column;
+        justify-content: center;
+        padding: 14px 0;
+        gap: 10px;
+    }
+
+    .main-logo {
+        height: 70px;
+        margin: 0;
+    }
+
+    #main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 20px;
+    }
+
+    #main-nav a {
+        font-size: 0.8rem;
+        padding: 4px 0;
+    }
+}

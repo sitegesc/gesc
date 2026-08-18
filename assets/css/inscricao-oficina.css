@@ -1,3 +1,14 @@
+/* --- HEADER E FOOTER DESATIVADOS ---
+   Nesta tela apenas o formulário deve funcionar: header e footer ficam
+   visíveis (identidade visual), mas todo link/botão neles é inerte. */
+#header-placeholder a,
+#header-placeholder button,
+#footer-placeholder a,
+#footer-placeholder button {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 /* --- HERO DA PÁGINA DE INSCRIÇÃO --- */
 .enrollment-page {
     padding: 40px 20px 60px;

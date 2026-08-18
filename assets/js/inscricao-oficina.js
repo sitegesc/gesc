@@ -67,4 +67,36 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleRaField();
 
     document.getElementById('enrollment-form').addEventListener('submit', handleFormSubmit);
+
+    disableLinksAndButtonsWhenReady('header-placeholder');
+    disableLinksAndButtonsWhenReady('footer-placeholder');
 });
+
+// Header e footer são carregados de forma assíncrona (script.js/loadComponent).
+// Nesta tela só o formulário deve funcionar, então assim que os componentes
+// chegarem, tiramos os links/botões da navegação por teclado (tabindex/aria-disabled).
+// O bloqueio ao mouse já é feito via CSS (pointer-events) em inscricao-oficina.css.
+function disableLinksAndButtonsWhenReady(placeholderId) {
+    const placeholder = document.getElementById(placeholderId);
+    if (!placeholder) return;
+
+    const disableInteractiveElements = () => {
+        placeholder.querySelectorAll('a, button').forEach((el) => {
+            el.setAttribute('tabindex', '-1');
+            el.setAttribute('aria-disabled', 'true');
+        });
+    };
+
+    if (placeholder.children.length > 0) {
+        disableInteractiveElements();
+        return;
+    }
+
+    const observer = new MutationObserver(() => {
+        if (placeholder.children.length > 0) {
+            disableInteractiveElements();
+            observer.disconnect();
+        }
+    });
+    observer.observe(placeholder, { childList: true });
+}

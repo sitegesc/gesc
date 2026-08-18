@@ -81,10 +81,18 @@ footer {
 
 /* Responsividade do Footer para celulares */
 @media screen and (max-width: 768px) {
+    footer {
+        padding: 40px 0 20px;
+    }
+
     .footer-container {
         flex-direction: column;
         align-items: flex-start; /* No celular, volta para o alinhamento no topo */
-        gap: 40px;
+        gap: 30px;
+    }
+
+    .footer-brand img {
+        max-width: 220px !important;
     }
 }
 
