@@ -1,17 +1,19 @@
 /* --- HERO DA PÁGINA DE INSCRIÇÃO --- */
 .enrollment-page {
-    padding: 60px 20px 100px;
+    padding: 40px 20px 60px;
     max-width: 900px;
     margin: 0 auto;
 }
 
 .enrollment-hero {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
 }
 
 .mini-tag {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
@@ -24,12 +26,13 @@
 
 .enrollment-hero h1 {
     color: var(--primary-blue);
-    font-size: 2rem;
-    margin-bottom: 12px;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
 }
 
 .enrollment-hero p {
     color: var(--text-light);
+    font-size: 0.95rem;
     max-width: 640px;
     margin: 0 auto;
 }
@@ -37,16 +40,16 @@
 /* --- CARTÃO DO FORMULÁRIO --- */
 .enrollment-form-container {
     background-color: #fff;
-    padding: 40px;
+    padding: 30px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     border: 1px solid #f0f0f0;
 }
 
 .form-disclaimer {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 22px;
 }
 
 .text-red {
@@ -54,51 +57,52 @@
 }
 
 .form-section {
-    margin-bottom: 35px;
+    margin-bottom: 24px;
 }
 
 .form-section h2 {
     color: var(--primary-blue);
-    font-size: 1.2rem;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    font-size: 1.05rem;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
     border-bottom: 2px solid #f0f2f5;
 }
 
 .enrollment-form .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 14px;
 }
 
 .input-group {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     display: flex;
     flex-direction: column;
 }
 
 .input-group label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: bold;
     color: #333;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .input-group .field-hint {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: normal;
     color: #888;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 
 .input-group input,
 .input-group select,
 .input-group textarea {
-    padding: 12px 15px;
+    padding: 10px 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-family: inherit;
-    font-size: 0.9rem;
+    /* 16px é o mínimo para o Safari iOS não dar zoom automático ao focar o campo */
+    font-size: 16px;
     color: #333;
     background-color: #fafafa;
     transition: border-color 0.2s;
@@ -116,18 +120,18 @@
 .choice-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
 }
 
 .choice-group label {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
+    gap: 6px;
+    padding: 7px 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fafafa;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     font-weight: normal;
     color: #333;
     cursor: pointer;
@@ -148,7 +152,7 @@
 /* --- CAMPO CONDICIONAL (RA) --- */
 #ra-group {
     background-color: #f5f7fa;
-    padding: 15px;
+    padding: 12px;
     border-radius: 8px;
 }
 
@@ -161,11 +165,11 @@
     background-color: var(--primary-blue);
     color: #fff;
     border: none;
-    padding: 15px;
+    padding: 13px;
     width: 100%;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.95rem;
     cursor: pointer;
     transition: background-color 0.2s;
     display: flex;
@@ -212,11 +216,28 @@
 
 /* --- RESPONSIVIDADE (Celular) --- */
 @media (max-width: 768px) {
+    .enrollment-page {
+        padding: 24px 14px 40px;
+    }
+
+    .enrollment-hero {
+        margin-bottom: 20px;
+    }
+
+    .enrollment-hero h1 {
+        font-size: 1.4rem;
+    }
+
     .enrollment-form-container {
-        padding: 25px;
+        padding: 18px;
+    }
+
+    .form-section {
+        margin-bottom: 18px;
     }
 
     .enrollment-form .form-row {
         grid-template-columns: 1fr;
+        gap: 0;
     }
 }
