@@ -1,5 +1,13 @@
-// TODO: substituir pela URL do Web App do Google Apps Script quando a planilha for criada.
-const GOOGLE_SCRIPT_URL = "";
+const SHEETDB_URL = 'https://sheetdb.io/api/v1/nidpepp383c9l';
+
+const DAY_LABELS = {
+    segunda: 'Segunda',
+    terca: 'Terça',
+    quarta: 'Quarta',
+    quinta: 'Quinta',
+    sexta: 'Sexta',
+    sabado: 'Sábado',
+};
 
 function toggleRaField() {
     const isStudent = document.querySelector('input[name="isStudent"]:checked');
@@ -14,9 +22,25 @@ function toggleRaField() {
 
 function collectFormData(form) {
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    data.days = formData.getAll('days');
-    return data;
+    const selectedDays = formData.getAll('days');
+
+    return {
+        selectedDays,
+        row: {
+            eh_aluno: formData.get('isStudent') === 'sim' ? 'Sim' : 'Não',
+            ra: formData.get('ra') || '',
+            nome_completo: formData.get('fullName'),
+            email: formData.get('email'),
+            whatsapp: formData.get('whatsapp'),
+            nome_oficina: formData.get('workshopName'),
+            descricao_oficina: formData.get('workshopDescription'),
+            dias_aplicacao: selectedDays.map((day) => DAY_LABELS[day] || day).join(', '),
+            horario_aplicacao: formData.get('preferredTime'),
+            duracao_horas: formData.get('dayDuration'),
+            total_oficinas: formData.get('totalWorkshops'),
+            data_envio: 'DATETIME',
+        },
+    };
 }
 
 function showFeedback(message, type) {
@@ -30,23 +54,28 @@ async function handleFormSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const submitButton = form.querySelector('.btn-submit');
-    const data = collectFormData(form);
+    const originalButtonContent = submitButton.innerHTML;
+    const { selectedDays, row } = collectFormData(form);
 
-    if (data.days.length === 0) {
+    if (selectedDays.length === 0) {
         showFeedback('Selecione ao menos um dia de interesse para aplicar a oficina.', 'error');
         return;
     }
 
+    if (submitButton.disabled) return;
+
     submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
     try {
-        if (GOOGLE_SCRIPT_URL) {
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data),
-            });
+        const response = await fetch(SHEETDB_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: [row] }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`SheetDB respondeu com status ${response.status}`);
         }
 
         showFeedback('Inscrição enviada com sucesso! Em breve entraremos em contato.', 'success');
@@ -57,6 +86,7 @@ async function handleFormSubmit(event) {
         showFeedback('Não foi possível enviar sua inscrição agora. Tente novamente em instantes.', 'error');
     } finally {
         submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonContent;
     }
 }
 
