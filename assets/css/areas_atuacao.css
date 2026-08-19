@@ -1,0 +1,198 @@
+/* --- ESTILOS DA SEÇÃO ÁREAS DE ATUAÇÃO (GESC INTERATIVO) --- */
+
+/* Classes utilitárias do cabeçalho */
+.gesc-research-header { margin-bottom: 40px; }
+.text-red { color: #e3000f; }
+.text-blue { color: #002060; }
+.font-bold { font-weight: bold; }
+.tracking-widest { letter-spacing: 0.1em; }
+.text-sm { font-size: 0.875rem; }
+.uppercase { text-transform: uppercase; }
+.text-4xl { font-size: 2.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-10 { margin-bottom: 2.5rem; }
+.text-gray-600 { color: #4b5563; }
+.max-w-3xl { max-width: 48rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.text-center { text-align: center; }
+
+/* Container flexível principal - centralizado */
+.gesc-interactive-area {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center; /* Traz tudo pro centro */
+    gap: 100px; /* AUMENTADO: Cria um espaçamento maior, empurrando o texto para a direita */
+    margin-top: 50px;
+}
+
+/* Área do SVG (Desenho maior) */
+.gesc-graph {
+    flex: 1.5; /* AUMENTADO: Dá prioridade para o desenho crescer mais que o texto */
+    min-width: 500px;
+    max-width: 1000px; /* AUMENTADO: Limite estendido para o desenho ficar bem maior */
+    margin: 0; /* Remove a margem automática para respeitar o flex gap */
+}
+
+.gesc-graph svg {
+    overflow: visible;
+    width: 120%;
+    height: auto;
+}
+
+.node-group {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Bolinha padrão */
+.node-circle {
+    fill: #ffffff;
+    stroke: #002060;
+    stroke-width: 4; /* Borda um pouco mais grossa */
+    transition: all 0.3s ease;
+}
+
+/* Números dentro das bolinhas */
+.node-number {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 26px; /* AUMENTADO: Fonte maior para os números */
+    fill: #002060;
+    text-anchor: middle;
+    transition: all 0.3s ease;
+}
+
+/* Textos do lado de fora das bolinhas */
+.node-label {
+    font-family: Arial, sans-serif;
+    font-size: 20px; /* AUMENTADO: Fonte maior para melhor leitura fora do eixo ativo */
+    fill: #555;
+    transition: all 0.3s ease;
+}
+
+/* Bolinha Ativa: Vermelho do Logo */
+.node-group.active .node-circle {
+    fill: #e3000f;
+    stroke: #e3000f;
+    filter: drop-shadow(0 0 12px rgba(227, 0, 15, 0.4)); /* Efeito de brilho */
+}
+
+.node-group.active .node-number {
+    fill: #ffffff;
+}
+
+.node-group.active .node-label {
+    fill: #e3000f;
+    font-weight: bold;
+    font-size: 22px; /* AUMENTADO: Destaque maior na palavra selecionada */
+}
+
+/* Efeito Hover nas bolinhas inativas */
+.node-group:not(.active):hover .node-circle {
+    fill: #f0f4f8;
+    stroke-width: 5;
+}
+
+/* Painel de Informações (Direita) */
+.gesc-info-panel {
+    flex: 1;
+    min-width: 350px;
+    max-width: 450px; /* REDUZIDO: Impede o texto de tomar muito espaço, priorizando o desenho */
+    padding: 20px 40px;
+    border-left: 1px solid #eee;
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.red-line {
+    width: 40px;
+    height: 2px;
+    background-color: #e3000f;
+}
+
+.info-subtitle {
+    color: #e3000f;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.axis-counter {
+    color: #e3000f;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.axis-title {
+    font-size: 28px;
+    color: #002060; /* Azul do logo */
+    margin-bottom: 30px;
+}
+
+.axis-list {
+    list-style: none;
+    padding: 0;
+}
+
+.axis-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+}
+
+.axis-list li::before {
+    content: "•";
+    color: #e3000f;
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Paginação (bolinhas embaixo do texto) */
+.axis-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 40px;
+}
+
+.axis-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.axis-dots span.active {
+    width: 25px;
+    border-radius: 5px;
+    background-color: #e3000f;
+}
+
+/* Responsividade para telas menores (celulares e tablets) */
+@media (max-width: 900px) {
+    .gesc-interactive-area {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .gesc-info-panel {
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding: 30px 0 0 0;
+        width: 100%;
+        max-width: 100%;
+    }
+}
