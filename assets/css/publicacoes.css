@@ -1,0 +1,254 @@
+/* --- CABEÇALHO DA PÁGINA --- */
+.page-header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto; /* A mágica que centraliza o bloco na tela */
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+/* O sublinhado vermelho na primeira palavra */
+.page-header .underline {
+    position: relative;
+    display: inline-block;
+}
+.page-header .underline::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--accent-red);
+}
+
+.page-header p {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* --- LAYOUT GRID (Sidebar + Conteúdo) --- */
+.layout-sidebar {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+/* --- SIDEBAR DE FILTROS --- */
+.filter-sidebar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-blue);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.filter-group { margin-bottom: 25px; }
+
+.filter-group h4 {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #555;
+    cursor: pointer;
+    background: #fafafa;
+    transition: all 0.2s;
+}
+
+.filter-group li:hover { background: #f0f0f0; }
+
+.filter-group li .badge {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Estados ativos dos botões de filtro */
+.filter-group li.active { background: var(--accent-red); color: #fff; }
+.filter-group li.active .badge { color: #ffcccc; }
+.filter-group li.active-blue { background: var(--primary-blue); color: #fff; }
+
+/* --- CONTEÚDO PRINCIPAL (Cartões) --- */
+.section-title-small { margin-bottom: 20px; }
+.section-title-small h3 {
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.title-badge {
+    background: #e0e4eb;
+    color: var(--primary-blue);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.mt-40 { margin-top: 40px; }
+
+.pub-card {
+    background: #fff;
+    border: 1px solid #eef0f5;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.featured-card { border: 1px solid #dce2ed; box-shadow: 0 8px 20px rgba(0,34,102,0.08); }
+
+.tags { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.tag {
+    background: var(--accent-red);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.pub-card h2 {
+    font-size: 1.3rem;
+    color: #111;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.pub-meta {
+    margin-bottom: 20px;
+}
+
+.pub-meta p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.pub-meta i { color: #a0a5b1; margin-top: 3px; }
+
+.pub-abstract {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+}
+
+.pub-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-tags { display: flex; gap: 10px; }
+.mini-tag {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.mini-tag.blue { background: var(--primary-blue); color: #fff; }
+.mini-tag.grey { background: #f0f2f5; color: #555; }
+
+.btn-read {
+    background: var(--accent-red);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+.btn-read:hover { background: #961618; color: #fff; }
+
+/* --- BANNER DE IMPACTO --- */
+.impact-banner {
+    /* De: background: var(--primary-blue); */
+    
+    /* Para: Um degrade cinza escuro professional (linear-gradient) */
+    background-image: linear-gradient(to bottom, #1a1a1a, #444444);
+    
+    /* Mantemos o resto conforme já estava */
+    border-radius: 16px;
+    padding: 50px;
+    text-align: center;
+    color: #fff; /* O texto branco vai ficar ótimo em cima desse cinza */
+    margin-bottom: 60px;
+}
+
+.impact-banner h2 { font-size: 1.5rem; margin-bottom: 40px; }
+
+.impact-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.impact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.impact-item .number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--accent-red);
+}
+
+.impact-item .label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsividade Básica */
+@media (max-width: 900px) {
+    .layout-sidebar { grid-template-columns: 1fr; }
+    .pub-footer { flex-direction: column; gap: 15px; align-items: flex-start; }
+}

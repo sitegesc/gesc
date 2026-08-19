@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "tipo": "periodico",
+    "titulo": "Título da Publicação: Descreva aqui o título completo do artigo científico",
+    "autores": "[Autores: Autor 1, Autor 2, Autor 3]",
+    "local": "Nome da Revista Científica ou do Periódico Internacional",
+    "ano": "2026",
+    "area": "Complex Systems",
+    "link": "https://doi.org/10.1088/exemplo",
+    "iconeLocal": "fa-book"
+  },
+  {
+    "id": 2,
+    "tipo": "conferencia",
+    "titulo": "Título do congresso/conferência internacional",
+    "autores": "Costa, R.M., Silva, A.C., Almeida, T.F.",
+    "local": "Nome do Evento ou Congresso Internacional",
+    "ano": "2025",
+    "area": "Logística",
+    "link": "#",
+    "iconeLocal": "fa-globe"
+  }
+]
