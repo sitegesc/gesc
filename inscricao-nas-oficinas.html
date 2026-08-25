@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição em Oficinas | GESC</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="icon" type="image/png" href="assets/images/logo2.png">
+    <link rel="stylesheet" href="assets/css/inscricao-oficina.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Destaque do grupo de oficinas quando nenhuma estiver selecionada.
+           Se preferir, mova essas regras para assets/css/inscricao-oficina.css */
+        .choice-group.invalid {
+            border: 1px solid #e03131;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .enrollment-success {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .enrollment-success .success-icon {
+            font-size: 48px;
+            color: #2f9e44;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="enrollment-page container">
+
+        <section class="enrollment-hero">
+            <span class="mini-tag grey"><i class="fas fa-graduation-cap"></i> INSCRIÇÕES ABERTAS</span>
+            <h1>Inscrição em Oficinas</h1>
+            <p>Preencha o formulário abaixo para se inscrever em uma ou mais oficinas do GESC. Os dados serão usados apenas para organizar as turmas e entrar em contato com você.</p>
+        </section>
+
+        <section class="enrollment-form-container">
+            <p class="form-disclaimer">Campos marcados com <span class="text-red">*</span> são obrigatórios.</p>
+
+            <form id="enrollment-form" class="enrollment-form" action="#">
+
+                <div class="form-section">
+                    <h2>Dados Pessoais</h2>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="fullName">Nome completo <span class="text-red">*</span></label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Seu nome completo" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="age">Idade <span class="text-red">*</span></label>
+                            <input type="number" id="age" name="age" min="1" step="1" placeholder="Ex: 15" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="guardianName">Nome do responsável <span class="text-red">*</span></label>
+                            <input type="text" id="guardianName" name="guardianName" placeholder="Nome completo do responsável" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="phone">Telefone para contato <span class="text-red">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="(19) 99999-9999" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Oficinas</h2>
+
+                    <div class="input-group">
+                        <label>Selecione uma ou mais oficinas <span class="text-red">*</span></label>
+                        <div class="choice-group" id="workshops-choice-group">
+                            <label><input type="checkbox" name="workshops" value="introducao-teoria-jogos"> Introdução à Teoria dos Jogos</label>
+                            <label><input type="checkbox" name="workshops" value="logica-matematica"> Lógica Matemática Aplicada</label>
+                            <label><input type="checkbox" name="workshops" value="robotica-basica"> Robótica Básica</label>
+                            <label><input type="checkbox" name="workshops" value="programacao-python"> Programação com Python</label>
+                            <label><input type="checkbox" name="workshops" value="astronomia"> Astronomia para Iniciantes</label>
+                        </div>
+                        <span class="field-hint">É possível marcar mais de uma oficina.</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submit-button" disabled>
+                    <i class="far fa-paper-plane"></i> Enviar Inscrição
+                </button>
+                <p class="privacy-note">Ao enviar, você concorda com nossa política de privacidade. Não compartilharemos seus dados.</p>
+            </form>
+
+            <div id="form-feedback" class="form-feedback" hidden></div>
+        </section>
+
+        <section class="enrollment-success" id="success-screen" hidden>
+            <i class="fas fa-circle-check success-icon"></i>
+            <h2>Inscrição enviada com sucesso!</h2>
+            <p>Recebemos os seus dados. Em breve entraremos em contato pelo telefone informado com mais detalhes sobre a(s) oficina(s) selecionada(s).</p>
+            <button type="button" class="btn-submit" id="new-enrollment-button">
+                Fazer nova inscrição
+            </button>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/inscricao-nas-oficinas.js"></script>
+</body>
+</html>
