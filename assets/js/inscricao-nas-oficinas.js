@@ -1,3 +1,5 @@
+const SHEETDB_URL = 'https://sheetdb.io/api/v1/nidpepp383c9l?sheet=PAIS';
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('enrollment-form');
     const feedback = document.getElementById('form-feedback');
@@ -7,8 +9,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const formContainer = document.querySelector('.enrollment-form-container');
     const successScreen = document.getElementById('success-screen');
     const newEnrollmentButton = document.getElementById('new-enrollment-button');
+    const phoneInput = document.getElementById('phone');
 
     if (!form) return;
+
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length > 11) val = val.slice(0, 11);
+
+            if (val.length > 10) {
+                val = val.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+            } else if (val.length > 5) {
+                val = val.replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+            } else if (val.length > 2) {
+                val = val.replace(/^(\d{2})(\d{0,5})$/, '($1) $2');
+            } else {
+                val = val.replace(/^(\d*)$/, '$1');
+            }
+            e.target.value = val;
+        });
+    }
 
     function showFeedback(message, isError) {
         if (!feedback) return;
@@ -28,9 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return Array.from(workshopCheckboxes).some(cb => cb.checked);
     }
 
-    // Regra de negócio: a inscrição só pode ser enviada se pelo menos
-    // uma oficina estiver selecionada. O botão fica desabilitado e o
-    // grupo de checkboxes é destacado até essa condição ser satisfeita.
     function updateWorkshopValidationState() {
         const valid = hasAtLeastOneWorkshop();
 
@@ -53,8 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cb.addEventListener('change', updateWorkshopValidationState);
     });
 
-    // Estado inicial: nenhuma oficina marcada ainda, botão já nasce
-    // desabilitado via atributo HTML — aqui só sincronizamos o resto.
     updateWorkshopValidationState();
 
     function showSuccessScreen() {
@@ -75,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newEnrollmentButton.addEventListener('click', showFormScreen);
     }
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         if (!updateWorkshopValidationState()) {
@@ -91,17 +107,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
         const selectedWorkshops = formData.getAll('workshops');
 
-        const payload = {
-            fullName: formData.get('fullName'),
-            age: formData.get('age'),
-            guardianName: formData.get('guardianName'),
-            phone: formData.get('phone'),
-            workshops: selectedWorkshops
+        const row = {
+            nome_completo: formData.get('fullName'),
+            idade: formData.get('age'),
+            nome_responsavel: formData.get('guardianName'),
+            telefone_contato: formData.get('phone'),
+            'oficinas_selecionadas': selectedWorkshops.join(', '),
+            data_envio: 'DATETIME'
         };
 
-        // TODO: substituir por uma chamada real ao backend/planilha de inscrições
-        console.log('Inscrição enviada:', payload);
+        const originalBtnHtml = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
-        showSuccessScreen();
+        try {
+            const response = await fetch(SHEETDB_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: [row] })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro na resposta do SheetDB: ${response.status}`);
+            }
+
+            showSuccessScreen();
+        } catch (error) {
+            console.error(error);
+            showFeedback('Não foi possível enviar a inscrição. Verifique sua conexão e tente novamente.', true);
+        } finally {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalBtnHtml;
+        }
     });
 });
