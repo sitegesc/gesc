@@ -6,6 +6,8 @@ import Link from "next/link";
 
 import { Modal } from "@/components/ui/Modal";
 
+import yuri from "@/imgs/pessoas/coordenadores/yuri.webp";
+
 import { CampusMap } from "./CampusMap";
 
 type ModalKey = "palavra" | "objetivos" | "logo" | "mapa";
@@ -32,26 +34,15 @@ const linkClass =
 const buttonClass = `${linkClass} w-full cursor-pointer text-left`;
 
 const objetivos = [
-  {
-    titulo: "Excelência Acadêmica",
-    descricao:
-      "Publicar em revistas e congressos de alto impacto como SMEDEG e IEEE, consolidando reconhecimento científico global com rigor metodológico.",
-  },
-  {
-    titulo: "Impacto Social",
-    descricao:
-      "Transformar conhecimento científico em soluções práticas para logística sustentável, mobilidade urbana e decisões geopolíticas.",
-  },
-  {
-    titulo: "Capital Humano",
-    descricao:
-      "Formar pesquisadores em Python, R e Machine Learning com programas de mentoria individual e desenvolvimento de competências avançadas.",
-  },
-  {
-    titulo: "Inovação Metodológica",
-    descricao:
-      "Explorar as fronteiras da Econofísica, algoritmos adaptativos para IoT e 5G e aplicações avançadas da teoria dos jogos.",
-  },
+  "desenvolver e aplicar métodos de Teoria dos Jogos, Sistemas Dinâmicos, Física Estatística, Redes Complexas, Cadeias de Markov, simulação, otimização e ciência de dados;",
+  "investigar sistemas complexos em áreas como transportes, mobilidade, energia, materiais, infraestrutura, economia, segurança e políticas públicas;",
+  "desenvolver modelos capazes de apoiar processos de decisão sob incerteza;",
+  "aproximar fundamentos matemáticos e computacionais de problemas reais de engenharia e da sociedade;",
+  "promover a formação de estudantes de graduação, pós-graduação e pesquisadores em estágio de pós-doutorado em pesquisa interdisciplinar;",
+  "estimular projetos de iniciação científica, mestrado, doutorado, pós-doutorado e extensão;",
+  "ampliar a cooperação entre pesquisadores de diferentes áreas, universidades e países;",
+  "produzir conhecimento científico com potencial de impacto acadêmico, tecnológico, econômico e social;",
+  "fortalecer a divulgação científica e a aproximação entre universidade e sociedade.",
 ];
 
 const MODAIS: Record<ModalKey, { title: string; content: ReactNode }> = {
@@ -59,27 +50,39 @@ const MODAIS: Record<ModalKey, { title: string; content: ReactNode }> = {
     title: "Palavra do Coordenador",
     content: (
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-        {/* mock — substituir pelo <Image> com a foto real do coordenador */}
-        <svg
-          viewBox="0 0 100 100"
-          aria-hidden="true"
-          className="mx-auto h-28 w-28 shrink-0 rounded-full sm:mx-0"
-        >
-          <rect width="100" height="100" fill="#e9edf2" />
-          <circle cx="50" cy="38" r="17" fill="#aab4c0" />
-          <path d="M18 86c2-18 15-28 32-28s30 10 32 28z" fill="#aab4c0" />
-        </svg>
+        <Image
+          src={yuri}
+          alt="Prof. Dr. Yuri Alexandre Meyer"
+          placeholder="blur"
+          sizes="112px"
+          className="mx-auto h-28 w-28 shrink-0 rounded-full object-cover sm:mx-0"
+        />
         <div className="space-y-3">
           <p>
-            [Texto provisório] É com satisfação que damos as boas-vindas ao
-            portal do Grupo de Engenharia de Sistemas Complexos. Nosso
-            compromisso é com a pesquisa interdisciplinar de excelência e a
-            formação de novos pesquisadores.
+            O Grupo de Engenharia de Sistemas Complexos (GESC) nasceu da
+            convicção de que muitos dos grandes desafios contemporâneos não podem
+            ser compreendidos de forma isolada. Transportes, energia, materiais,
+            economia, políticas públicas e dinâmicas sociais são sistemas
+            formados por múltiplos agentes, interações e incertezas.
           </p>
           <p>
-            Este espaço será atualizado com a mensagem oficial da coordenação.
+            Nosso propósito é criar um ambiente verdadeiramente interdisciplinar,
+            no qual ferramentas da matemática, física, engenharia, ciência de
+            dados e teoria dos jogos possam dialogar para compreender problemas
+            complexos e apoiar melhores decisões.
           </p>
-          <p className="font-semibold text-[#111]">— Coordenação do GESC</p>
+          <p>
+            Mais do que produzir modelos, buscamos formar pessoas, estabelecer
+            redes de colaboração e transformar conhecimento científico em impacto
+            acadêmico, tecnológico e social.
+          </p>
+          <p>Seja bem-vindo ao GESC.</p>
+          <div className="pt-2">
+            <p className="font-bold text-[#111]">
+              — Prof. Dr. Yuri Alexandre Meyer
+            </p>
+            <p className="text-[#444]">Coordenador do GESC</p>
+          </div>
         </div>
       </div>
     ),
@@ -87,21 +90,32 @@ const MODAIS: Record<ModalKey, { title: string; content: ReactNode }> = {
   objetivos: {
     title: "Objetivos",
     content: (
-      <ul className="space-y-4">
-        {objetivos.map((objetivo) => (
-          <li key={objetivo.titulo}>
-            <p className="font-bold text-brand-blue">{objetivo.titulo}</p>
-            <p>{objetivo.descricao}</p>
-          </li>
-        ))}
-      </ul>
+      <div className="space-y-2 leading-snug">
+        <p>
+          O Grupo de Engenharia de Sistemas Complexos (GESC) tem como objetivo
+          desenvolver pesquisa interdisciplinar voltada à compreensão, modelagem
+          e solução de problemas caracterizados por múltiplos agentes,
+          interações, não linearidades e incerteza.
+        </p>
+        <p>Entre seus principais objetivos estão:</p>
+        <ul className="list-disc pl-5 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-1">
+          {objetivos.map((objetivo) => (
+            <li key={objetivo}>{objetivo}</li>
+          ))}
+        </ul>
+        <p>
+          O GESC busca, assim, funcionar como um espaço de convergência entre
+          diferentes áreas do conhecimento, utilizando a Engenharia de Sistemas
+          Complexos como estrutura para compreender problemas contemporâneos e
+          desenvolver soluções fundamentadas cientificamente.
+        </p>
+      </div>
     ),
   },
   logo: {
     title: "Significado do Logo",
     content: (
       <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-        {/* mock — usar src/imgs/logo.webp (versão colorida) quando disponível */}
         <div className="shrink-0 rounded-lg bg-brand-blue p-4">
           <Image
             src="/logo_header.webp"
@@ -111,12 +125,25 @@ const MODAIS: Record<ModalKey, { title: string; content: ReactNode }> = {
             className="h-14 w-auto"
           />
         </div>
-        <p>
-          [Texto provisório] O logotipo do GESC sintetiza a identidade do grupo —
-          a conexão entre nós e redes que representa o estudo de sistemas
-          complexos. A descrição completa do significado das cores e das formas
-          será adicionada aqui.
-        </p>
+        <div className="space-y-3">
+          <p>
+            O logo do GESC representa a essência dos sistemas complexos:
+            diferentes elementos conectados entre si, cujas interações dão origem
+            a comportamentos, estruturas e propriedades que não poderiam ser
+            explicados pela análise isolada de cada componente.
+          </p>
+          <p>
+            As conexões simbolizam redes, interação e interdisciplinaridade,
+            enquanto a organização do conjunto remete à ideia de emergência — um
+            dos conceitos fundamentais da ciência dos sistemas complexos.
+          </p>
+          <p>
+            O símbolo também representa a própria filosofia do GESC: integrar
+            diferentes áreas do conhecimento, pesquisadores, estudantes e
+            instituições em torno de problemas que exigem múltiplas perspectivas
+            para serem compreendidos e solucionados.
+          </p>
+        </div>
       </div>
     ),
   },
@@ -168,7 +195,7 @@ export function SidebarMenu() {
         open={openModal !== null}
         onClose={() => setOpenModal(null)}
         title={openModal ? MODAIS[openModal].title : ""}
-        size={openModal === "mapa" ? "lg" : "md"}
+        size={openModal === "mapa" || openModal === "objetivos" ? "lg" : "md"}
       >
         {openModal ? MODAIS[openModal].content : null}
       </Modal>
