@@ -99,8 +99,7 @@ const NODES: {
 ];
 
 export function AreasAtuacao() {
-  const [active, setActive] = useState<AxisId>(6);
-  const axis = axesData[active];
+  const [active, setActive] = useState<AxisId>(1);
 
   return (
     <section
@@ -208,20 +207,37 @@ export function AreasAtuacao() {
               EIXO {active} / 6
             </p>
 
-            <h3 className="mb-[30px] text-[28px] font-bold text-[#002060]">
-              {axis.title}
-            </h3>
-
-            <ul>
-              {axis.items.map((item) => (
-                <li
-                  key={item}
-                  className="relative mb-[15px] pl-5 text-base text-[#333] before:absolute before:left-0 before:text-[20px] before:leading-none before:text-[#e3000f] before:content-['•']"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
+            {/* Todos os eixos ficam empilhados na mesma célula do grid: a
+                altura trava no maior deles e não pula ao alternar. */}
+            <div className="grid">
+              {AXIS_IDS.map((id) => {
+                const axis = axesData[id];
+                const isActive = id === active;
+                return (
+                  <div
+                    key={id}
+                    aria-hidden={!isActive}
+                    className={`col-start-1 row-start-1 ${
+                      isActive ? "visible" : "invisible"
+                    }`}
+                  >
+                    <h3 className="mb-[30px] text-[28px] font-bold text-[#002060]">
+                      {axis.title}
+                    </h3>
+                    <ul>
+                      {axis.items.map((item) => (
+                        <li
+                          key={item}
+                          className="relative mb-[15px] pl-5 text-base text-[#333] before:absolute before:left-0 before:text-[20px] before:leading-none before:text-[#e3000f] before:content-['•']"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
 
             <div className="mt-10 flex gap-2">
               {AXIS_IDS.map((id) => (
