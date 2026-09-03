@@ -17,7 +17,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-brand-blue shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
-      <div className="relative mx-auto flex w-[96%] max-w-[1600px] items-center justify-between py-3">
+      <div className="relative mx-auto flex max-w-[1200px] items-center justify-between px-5 py-3">
         <Link
           href="/"
           aria-label="GESC — página inicial"
@@ -77,7 +77,7 @@ export function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="relative block py-3 text-[0.85rem] font-medium uppercase tracking-[0.5px] text-white/85 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-[width] after:duration-300 after:content-[''] hover:text-white hover:after:w-full md:py-2 md:text-[0.9rem]"
+                  className="relative block py-3 text-[0.95rem] font-medium tracking-tight text-white/80 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-[width] after:duration-300 after:content-[''] hover:text-white hover:after:w-full md:py-2 md:text-[0.9rem]"
                 >
                   {link.label}
                 </Link>
