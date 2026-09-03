@@ -67,7 +67,7 @@ export function Header() {
         <nav
           id="main-nav"
           aria-label="Navegação principal"
-          className={`absolute right-0 top-full w-full max-w-[320px] overflow-hidden rounded-bl-lg bg-brand-blue shadow-[0_12px_20px_rgba(0,0,0,0.2)] transition-[max-height] duration-300 ease-in-out md:static md:max-h-none md:max-w-none md:overflow-visible md:rounded-none md:bg-transparent md:shadow-none ${
+          className={`absolute right-0 top-full w-full max-w-[320px] overflow-hidden rounded-bl-lg bg-brand-blue shadow-[0_12px_20px_rgba(0,0,0,0.2)] transition-[max-height] duration-300 ease-in-out md:static md:max-h-none md:w-auto md:max-w-none md:overflow-visible md:rounded-none md:bg-transparent md:shadow-none ${
             open ? "max-h-96" : "max-h-0"
           }`}
         >
@@ -77,7 +77,7 @@ export function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="relative block py-3 text-[0.85rem] font-semibold uppercase tracking-[0.5px] text-white/85 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-[width] after:duration-300 after:content-[''] hover:text-white hover:after:w-full md:py-2 md:text-[0.9rem]"
+                  className="relative block py-3 text-[0.85rem] font-medium uppercase tracking-[0.5px] text-white/85 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-[width] after:duration-300 after:content-[''] hover:text-white hover:after:w-full md:py-2 md:text-[0.9rem]"
                 >
                   {link.label}
                 </Link>
