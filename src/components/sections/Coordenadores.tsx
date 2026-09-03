@@ -39,7 +39,7 @@ export function Coordenadores() {
   return (
     <section
       id="coordenacao"
-      className="bg-[#f8f9fa] py-20 font-[family-name:'Segoe_UI',Tahoma,Geneva,Verdana,sans-serif]"
+      className="scroll-mt-24 bg-[#f8f9fa] py-20 font-[family-name:'Segoe_UI',Tahoma,Geneva,Verdana,sans-serif]"
     >
       <div className="mx-auto max-w-[1200px] px-5">
         <SectionTitle>Coordenadores</SectionTitle>
