@@ -110,7 +110,7 @@ export function Header() {
                       href={link.href}
                       onClick={() => setOpen(false)}
                       aria-current={active ? "page" : undefined}
-                      className="relative flex items-center border-l-4 border-transparent px-5 py-4 text-[1.05rem] font-medium tracking-tight text-white/80 transition-colors duration-300 hover:bg-white/5 hover:text-white aria-[current=page]:border-brand-red aria-[current=page]:bg-white/5 aria-[current=page]:text-white md:border-l-0 md:px-0 md:py-2 md:text-[0.9rem] md:hover:bg-transparent md:after:absolute md:after:bottom-0 md:after:left-0 md:after:h-0.5 md:after:w-0 md:after:bg-brand-red md:after:transition-[width] md:after:duration-300 md:after:content-[''] md:hover:after:w-full md:aria-[current=page]:after:w-full"
+                      className="relative flex items-center px-5 py-4 text-[1.05rem] font-medium tracking-tight text-white/90 transition-colors duration-300 hover:text-white aria-[current=page]:text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-[width] after:duration-300 after:content-[''] hover:after:w-full aria-[current=page]:after:w-full md:px-0 md:py-2 md:text-[0.9rem]"
                     >
                       {link.label}
                     </Link>
