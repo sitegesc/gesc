@@ -21,10 +21,10 @@ export function Header() {
         <Link
           href="/"
           aria-label="GESC — página inicial"
-          className="relative z-10 block h-12 w-[190px] shrink-0 transition-transform duration-300 hover:scale-105"
+          className="relative z-10 block h-12 w-[120px] shrink-0 transition-transform duration-300 hover:scale-105"
         >
           <Image
-            src="/logo_branco.webp"
+            src="/logo_header.webp"
             alt="GESC — Grupo de Engenharia de Sistemas Complexos"
             fill
             priority

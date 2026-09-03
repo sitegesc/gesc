@@ -1,0 +1,111 @@
+/* Porte pixel-perfect do footer do site atual (assets/css/footer.css + global.css) */
+
+.footer {
+  background: #111;
+  color: #aaa;
+  padding: 60px 0 20px;
+  margin-top: auto;
+  border-top: 4px solid #bd1e20;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  flex: 1.5;
+  min-width: 250px;
+}
+
+.brandLogo {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.col {
+  flex: 1;
+  min-width: 150px;
+}
+
+.col h4 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  border-left: 3px solid #bd1e20;
+  padding-left: 10px;
+  line-height: 1.2;
+}
+
+.col p {
+  margin-bottom: 10px;
+}
+
+.col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.col li {
+  margin-bottom: 10px;
+}
+
+.col a {
+  color: #aaa;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.col a:hover {
+  color: #fff;
+}
+
+.social {
+  display: flex;
+  gap: 15px;
+}
+
+.social a {
+  display: inline-flex;
+  font-size: 1.5rem;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.social a:hover {
+  color: #bd1e20;
+  transform: scale(1.1);
+}
+
+.social svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+}
