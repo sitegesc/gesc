@@ -14,28 +14,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Destaque do grupo de oficinas quando nenhuma estiver selecionada.
-           Se preferir, mova essas regras para assets/css/inscricao-oficina.css */
+        /* Destaque do grupo de oficinas quando nenhuma estiver selecionada. */
         .choice-group.invalid {
             border: 1px solid #e03131;
             border-radius: 8px;
             padding: 8px;
         }
+
         .btn-submit:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
+
         .enrollment-success {
             text-align: center;
             padding: 40px 20px;
         }
+
         .enrollment-success .success-icon {
             font-size: 48px;
             color: #2f9e44;
             margin-bottom: 16px;
         }
+
+        /*
+         * Oficina temporariamente indisponível porque
+         * a idade ainda não foi informada.
+         */
+        .workshop-disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
     </style>
 </head>
+
 <body>
 
     <div id="header-placeholder"></div>
@@ -43,78 +55,303 @@
     <main class="enrollment-page container">
 
         <section class="enrollment-hero">
-            <span class="mini-tag grey"><i class="fas fa-graduation-cap"></i> INSCRIÇÕES ABERTAS</span>
+            <span class="mini-tag grey">
+                <i class="fas fa-graduation-cap"></i>
+                INSCRIÇÕES ABERTAS
+            </span>
+
             <h1>Inscrição em Oficinas</h1>
-            <p>Preencha o formulário abaixo para se inscrever em uma ou mais oficinas do GESC. Os dados serão usados apenas para organizar as turmas e entrar em contato com você.</p>
+
+            <p>
+                Preencha o formulário abaixo para se inscrever em uma ou mais
+                oficinas do GESC. Os dados serão usados apenas para organizar
+                as turmas e entrar em contato com você.
+            </p>
         </section>
 
         <section class="enrollment-form-container">
-            <p class="form-disclaimer">Campos marcados com <span class="text-red">*</span> são obrigatórios.</p>
+
+            <p class="form-disclaimer">
+                Campos marcados com <span class="text-red">*</span> são obrigatórios.
+            </p>
 
             <form id="enrollment-form" class="enrollment-form" action="#">
 
+                <!-- DADOS PESSOAIS -->
                 <div class="form-section">
+
                     <h2>Dados Pessoais</h2>
 
                     <div class="form-row">
+
                         <div class="input-group">
-                            <label for="fullName">Nome completo <span class="text-red">*</span></label>
-                            <input type="text" id="fullName" name="fullName" placeholder="Seu nome completo" required>
+                            <label for="fullName">
+                                Nome completo (aluno):
+                                <span class="text-red">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                name="fullName"
+                                placeholder="Seu nome completo"
+                                required
+                            >
                         </div>
+
                         <div class="input-group">
-                            <label for="age">Idade <span class="text-red">*</span></label>
-                            <input type="number" id="age" name="age" min="1" step="1" placeholder="Ex: 15" required>
+                            <label for="age">
+                                Idade (aluno):
+                                <span class="text-red">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="age"
+                                name="age"
+                                min="1"
+                                step="1"
+                                placeholder="Ex: 12"
+                                required
+                            >
                         </div>
+
                     </div>
 
                     <div class="form-row">
+
                         <div class="input-group">
-                            <label for="guardianName">Nome do responsável <span class="text-red">*</span></label>
-                            <input type="text" id="guardianName" name="guardianName" placeholder="Nome completo do responsável" required>
+                            <label for="guardianName">
+                                Nome do responsável:
+                                <span class="text-red">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="guardianName"
+                                name="guardianName"
+                                placeholder="Nome completo do responsável"
+                                required
+                            >
                         </div>
+
                         <div class="input-group">
-                            <label for="phone">Telefone para contato <span class="text-red">*</span></label>
-                            <input type="tel" id="phone" name="phone" placeholder="(19) 99999-9999" required>
+                            <label for="phone">
+                                Telefone para contato:
+                                <span class="text-red">*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="(19) 99999-9999"
+                                required
+                            >
                         </div>
+
                     </div>
+
                 </div>
 
+
+                <!-- OFICINAS -->
                 <div class="form-section">
+
                     <h2>Oficinas</h2>
 
                     <div class="input-group">
-                        <label>Selecione uma ou mais oficinas <span class="text-red">*</span></label>
-                        <div class="choice-group" id="workshops-choice-group">
-                            <label><input type="checkbox" name="workshops" value="Criando Jogos">Criando Jogos com MIT App Inventor</label>
-                            <label><input type="checkbox" name="workshops" value="Introdução a IA">Introdução a IA/Letramento em IA</label>
-                            <label><input type="checkbox" name="workshops" value="Detetives da Ciência">Detetives da Ciência: Investigação Forense e Dados</label>
-                            <label><input type="checkbox" name="workshops" value="Do Mapa à Cidade">Do Mapa à Cidade: Como projetar um bairro?</label>
-                            <label><input type="checkbox" name="workshops" value="Missão Inglês">Missão Inglês: Uma jornada de diversão</label>
-                            <label><input type="checkbox" name="workshops" value="Workshop de Ferrovias">Workshop de Trens e Ferrovias</label>
-                            <label><input type="checkbox" name="workshops" value="Introdução a Lógica de Programação e Algoritmos">Introdução a Lógica de Programação e Algoritmos</label>
-                            <label><input type="checkbox" name="workshops" value="Criando Histórias de uma forma lógica">Criando Histórias de uma forma lógica</label>
-                            <label><input type="checkbox" name="workshops" value="Cálculo">Cálculo</label>
+
+                        <label>
+                            Selecione uma ou mais oficinas
+                            <span class="text-red">*</span>
+                        </label>
+
+                        <div
+                            class="choice-group"
+                            id="workshops-choice-group"
+                        >
+
+                            <!--
+                                Oficinas disponíveis para todas as idades.
+                            -->
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Criando Jogos"
+                                    data-workshop="criando-jogos"
+                                >
+                                Criando Jogos com MIT App Inventor
+                            </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Detetives da Ciência"
+                                    data-workshop="detetives-ciencia"
+                                >
+                                Detetives da Ciência: Investigação Forense e Dados
+                            </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Do Mapa à Cidade"
+                                    data-workshop="mapa-cidade"
+                                >
+                                Do Mapa à Cidade: Como projetar um bairro?
+                            </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Missão Inglês"
+                                    data-workshop="missao-ingles"
+                                >
+                                Missão Inglês: Uma jornada de diversão
+                            </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Workshop de Ferrovias"
+                                    data-workshop="ferrovias"
+                                >
+                                Workshop de Trens e Ferrovias
+                            </label>
+
+                            <label>
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Introdução a Lógica de Programação e Algoritmos"
+                                    data-workshop="logica-programacao"
+                                >
+                                Introdução a Lógica de Programação e Algoritmos
+                            </label>
+
+
+                            <!--
+                                Oficinas com divisão por idade.
+
+                                O JavaScript define automaticamente:
+                                até 9 anos  -> Turma 1
+                                10 anos ou mais -> Turma 2
+                            -->
+
+                            <label data-workshop-label="ia">
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Introdução a IA - Turma 1"
+                                    data-workshop="ia"
+                                    data-base-value="Introdução a IA"
+                                >
+
+                                <span data-workshop-text="ia">
+                                    Introdução a IA/Letramento em IA
+                                </span>
+                            </label>
+
+
+                            <label data-workshop-label="historias">
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Criando Histórias de uma forma lógica - Turma 1"
+                                    data-workshop="historias"
+                                    data-base-value="Criando Histórias de uma forma lógica"
+                                >
+
+                                <span data-workshop-text="historias">
+                                    Criando Histórias de uma forma lógica
+                                </span>
+                            </label>
+
+
+                            <label data-workshop-label="calculo">
+                                <input
+                                    type="checkbox"
+                                    name="workshops"
+                                    value="Cálculo - Turma 1"
+                                    data-workshop="calculo"
+                                    data-base-value="Cálculo"
+                                >
+
+                                <span data-workshop-text="calculo">
+                                    Cálculo
+                                </span>
+                            </label>
+
                         </div>
-                        <span class="field-hint">É possível marcar mais de uma oficina.</span>
+
+                        <span class="field-hint">
+                            É possível marcar mais de uma oficina.
+                        </span>
+
                     </div>
+
                 </div>
 
-                <button type="submit" class="btn-submit" id="submit-button" disabled>
-                    <i class="far fa-paper-plane"></i> Enviar Inscrição
+
+                <!-- ENVIO -->
+                <button
+                    type="submit"
+                    class="btn-submit"
+                    id="submit-button"
+                    disabled
+                >
+                    <i class="far fa-paper-plane"></i>
+                    Enviar Inscrição
                 </button>
-                <p class="privacy-note">Ao enviar, você concorda com nossa política de privacidade. Não compartilharemos seus dados.</p>
+
+                <p class="privacy-note">
+                    Ao enviar, você concorda com nossa política de privacidade.
+                    Não compartilharemos seus dados.
+                </p>
+
             </form>
 
-            <div id="form-feedback" class="form-feedback" hidden></div>
+            <div
+                id="form-feedback"
+                class="form-feedback"
+                hidden
+            ></div>
+
         </section>
 
-        <section class="enrollment-success" id="success-screen" hidden>
+
+        <!-- TELA DE SUCESSO -->
+        <section
+            class="enrollment-success"
+            id="success-screen"
+            hidden
+        >
+
             <i class="fas fa-circle-check success-icon"></i>
+
             <h2>Inscrição enviada com sucesso!</h2>
-            <p>Recebemos os seus dados. Em breve entraremos em contato pelo telefone informado com mais detalhes sobre a(s) oficina(s) selecionada(s).</p>
-            <button type="button" class="btn-submit" id="new-enrollment-button">
+
+            <p>
+                Recebemos os seus dados. Em breve entraremos em contato pelo
+                telefone informado com mais detalhes sobre a(s) oficina(s)
+                selecionada(s).
+            </p>
+
+            <button
+                type="button"
+                class="btn-submit"
+                id="new-enrollment-button"
+            >
                 Fazer nova inscrição
             </button>
+
         </section>
 
     </main>
@@ -123,5 +360,6 @@
 
     <script src="assets/js/script.js"></script>
     <script src="assets/js/inscricao-nas-oficinas.js"></script>
+
 </body>
 </html>
