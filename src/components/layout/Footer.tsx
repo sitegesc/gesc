@@ -20,40 +20,49 @@ const social = [
   },
 ];
 
+const columnHeading =
+  "mb-5 border-l-[3px] border-brand-red pl-2.5 text-[1.1rem] font-semibold leading-[1.2] text-white max-md:mb-3 max-md:border-l-0 max-md:pl-0";
+
 export function Footer() {
   return (
-    <footer className="mt-16 bg-zinc-900 text-zinc-300">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 md:grid-cols-4">
-        <div>
-          <span className="relative block h-12 w-[180px]">
+    <footer className="mt-auto border-t-4 border-brand-red bg-[#111] pt-[60px] pb-5 text-[#aaa]">
+      <div className="mx-auto flex max-w-[1200px] flex-wrap items-start justify-between gap-[30px] px-5 max-md:flex-col max-md:items-center max-md:gap-[26px] max-md:text-center">
+        <div className="min-w-[250px] flex-[1.5] max-md:min-w-0">
+          <span className="relative block h-14 w-[220px] max-md:mx-auto max-md:h-10 max-md:w-[110px]">
             <Image
               src="/logo_branco.webp"
               alt="GESC"
               fill
-              className="object-contain object-left"
+              className="object-contain object-left max-md:object-center"
             />
           </span>
         </div>
 
-        <div>
-          <h2 className="mb-3 text-sm font-semibold text-white">Contato</h2>
-          <address className="text-sm not-italic leading-6">
+        <div className="min-w-[150px] flex-1 max-md:w-full max-md:min-w-0">
+          <h2 className={columnHeading}>Contato</h2>
+          <address className="not-italic leading-7">
             Rua Paschoal Marmo, 1888
             <br />
             Jd. Nova Itália, Limeira - SP
             <br />
-            <a href="mailto:gesc@unicamp.br" className="hover:text-white">
+            <a
+              href="mailto:gesc@unicamp.br"
+              className="transition-colors duration-300 hover:text-white"
+            >
               gesc@unicamp.br
             </a>
           </address>
         </div>
 
-        <div>
-          <h2 className="mb-3 text-sm font-semibold text-white">Navegação</h2>
-          <ul className="space-y-2 text-sm">
+        <div className="min-w-[150px] flex-1 max-md:w-full max-md:min-w-0">
+          <h2 className={columnHeading}>Navegação</h2>
+          <ul className="space-y-2.5">
             {footerNav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-white">
+                <Link
+                  href={item.href}
+                  className="transition-colors duration-300 hover:text-white"
+                >
                   {item.label}
                 </Link>
               </li>
@@ -61,9 +70,9 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h2 className="mb-3 text-sm font-semibold text-white">Social</h2>
-          <div className="flex gap-4">
+        <div className="min-w-[150px] flex-1 max-md:w-full max-md:min-w-0">
+          <h2 className={columnHeading}>Social</h2>
+          <div className="flex gap-[15px] max-md:justify-center">
             {social.map((item) => (
               <a
                 key={item.href}
@@ -71,10 +80,10 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={item.label}
-                className="text-zinc-300 hover:text-white"
+                className="text-white transition duration-300 hover:scale-110 hover:text-brand-red"
               >
                 <svg
-                  className="h-5 w-5"
+                  className="h-6 w-6"
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   aria-hidden="true"
@@ -87,7 +96,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-zinc-800 px-4 py-4 text-center text-xs text-zinc-400">
+      <div className="mt-[50px] w-full border-t border-[#222] pt-5 text-center text-[0.85rem] max-md:mt-6 max-md:pt-3.5">
         © {new Date().getFullYear()} GESC — Todos os direitos reservados.
       </div>
     </footer>

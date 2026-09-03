@@ -12,6 +12,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@theme {
+  /* Paleta institucional GESC (ver assets/css/global.css do site atual) */
+  --color-brand-blue: #002266; /* Azul Marinho Unicamp */
+  --color-brand-red: #bd1e20; /* Vermelho GESC */
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

@@ -16,29 +16,29 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b border-zinc-800 bg-zinc-900 text-zinc-100">
-      <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+    <header className="sticky top-0 z-50 bg-brand-blue shadow-[0_4px_12px_rgba(0,0,0,0.15)]">
+      <div className="relative mx-auto flex w-[96%] max-w-[1600px] items-center justify-between py-3">
         <Link
           href="/"
-          className="relative block h-10 w-[150px] shrink-0"
           aria-label="GESC — página inicial"
+          className="relative z-10 block h-10 w-[150px] shrink-0 transition-transform duration-300 hover:scale-105"
         >
           <Image
             src="/logo_branco.webp"
             alt="GESC — Grupo de Engenharia de Sistemas Complexos"
             fill
             priority
-            className="object-contain object-left"
+            className="object-contain object-left drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
           />
         </Link>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded p-2 text-zinc-200 md:hidden"
+          onClick={() => setOpen((value) => !value)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="main-nav"
-          onClick={() => setOpen((value) => !value)}
+          className="inline-flex items-center justify-center p-2 text-white md:hidden"
         >
           <svg
             className="h-6 w-6"
@@ -67,17 +67,17 @@ export function Header() {
         <nav
           id="main-nav"
           aria-label="Navegação principal"
-          className={`${
-            open ? "block" : "hidden"
-          } absolute inset-x-0 top-full z-20 border-b border-zinc-800 bg-zinc-900 px-4 pb-4 md:static md:z-auto md:block md:border-0 md:p-0`}
+          className={`absolute right-0 top-full w-full max-w-[320px] overflow-hidden rounded-bl-lg bg-brand-blue shadow-[0_12px_20px_rgba(0,0,0,0.2)] transition-[max-height] duration-300 ease-in-out md:static md:max-h-none md:max-w-none md:overflow-visible md:rounded-none md:bg-transparent md:shadow-none ${
+            open ? "max-h-96" : "max-h-0"
+          }`}
         >
-          <ul className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
+          <ul className="flex flex-col px-6 pb-4 pt-2 md:flex-row md:items-center md:gap-[30px] md:p-0">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block py-2 text-sm font-medium text-zinc-300 transition-colors hover:text-white"
+                  className="relative block py-3 text-[0.85rem] font-semibold uppercase tracking-[0.5px] text-white/85 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red after:transition-[width] after:duration-300 after:content-[''] hover:text-white hover:after:w-full md:py-2 md:text-[0.9rem]"
                 >
                   {link.label}
                 </Link>
