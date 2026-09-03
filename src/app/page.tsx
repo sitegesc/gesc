@@ -1,3 +1,4 @@
+import { AreasAtuacao } from "@/components/sections/AreasAtuacao";
 import { Hero } from "@/components/sections/Hero";
 import { Partners } from "@/components/sections/Partners";
 import { PortalIntro } from "@/components/sections/PortalIntro";
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <Partners />
       <PortalIntro />
+      <AreasAtuacao />
     </main>
   );
 }
