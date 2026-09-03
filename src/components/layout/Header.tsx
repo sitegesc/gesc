@@ -16,7 +16,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b border-zinc-200 bg-white">
+    <header className="border-b border-zinc-800 bg-zinc-900 text-zinc-100">
       <div className="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link
           href="/"
@@ -24,7 +24,7 @@ export function Header() {
           aria-label="GESC — página inicial"
         >
           <Image
-            src="/logo.webp"
+            src="/logo_branco.webp"
             alt="GESC — Grupo de Engenharia de Sistemas Complexos"
             fill
             priority
@@ -34,7 +34,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded p-2 text-zinc-700 md:hidden"
+          className="inline-flex items-center justify-center rounded p-2 text-zinc-200 md:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
           aria-controls="main-nav"
@@ -69,7 +69,7 @@ export function Header() {
           aria-label="Navegação principal"
           className={`${
             open ? "block" : "hidden"
-          } absolute inset-x-0 top-full z-20 border-b border-zinc-200 bg-white px-4 pb-4 md:static md:z-auto md:block md:border-0 md:p-0`}
+          } absolute inset-x-0 top-full z-20 border-b border-zinc-800 bg-zinc-900 px-4 pb-4 md:static md:z-auto md:block md:border-0 md:p-0`}
         >
           <ul className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
             {navLinks.map((link) => (
@@ -77,7 +77,7 @@ export function Header() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block py-2 text-sm font-medium text-zinc-700 transition-colors hover:text-zinc-950"
+                  className="block py-2 text-sm font-medium text-zinc-300 transition-colors hover:text-white"
                 >
                   {link.label}
                 </Link>

@@ -27,7 +27,7 @@ export function Footer() {
         <div>
           <span className="relative block h-12 w-[180px]">
             <Image
-              src="/logo_branca.webp"
+              src="/logo_branco.webp"
               alt="GESC"
               fill
               className="object-contain object-left"
