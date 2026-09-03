@@ -2,6 +2,7 @@ import { AreasAtuacao } from "@/components/sections/AreasAtuacao";
 import { Coordenadores } from "@/components/sections/Coordenadores";
 import { Equipe } from "@/components/sections/Equipe";
 import { Hero } from "@/components/sections/Hero";
+import { Noticias } from "@/components/sections/Noticias";
 import { Partners } from "@/components/sections/Partners";
 import { PortalIntro } from "@/components/sections/PortalIntro";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <AreasAtuacao />
       <Coordenadores />
       <Equipe />
+      <Noticias />
     </main>
   );
 }
