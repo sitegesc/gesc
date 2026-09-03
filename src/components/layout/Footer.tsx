@@ -75,7 +75,7 @@ export function Footer() {
       </div>
 
       <div className={styles.copyright}>
-        © 2025 GESC - Todos os direitos reservados.
+        &copy; 2026 GESC - Todos os direitos reservados.
       </div>
     </footer>
   );
