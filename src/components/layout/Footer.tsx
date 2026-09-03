@@ -28,7 +28,7 @@ export function Footer() {
     <footer className="mt-auto border-t-4 border-brand-red bg-[#111] pt-[60px] pb-5 text-[#aaa]">
       <div className="mx-auto flex max-w-[1200px] flex-wrap items-start justify-between gap-[30px] px-5 max-md:flex-col max-md:items-center max-md:gap-[26px] max-md:text-center">
         <div className="min-w-[250px] flex-[1.5] max-md:min-w-0">
-          <span className="relative block h-14 w-[220px] max-md:mx-auto max-md:h-10 max-md:w-[110px]">
+          <span className="relative block h-20 w-[300px] max-md:mx-auto max-md:h-16 max-md:w-[200px]">
             <Image
               src="/logo_branco.webp"
               alt="GESC"

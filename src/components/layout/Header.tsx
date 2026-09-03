@@ -21,7 +21,7 @@ export function Header() {
         <Link
           href="/"
           aria-label="GESC — página inicial"
-          className="relative z-10 block h-10 w-[150px] shrink-0 transition-transform duration-300 hover:scale-105"
+          className="relative z-10 block h-12 w-[190px] shrink-0 transition-transform duration-300 hover:scale-105"
         >
           <Image
             src="/logo_branco.webp"
