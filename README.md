@@ -14,4 +14,3 @@ O site atual (HTML/CSS/JS estático) está na branch `main` e serve como referê
 | Pesquisa de integrações | Cleo | Blog, e-mail/formulários, analytics e demais ferramentas |
 | Testes | Vinicius | Verificar se está tudo certo e montar o relatório de erros |
 
-O detalhamento das tarefas está na planilha `plano-refatoracao-nextjs.csv` (mantida fora do versionamento).
