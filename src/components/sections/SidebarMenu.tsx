@@ -6,6 +6,8 @@ import Link from "next/link";
 
 import { Modal } from "@/components/ui/Modal";
 
+import { CampusMap } from "./CampusMap";
+
 type ModalKey = "palavra" | "objetivos" | "logo" | "mapa";
 
 type Item =
@@ -120,17 +122,7 @@ const MODAIS: Record<ModalKey, { title: string; content: ReactNode }> = {
   },
   mapa: {
     title: "Mapa do Campus",
-    content: (
-      <div className="space-y-4">
-        <div className="flex h-56 items-center justify-center rounded-lg bg-[#eef2f9] text-sm text-zinc-500">
-          Mapa interativo — em breve
-        </div>
-        <p>
-          O mapa do campus da Faculdade de Tecnologia da UNICAMP, em Limeira,
-          será disponibilizado nesta seção em breve.
-        </p>
-      </div>
-    ),
+    content: <CampusMap />,
   },
 };
 
@@ -176,6 +168,7 @@ export function SidebarMenu() {
         open={openModal !== null}
         onClose={() => setOpenModal(null)}
         title={openModal ? MODAIS[openModal].title : ""}
+        size={openModal === "mapa" ? "lg" : "md"}
       >
         {openModal ? MODAIS[openModal].content : null}
       </Modal>

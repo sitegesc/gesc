@@ -7,9 +7,10 @@ type ModalProps = {
   onClose: () => void;
   title: string;
   children: ReactNode;
+  size?: "md" | "lg";
 };
 
-export function Modal({ open, onClose, title, children }: ModalProps) {
+export function Modal({ open, onClose, title, children, size = "md" }: ModalProps) {
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
 
@@ -46,7 +47,9 @@ export function Modal({ open, onClose, title, children }: ModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-8 shadow-2xl"
+        className={`relative z-10 max-h-[85vh] w-full overflow-y-auto rounded-xl bg-white p-8 shadow-2xl ${
+          size === "lg" ? "max-w-4xl" : "max-w-2xl"
+        }`}
       >
         <div className="mb-5 flex items-start justify-between gap-4">
           <h2 id={titleId} className="text-xl font-bold text-brand-blue">
