@@ -45,6 +45,202 @@
             opacity: 0.55;
             cursor: not-allowed;
         }
+
+        /* --- CARTÕES DAS OFICINAS E MODAL DE DETALHES --- */
+        #workshops-choice-group {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .workshop-option {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: stretch;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fafafa;
+            overflow: hidden;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        .choice-group .workshop-option > label,
+        .choice-group .workshop-option > label:has(input:checked) {
+            min-width: 0;
+            margin: 0;
+            padding: 11px 12px;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            color: #333;
+        }
+
+        .workshop-option:has(input:checked) {
+            border-color: var(--primary-blue);
+            background-color: #eef2f9;
+        }
+
+        .workshop-option:has(input:checked) .workshop-title {
+            color: var(--primary-blue);
+        }
+
+        .workshop-copy {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            gap: 4px;
+        }
+
+        .workshop-title {
+            line-height: 1.35;
+        }
+
+        .workshop-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #5f6775;
+            font-size: 0.76rem;
+            font-weight: 600;
+        }
+
+        .workshop-time i {
+            color: var(--primary-blue);
+        }
+
+        .workshop-details-button {
+            align-self: center;
+            min-height: 44px;
+            margin-right: 6px;
+            padding: 8px 10px;
+            border: 0;
+            border-left: 1px solid #e2e5ea;
+            background: transparent;
+            color: var(--primary-blue);
+            font-family: inherit;
+            font-size: 0.76rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .workshop-details-button:hover,
+        .workshop-details-button:focus-visible {
+            background-color: #e5eaf4;
+            outline: none;
+        }
+
+        .workshop-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: grid;
+            place-items: center;
+            padding: 18px;
+        }
+
+        .workshop-modal[hidden] {
+            display: none;
+        }
+
+        .workshop-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(4, 14, 35, 0.68);
+        }
+
+        .workshop-modal-dialog {
+            position: relative;
+            width: min(100%, 620px);
+            max-height: min(82vh, 680px);
+            overflow-y: auto;
+            padding: 28px;
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+        }
+
+        .workshop-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            border: 0;
+            border-radius: 50%;
+            background: #f0f2f5;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .workshop-modal-close:hover,
+        .workshop-modal-close:focus-visible {
+            background: #e1e5eb;
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        .workshop-modal-label {
+            margin: 0 48px 7px 0;
+            color: var(--primary-blue);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .workshop-modal-dialog h2 {
+            margin: 0 48px 12px 0;
+            color: var(--primary-blue);
+            font-size: 1.35rem;
+            line-height: 1.3;
+        }
+
+        .workshop-modal-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 18px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: #eef2f9;
+            color: var(--primary-blue);
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .workshop-modal-description {
+            color: #3f4652;
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+
+        .workshop-modal-description p {
+            margin: 0;
+        }
+
+        .workshop-modal-description p + p {
+            margin-top: 12px;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            #workshops-choice-group {
+                grid-template-columns: 1fr;
+            }
+
+            .workshop-modal-dialog {
+                padding: 24px 20px;
+            }
+
+            .workshop-details-button {
+                padding-inline: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -172,122 +368,107 @@
                             id="workshops-choice-group"
                         >
 
-                            <!--
-                                Oficinas disponíveis para todas as idades.
-                            -->
+                            <!-- Para adicionar uma oficina, repita um bloco .workshop-option
+                                 e cadastre o mesmo data-workshop em WORKSHOP_DETAILS no JavaScript. -->
 
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Criando Jogos"
-                                    data-workshop="criando-jogos"
-                                >
-                                Criando Jogos com MIT App Inventor
-                            </label>
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Criando Jogos" data-workshop="criando-jogos">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Criando Jogos com MIT App Inventor</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 14:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="criando-jogos" aria-label="Ver detalhes de Criando Jogos com MIT App Inventor">Detalhes</button>
+                            </div>
 
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Detetives da Ciência"
-                                    data-workshop="detetives-ciencia"
-                                >
-                                Detetives da Ciência: Investigação Forense e Dados
-                            </label>
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Detetives da Ciência" data-workshop="detetives-ciencia">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Detetives da Ciência: Investigação Forense e Dados</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 16:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="detetives-ciencia" aria-label="Ver detalhes de Detetives da Ciência">Detalhes</button>
+                            </div>
 
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Do Mapa à Cidade"
-                                    data-workshop="mapa-cidade"
-                                >
-                                Do Mapa à Cidade: Como projetar um bairro?
-                            </label>
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Do Mapa à Cidade" data-workshop="mapa-cidade">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Do Mapa à Cidade: Como projetar um bairro?</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 14:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="mapa-cidade" aria-label="Ver detalhes de Do Mapa à Cidade">Detalhes</button>
+                            </div>
 
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Missão Inglês"
-                                    data-workshop="missao-ingles"
-                                >
-                                Missão Inglês: Uma jornada de diversão
-                            </label>
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Missão Inglês" data-workshop="missao-ingles">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Missão Inglês: Uma jornada de diversão</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 16:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="missao-ingles" aria-label="Ver detalhes de Missão Inglês">Detalhes</button>
+                            </div>
 
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Workshop de Ferrovias"
-                                    data-workshop="ferrovias"
-                                >
-                                Workshop de Trens e Ferrovias
-                            </label>
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Workshop de Ferrovias" data-workshop="ferrovias">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Workshop de Trens e Ferrovias</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 17:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="ferrovias" aria-label="Ver detalhes do Workshop de Trens e Ferrovias">Detalhes</button>
+                            </div>
 
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Introdução a Lógica de Programação e Algoritmos"
-                                    data-workshop="logica-programacao"
-                                >
-                                Introdução a Lógica de Programação e Algoritmos
-                            </label>
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Introdução a Lógica de Programação e Algoritmos" data-workshop="logica-programacao">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Introdução a Lógica de Programação e Algoritmos</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 08:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="logica-programacao" aria-label="Ver detalhes de Introdução a Lógica de Programação e Algoritmos">Detalhes</button>
+                            </div>
 
+                            <div class="workshop-option">
+                                <label data-workshop-label="ia">
+                                    <input type="checkbox" name="workshops" value="Introdução a IA - Turma 1" data-workshop="ia" data-base-value="Introdução a IA">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title" data-workshop-text="ia">Introdução a IA/Letramento em IA</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 08:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="ia" aria-label="Ver detalhes de Introdução a IA/Letramento em IA">Detalhes</button>
+                            </div>
 
-                            <!--
-                                Oficinas com divisão por idade.
+                            <div class="workshop-option">
+                                <label data-workshop-label="historias">
+                                    <input type="checkbox" name="workshops" value="Criando Histórias de uma forma lógica - Turma 1" data-workshop="historias" data-base-value="Criando Histórias de uma forma lógica">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title" data-workshop-text="historias">Criando Histórias de uma forma lógica</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 17:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="historias" aria-label="Ver detalhes de Criando Histórias de uma forma lógica">Detalhes</button>
+                            </div>
 
-                                O JavaScript define automaticamente:
-                                até 9 anos  -> Turma 1
-                                10 anos ou mais -> Turma 2
-                            -->
-
-                            <label data-workshop-label="ia">
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Introdução a IA - Turma 1"
-                                    data-workshop="ia"
-                                    data-base-value="Introdução a IA"
-                                >
-
-                                <span data-workshop-text="ia">
-                                    Introdução a IA/Letramento em IA
-                                </span>
-                            </label>
-
-
-                            <label data-workshop-label="historias">
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Criando Histórias de uma forma lógica - Turma 1"
-                                    data-workshop="historias"
-                                    data-base-value="Criando Histórias de uma forma lógica"
-                                >
-
-                                <span data-workshop-text="historias">
-                                    Criando Histórias de uma forma lógica
-                                </span>
-                            </label>
-
-
-                            <label data-workshop-label="calculo">
-                                <input
-                                    type="checkbox"
-                                    name="workshops"
-                                    value="Cálculo - Turma 1"
-                                    data-workshop="calculo"
-                                    data-base-value="Cálculo"
-                                >
-
-                                <span data-workshop-text="calculo">
-                                    Cálculo
-                                </span>
-                            </label>
+                            <div class="workshop-option">
+                                <label data-workshop-label="calculo">
+                                    <input type="checkbox" name="workshops" value="Cálculo - Turma 1" data-workshop="calculo" data-base-value="Cálculo">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title" data-workshop-text="calculo">Cálculo</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> 14:00</span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="calculo" aria-label="Ver detalhes de Cálculo">Detalhes</button>
+                            </div>
 
                         </div>
 
@@ -355,6 +536,38 @@
         </section>
 
     </main>
+
+
+    <div class="workshop-modal" id="workshop-modal" hidden>
+        <div class="workshop-modal-backdrop" data-close-workshop-modal></div>
+
+        <section
+            class="workshop-modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="workshop-modal-title"
+            aria-describedby="workshop-modal-description"
+        >
+            <button
+                type="button"
+                class="workshop-modal-close"
+                id="workshop-modal-close"
+                aria-label="Fechar detalhes da oficina"
+            >
+                <i class="fas fa-xmark"></i>
+            </button>
+
+            <p class="workshop-modal-label">Detalhes da oficina</p>
+            <h2 id="workshop-modal-title"></h2>
+
+            <p class="workshop-modal-time">
+                <i class="far fa-clock"></i>
+                <span id="workshop-modal-time"></span>
+            </p>
+
+            <div class="workshop-modal-description" id="workshop-modal-description"></div>
+        </section>
+    </div>
 
     <div id="footer-placeholder"></div>
 
