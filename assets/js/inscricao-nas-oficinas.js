@@ -5,7 +5,9 @@ const WORKSHOP_DETAILS = {
     // data-workshop usado no respectivo cartão do HTML.
     'criando-jogos': {
         title: 'Criando Jogos com MIT App Inventor',
+        days: 'Segunda-feira',
         time: '14:00',
+        duration: '2 horas',
         description: [
             'As crianças aprendem programação em blocos criando jogos no MIT App Inventor.',
             'A atividade trabalha variáveis, condições, raciocínio lógico, criatividade e autonomia na resolução de problemas.'
@@ -13,7 +15,9 @@ const WORKSHOP_DETAILS = {
     },
     'detetives-ciencia': {
         title: 'Detetives da Ciência: Investigação Forense e Dados',
+        days: 'Quinta-feira',
         time: '16:00',
+        duration: '2 horas',
         description: [
             'Os participantes investigam casos fictícios usando conceitos de ciência forense, química, biologia, física e lógica matemática.',
             'A oficina combina explicação teórica e aplicação prática em desafios investigativos.'
@@ -21,7 +25,9 @@ const WORKSHOP_DETAILS = {
     },
     'mapa-cidade': {
         title: 'Do Mapa à Cidade: Como projetar um bairro?',
+        days: 'Segunda-feira',
         time: '14:00',
+        duration: '2 horas',
         description: [
             'A partir de uma planta topográfica simplificada, as crianças planejam um pequeno bairro, definindo ruas, lotes, áreas verdes e soluções para o escoamento da água da chuva.',
             'A atividade trabalha interpretação do relevo, raciocínio espacial, criatividade e tomada de decisões.'
@@ -29,7 +35,9 @@ const WORKSHOP_DETAILS = {
     },
     'missao-ingles': {
         title: 'Missão Inglês: Uma jornada de diversão',
+        days: 'Quinta e sexta-feira',
         time: '16:00',
+        duration: '2 horas',
         description: [
             'Atividades como caça-palavras, dublagens, jogos e curiosidades aproximam as crianças da língua inglesa de forma leve e divertida.',
             'A oficina ajuda a desenvolver vocabulário, compreensão e confiança para se expressar.'
@@ -37,7 +45,9 @@ const WORKSHOP_DETAILS = {
     },
     ferrovias: {
         title: 'Workshop de Trens e Ferrovias',
+        days: 'Segunda-feira a sábado',
         time: '17:00',
+        duration: '2 horas',
         description: [
             'As crianças assumem o papel de engenheiros para conhecer trens, infraestrutura e os princípios de um projeto ferroviário.',
             'Experimentos e desafios exploram força, atrito, velocidade, frenagem, inclinação, curvas, rampas, pontes e operação ferroviária. Ao final, os participantes constroem e testam uma solução.'
@@ -45,7 +55,9 @@ const WORKSHOP_DETAILS = {
     },
     'logica-programacao': {
         title: 'Introdução a Lógica de Programação e Algoritmos',
+        days: 'Segunda e terça-feira',
         time: '08:00',
+        duration: '2 horas',
         description: [
             'Uma introdução objetiva aos conceitos fundamentais de lógica de programação e algoritmos.',
             'As atividades são voltadas a desenvolver e consolidar o raciocínio lógico das crianças.'
@@ -53,7 +65,9 @@ const WORKSHOP_DETAILS = {
     },
     ia: {
         title: 'Introdução a IA/Letramento em IA',
+        days: 'Segunda-feira a sábado',
         time: '08:00',
+        duration: '1h30',
         turma1: [
             'Uma introdução lúdica aos conceitos e à história da inteligência artificial, explicando como ela funciona e como escrever bons comandos.',
             'As crianças também criam uma árvore de decisão no Scratch e experimentam diferentes ferramentas de IA.'
@@ -65,14 +79,18 @@ const WORKSHOP_DETAILS = {
     },
     historias: {
         title: 'Criando Histórias de uma forma lógica',
+        days: 'Terça-feira',
         time: '17:00',
+        duration: '2 horas',
         description: [
             'As crianças usam o Scratch para aprender lógica e criar histórias por meio de programação em blocos, sem precisar escrever código.'
         ]
     },
     calculo: {
         title: 'Cálculo',
+        days: 'Quarta-feira',
         time: '14:00',
+        duration: '1h30',
         description: [
             'Uma oficina de introdução aos conceitos de cálculo.'
         ]
@@ -207,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
             getWorkshopTitle(workshopId);
 
         workshopModalTime.textContent =
-            `Horário: ${workshop.time}`;
+            `${workshop.days} • ${workshop.time} • duração: ${workshop.duration}`;
 
         workshopModalDescription.replaceChildren();
 
