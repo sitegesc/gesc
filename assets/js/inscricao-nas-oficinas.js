@@ -6,6 +6,7 @@ const WORKSHOP_DETAILS = {
     'criando-jogos': {
         title: 'Criando Jogos com MIT App Inventor',
         days: 'Segunda-feira',
+        availableDays: ['Segunda-feira'],
         time: '14:00',
         duration: '2 horas',
         description: [
@@ -16,6 +17,7 @@ const WORKSHOP_DETAILS = {
     'detetives-ciencia': {
         title: 'Detetives da Ciência: Investigação Forense e Dados',
         days: 'Quinta-feira',
+        availableDays: ['Quinta-feira'],
         time: '16:00',
         duration: '2 horas',
         description: [
@@ -26,6 +28,7 @@ const WORKSHOP_DETAILS = {
     'mapa-cidade': {
         title: 'Do Mapa à Cidade: Como projetar um bairro?',
         days: 'Segunda-feira',
+        availableDays: ['Segunda-feira'],
         time: '14:00',
         duration: '2 horas',
         description: [
@@ -36,6 +39,7 @@ const WORKSHOP_DETAILS = {
     'missao-ingles': {
         title: 'Missão Inglês: Uma jornada de diversão',
         days: 'Quinta e sexta-feira',
+        availableDays: ['Quinta-feira', 'Sexta-feira'],
         time: '16:00',
         duration: '2 horas',
         description: [
@@ -46,6 +50,14 @@ const WORKSHOP_DETAILS = {
     ferrovias: {
         title: 'Workshop de Trens e Ferrovias',
         days: 'Segunda-feira a sábado',
+        availableDays: [
+            'Segunda-feira',
+            'Terça-feira',
+            'Quarta-feira',
+            'Quinta-feira',
+            'Sexta-feira',
+            'Sábado'
+        ],
         time: '17:00',
         duration: '2 horas',
         description: [
@@ -56,6 +68,7 @@ const WORKSHOP_DETAILS = {
     'logica-programacao': {
         title: 'Introdução a Lógica de Programação e Algoritmos',
         days: 'Segunda e terça-feira',
+        availableDays: ['Segunda-feira', 'Terça-feira'],
         time: '08:00',
         duration: '2 horas',
         description: [
@@ -66,6 +79,14 @@ const WORKSHOP_DETAILS = {
     ia: {
         title: 'Introdução a IA/Letramento em IA',
         days: 'Segunda-feira a sábado',
+        availableDays: [
+            'Segunda-feira',
+            'Terça-feira',
+            'Quarta-feira',
+            'Quinta-feira',
+            'Sexta-feira',
+            'Sábado'
+        ],
         time: '08:00',
         duration: '1h30',
         turma1: [
@@ -80,6 +101,7 @@ const WORKSHOP_DETAILS = {
     historias: {
         title: 'Criando Histórias de uma forma lógica',
         days: 'Terça-feira',
+        availableDays: ['Terça-feira'],
         time: '17:00',
         duration: '2 horas',
         description: [
@@ -89,6 +111,7 @@ const WORKSHOP_DETAILS = {
     calculo: {
         title: 'Cálculo',
         days: 'Quarta-feira',
+        availableDays: ['Quarta-feira'],
         time: '14:00',
         duration: '1h30',
         description: [
@@ -225,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             getWorkshopTitle(workshopId);
 
         workshopModalTime.textContent =
-            `${workshop.days} • ${workshop.time} • duração: ${workshop.duration}`;
+            `Dias possíveis: ${workshop.days} • horário proposto: ${workshop.time} • duração: ${workshop.duration}`;
 
         workshopModalDescription.replaceChildren();
 
@@ -393,6 +416,108 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    function getWorkshopDayCheckboxes(workshopId) {
+
+        return Array.from(
+            document.querySelectorAll(
+                `input[data-workshop-day="${workshopId}"]`
+            )
+        );
+    }
+
+
+    function createWorkshopAvailabilityFields() {
+
+        getWorkshopCheckboxes().forEach((workshopCheckbox) => {
+
+            const workshopId = workshopCheckbox.dataset.workshop;
+            const workshop = WORKSHOP_DETAILS[workshopId];
+            const workshopOption = workshopCheckbox.closest('.workshop-option');
+
+            if (!workshop || !workshopOption) return;
+
+            const fieldset = document.createElement('fieldset');
+            fieldset.className = 'workshop-availability';
+            fieldset.dataset.workshopAvailability = workshopId;
+            fieldset.hidden = true;
+
+            const legend = document.createElement('legend');
+            legend.textContent = 'Em quais desses dias a criança pode participar?';
+            fieldset.appendChild(legend);
+
+            const daysContainer = document.createElement('div');
+            daysContainer.className = 'workshop-day-options';
+
+            workshop.availableDays.forEach((day) => {
+
+                const label = document.createElement('label');
+                label.className = 'workshop-day-option';
+
+                const dayCheckbox = document.createElement('input');
+                dayCheckbox.type = 'checkbox';
+                dayCheckbox.value = day;
+                dayCheckbox.dataset.workshopDay = workshopId;
+                dayCheckbox.setAttribute(
+                    'aria-label',
+                    `${getWorkshopTitle(workshopId)}: ${day}`
+                );
+
+                const dayText = document.createElement('span');
+                dayText.textContent = day;
+
+                label.append(dayCheckbox, dayText);
+                daysContainer.appendChild(label);
+            });
+
+            fieldset.appendChild(daysContainer);
+            workshopOption.appendChild(fieldset);
+        });
+    }
+
+
+    function updateWorkshopAvailabilityVisibility(workshopCheckbox) {
+
+        const workshopId = workshopCheckbox.dataset.workshop;
+        const availability = document.querySelector(
+            `[data-workshop-availability="${workshopId}"]`
+        );
+
+        if (!availability) return;
+
+        const shouldShow =
+            workshopCheckbox.checked
+            && !workshopCheckbox.disabled;
+
+        availability.hidden = !shouldShow;
+
+        if (!shouldShow) {
+            getWorkshopDayCheckboxes(workshopId).forEach((dayCheckbox) => {
+                dayCheckbox.checked = false;
+            });
+
+            availability.classList.remove('invalid');
+        }
+    }
+
+
+    function selectedWorkshopsHaveAvailability() {
+
+        return getWorkshopCheckboxes()
+            .filter(checkbox => checkbox.checked)
+            .every((workshopCheckbox) => {
+
+                const workshopId = workshopCheckbox.dataset.workshop;
+
+                return getWorkshopDayCheckboxes(workshopId).some(
+                    dayCheckbox => dayCheckbox.checked
+                );
+            });
+    }
+
+
+    createWorkshopAvailabilityFields();
+
+
     /*
      * ============================================================
      * ATUALIZAÇÃO DAS TURMAS DE ACORDO COM A IDADE
@@ -428,6 +553,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 checkbox.checked = false;
 
                 checkbox.disabled = true;
+
+                updateWorkshopAvailabilityVisibility(checkbox);
 
                 checkbox.value =
                     ageBasedWorkshops[workshopId].baseValue;
@@ -515,7 +642,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateWorkshopValidationState() {
 
-        const valid = hasAtLeastOneWorkshop();
+        const hasWorkshop = hasAtLeastOneWorkshop();
+        const hasAvailability =
+            hasWorkshop
+            && selectedWorkshopsHaveAvailability();
+        const valid = hasWorkshop && hasAvailability;
 
         if (submitButton) {
             submitButton.disabled = !valid;
@@ -525,9 +656,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             workshopsGroup.classList.toggle(
                 'invalid',
-                !valid
+                !hasWorkshop
             );
         }
+
+        getWorkshopCheckboxes().forEach((workshopCheckbox) => {
+
+            const workshopId = workshopCheckbox.dataset.workshop;
+            const availability = document.querySelector(
+                `[data-workshop-availability="${workshopId}"]`
+            );
+
+            if (!availability) return;
+
+            const missingAvailability =
+                workshopCheckbox.checked
+                && !getWorkshopDayCheckboxes(workshopId).some(
+                    dayCheckbox => dayCheckbox.checked
+                );
+
+            availability.classList.toggle(
+                'invalid',
+                missingAvailability
+            );
+        });
 
         if (valid) {
             clearFeedback();
@@ -549,9 +701,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             checkbox.addEventListener(
                 'change',
-                updateWorkshopValidationState
+                () => {
+                    updateWorkshopAvailabilityVisibility(checkbox);
+                    updateWorkshopValidationState();
+                }
             );
 
+        });
+
+        document.querySelectorAll(
+            'input[data-workshop-day]'
+        ).forEach((dayCheckbox) => {
+
+            dayCheckbox.addEventListener(
+                'change',
+                updateWorkshopValidationState
+            );
         });
     }
 
@@ -631,6 +796,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         form.reset();
 
+        getWorkshopCheckboxes().forEach(
+            updateWorkshopAvailabilityVisibility
+        );
+
         /*
          * Depois do reset, as oficinas dependentes da idade
          * precisam voltar para o estado inicial.
@@ -670,8 +839,12 @@ document.addEventListener('DOMContentLoaded', () => {
              */
             if (!updateWorkshopValidationState()) {
 
+                const hasWorkshop = hasAtLeastOneWorkshop();
+
                 showFeedback(
-                    'Selecione pelo menos uma oficina para continuar.',
+                    hasWorkshop
+                        ? 'Para cada oficina selecionada, marque pelo menos um dia em que a criança pode participar.'
+                        : 'Selecione pelo menos uma oficina para continuar.',
                     true
                 );
 
@@ -723,8 +896,18 @@ document.addEventListener('DOMContentLoaded', () => {
              *
              * será enviado para a planilha.
              */
-            const selectedWorkshops =
-                formData.getAll('workshops');
+            const selectedWorkshops = getWorkshopCheckboxes()
+                .filter(checkbox => checkbox.checked)
+                .map((workshopCheckbox) => {
+
+                    const workshopId = workshopCheckbox.dataset.workshop;
+
+                    const availableDays = getWorkshopDayCheckboxes(workshopId)
+                        .filter(dayCheckbox => dayCheckbox.checked)
+                        .map(dayCheckbox => dayCheckbox.value);
+
+                    return `${workshopCheckbox.value} [dias disponíveis: ${availableDays.join(', ')}]`;
+                });
 
 
             /*
@@ -762,7 +945,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     formData.get('phone'),
 
                 oficinas_selecionadas:
-                    selectedWorkshops.join(', '),
+                    selectedWorkshops.join(' | '),
 
                 data_envio:
                     'DATETIME'

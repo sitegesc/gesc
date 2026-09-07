@@ -75,12 +75,12 @@
             color: #333;
         }
 
-        .workshop-option:has(input:checked) {
+        .workshop-option:has(input[name="workshops"]:checked) {
             border-color: var(--primary-blue);
             background-color: #eef2f9;
         }
 
-        .workshop-option:has(input:checked) .workshop-title {
+        .workshop-option:has(input[name="workshops"]:checked) .workshop-title {
             color: var(--primary-blue);
         }
 
@@ -106,6 +106,57 @@
         }
 
         .workshop-time i {
+            color: var(--primary-blue);
+        }
+
+        .workshop-availability {
+            grid-column: 1 / -1;
+            min-width: 0;
+            margin: 0;
+            padding: 12px;
+            border: 0;
+            border-top: 1px solid #dce1e9;
+            background: #f7f9fc;
+        }
+
+        .workshop-availability[hidden] {
+            display: none;
+        }
+
+        .workshop-availability.invalid {
+            background: #fff5f5;
+        }
+
+        .workshop-availability legend {
+            padding: 0;
+            color: #333;
+            font-size: 0.78rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .workshop-day-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 9px;
+        }
+
+        .choice-group .workshop-day-option,
+        .choice-group .workshop-day-option:has(input:checked) {
+            margin: 0;
+            padding: 7px 10px;
+            border: 1px solid #cfd5df;
+            border-radius: 999px;
+            background: #fff;
+            color: #394150;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .choice-group .workshop-day-option:has(input:checked) {
+            border-color: var(--primary-blue);
+            background: #e7edf8;
             color: var(--primary-blue);
         }
 
@@ -377,7 +428,7 @@
                                     <input type="checkbox" name="workshops" value="Criando Jogos" data-workshop="criando-jogos">
                                     <span class="workshop-copy">
                                         <span class="workshop-title">Criando Jogos com MIT App Inventor</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Segunda • 14:00 • 2h</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: segunda • Horário proposto: 14:00 • Duração: 2h</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="criando-jogos" aria-label="Ver detalhes de Criando Jogos com MIT App Inventor">Detalhes</button>
@@ -388,7 +439,7 @@
                                     <input type="checkbox" name="workshops" value="Detetives da Ciência" data-workshop="detetives-ciencia">
                                     <span class="workshop-copy">
                                         <span class="workshop-title">Detetives da Ciência: Investigação Forense e Dados</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Quinta • 16:00 • 2h</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: quinta • Horário proposto: 16:00 • Duração: 2h</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="detetives-ciencia" aria-label="Ver detalhes de Detetives da Ciência">Detalhes</button>
@@ -399,7 +450,7 @@
                                     <input type="checkbox" name="workshops" value="Do Mapa à Cidade" data-workshop="mapa-cidade">
                                     <span class="workshop-copy">
                                         <span class="workshop-title">Do Mapa à Cidade: Como projetar um bairro?</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Segunda • 14:00 • 2h</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: segunda • Horário proposto: 14:00 • Duração: 2h</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="mapa-cidade" aria-label="Ver detalhes de Do Mapa à Cidade">Detalhes</button>
@@ -410,7 +461,7 @@
                                     <input type="checkbox" name="workshops" value="Missão Inglês" data-workshop="missao-ingles">
                                     <span class="workshop-copy">
                                         <span class="workshop-title">Missão Inglês: Uma jornada de diversão</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Quinta e sexta • 16:00 • 2h</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: quinta e sexta • Horário proposto: 16:00 • Duração: 2h</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="missao-ingles" aria-label="Ver detalhes de Missão Inglês">Detalhes</button>
@@ -421,7 +472,7 @@
                                     <input type="checkbox" name="workshops" value="Workshop de Ferrovias" data-workshop="ferrovias">
                                     <span class="workshop-copy">
                                         <span class="workshop-title">Workshop de Trens e Ferrovias</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Segunda a sábado • 17:00 • 2h</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: segunda a sábado • Horário proposto: 17:00 • Duração: 2h</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="ferrovias" aria-label="Ver detalhes do Workshop de Trens e Ferrovias">Detalhes</button>
@@ -432,7 +483,7 @@
                                     <input type="checkbox" name="workshops" value="Introdução a Lógica de Programação e Algoritmos" data-workshop="logica-programacao">
                                     <span class="workshop-copy">
                                         <span class="workshop-title">Introdução a Lógica de Programação e Algoritmos</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Segunda e terça • 08:00 • 2h</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: segunda e terça • Horário proposto: 08:00 • Duração: 2h</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="logica-programacao" aria-label="Ver detalhes de Introdução a Lógica de Programação e Algoritmos">Detalhes</button>
@@ -443,7 +494,7 @@
                                     <input type="checkbox" name="workshops" value="Introdução a IA - Turma 1" data-workshop="ia" data-base-value="Introdução a IA">
                                     <span class="workshop-copy">
                                         <span class="workshop-title" data-workshop-text="ia">Introdução a IA/Letramento em IA</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Segunda a sábado • 08:00 • 1h30</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: segunda a sábado • Horário proposto: 08:00 • Duração: 1h30</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="ia" aria-label="Ver detalhes de Introdução a IA/Letramento em IA">Detalhes</button>
@@ -454,7 +505,7 @@
                                     <input type="checkbox" name="workshops" value="Criando Histórias de uma forma lógica - Turma 1" data-workshop="historias" data-base-value="Criando Histórias de uma forma lógica">
                                     <span class="workshop-copy">
                                         <span class="workshop-title" data-workshop-text="historias">Criando Histórias de uma forma lógica</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Terça • 17:00 • 2h</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: terça • Horário proposto: 17:00 • Duração: 2h</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="historias" aria-label="Ver detalhes de Criando Histórias de uma forma lógica">Detalhes</button>
@@ -465,7 +516,7 @@
                                     <input type="checkbox" name="workshops" value="Cálculo - Turma 1" data-workshop="calculo" data-base-value="Cálculo">
                                     <span class="workshop-copy">
                                         <span class="workshop-title" data-workshop-text="calculo">Cálculo</span>
-                                        <span class="workshop-time"><i class="far fa-clock"></i> Quarta • 14:00 • 1h30</span>
+                                        <span class="workshop-time"><i class="far fa-clock"></i> Dias possíveis: quarta • Horário proposto: 14:00 • Duração: 1h30</span>
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="calculo" aria-label="Ver detalhes de Cálculo">Detalhes</button>
@@ -474,7 +525,7 @@
                         </div>
 
                         <span class="field-hint">
-                            É possível marcar mais de uma oficina.
+                            Os dias indicam quando o aplicador pode oferecer cada oficina. Selecione a oficina e marque todos os dias em que a criança pode participar. A organização confirmará o dia da turma posteriormente.
                         </span>
 
                     </div>
