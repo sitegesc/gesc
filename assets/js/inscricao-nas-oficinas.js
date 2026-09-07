@@ -9,6 +9,7 @@ const WORKSHOP_DETAILS = {
         availableDays: ['Segunda-feira'],
         time: '14:00',
         duration: '2 horas',
+        sessions: 6,
         description: [
             'As crianças aprendem programação em blocos criando jogos no MIT App Inventor.',
             'A atividade trabalha variáveis, condições, raciocínio lógico, criatividade e autonomia na resolução de problemas.'
@@ -20,6 +21,7 @@ const WORKSHOP_DETAILS = {
         availableDays: ['Quinta-feira'],
         time: '16:00',
         duration: '2 horas',
+        sessions: 4,
         description: [
             'Os participantes investigam casos fictícios usando conceitos de ciência forense, química, biologia, física e lógica matemática.',
             'A oficina combina explicação teórica e aplicação prática em desafios investigativos.'
@@ -31,6 +33,7 @@ const WORKSHOP_DETAILS = {
         availableDays: ['Segunda-feira'],
         time: '14:00',
         duration: '2 horas',
+        sessions: 1,
         description: [
             'A partir de uma planta topográfica simplificada, as crianças planejam um pequeno bairro, definindo ruas, lotes, áreas verdes e soluções para o escoamento da água da chuva.',
             'A atividade trabalha interpretação do relevo, raciocínio espacial, criatividade e tomada de decisões.'
@@ -42,6 +45,7 @@ const WORKSHOP_DETAILS = {
         availableDays: ['Quinta-feira', 'Sexta-feira'],
         time: '16:00',
         duration: '2 horas',
+        sessions: 4,
         description: [
             'Atividades como caça-palavras, dublagens, jogos e curiosidades aproximam as crianças da língua inglesa de forma leve e divertida.',
             'A oficina ajuda a desenvolver vocabulário, compreensão e confiança para se expressar.'
@@ -60,6 +64,7 @@ const WORKSHOP_DETAILS = {
         ],
         time: '17:00',
         duration: '2 horas',
+        sessions: 2,
         description: [
             'As crianças assumem o papel de engenheiros para conhecer trens, infraestrutura e os princípios de um projeto ferroviário.',
             'Experimentos e desafios exploram força, atrito, velocidade, frenagem, inclinação, curvas, rampas, pontes e operação ferroviária. Ao final, os participantes constroem e testam uma solução.'
@@ -71,6 +76,7 @@ const WORKSHOP_DETAILS = {
         availableDays: ['Segunda-feira', 'Terça-feira'],
         time: '08:00',
         duration: '2 horas',
+        sessions: 2,
         description: [
             'Uma introdução objetiva aos conceitos fundamentais de lógica de programação e algoritmos.',
             'As atividades são voltadas a desenvolver e consolidar o raciocínio lógico das crianças.'
@@ -89,6 +95,7 @@ const WORKSHOP_DETAILS = {
         ],
         time: '08:00',
         duration: '1h30',
+        sessions: 8,
         turma1: [
             'Uma introdução lúdica aos conceitos e à história da inteligência artificial, explicando como ela funciona e como escrever bons comandos.',
             'As crianças também criam uma árvore de decisão no Scratch e experimentam diferentes ferramentas de IA.'
@@ -104,6 +111,7 @@ const WORKSHOP_DETAILS = {
         availableDays: ['Terça-feira'],
         time: '17:00',
         duration: '2 horas',
+        sessions: 5,
         description: [
             'As crianças usam o Scratch para aprender lógica e criar histórias por meio de programação em blocos, sem precisar escrever código.'
         ]
@@ -114,6 +122,7 @@ const WORKSHOP_DETAILS = {
         availableDays: ['Quarta-feira'],
         time: '14:00',
         duration: '1h30',
+        sessions: 10,
         description: [
             'Uma oficina de introdução aos conceitos de cálculo.'
         ]
@@ -247,8 +256,12 @@ document.addEventListener('DOMContentLoaded', () => {
         workshopModalTitle.textContent =
             getWorkshopTitle(workshopId);
 
+        const sessionsLabel = workshop.sessions === 1
+            ? '1 encontro'
+            : `${workshop.sessions} encontros`;
+
         workshopModalTime.textContent =
-            `Dias possíveis: ${workshop.days} • horário proposto: ${workshop.time} • duração: ${workshop.duration}`;
+            `Dias possíveis: ${workshop.days} • horário proposto: ${workshop.time} • duração: ${workshop.duration} • quantidade proposta: ${sessionsLabel}`;
 
         workshopModalDescription.replaceChildren();
 
