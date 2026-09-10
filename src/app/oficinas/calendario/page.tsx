@@ -7,7 +7,7 @@ import { DATA_INICIO_OFICINAS } from "@/data/oficinas";
 import { formatDate, parseISO } from "@/lib/calendario";
 
 export const metadata: Metadata = {
-  title: "Calendário de Oficinas | GESC",
+  title: "Calendário de Oficinas",
   description:
     "Agenda de todos os encontros das oficinas do Projeto IDEIA, semana a semana.",
 };

@@ -33,7 +33,16 @@ const navLinks: NavItem[] = [
     ],
   },
   { href: "/publicacoes", label: "Publicações" },
-  { href: "/sobre", label: "Sobre Nós" },
+  {
+    label: "Sobre Nós",
+    children: [
+      { href: "/sobre", label: "Sobre" },
+      { href: "/equipe", label: "Equipe" },
+      { href: "/pesquisa", label: "Linhas de pesquisa" },
+      { href: "/historico", label: "Histórico" },
+      { href: "/parceiros", label: "Parceiros" },
+    ],
+  },
   { href: "/contato", label: "Contato" },
 ];
 

@@ -5,7 +5,7 @@ import { InscricaoProfessoresForm } from "@/components/oficinas/InscricaoProfess
 import { GraduationIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
-  title: "Inscrição para Aplicar Oficina | GESC",
+  title: "Inscrição para Aplicar Oficina",
   description:
     "Formulário para professores e alunos se inscreverem como aplicadores de uma oficina do Projeto IDEIA.",
 };

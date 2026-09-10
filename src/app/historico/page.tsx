@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { PageHeader } from "@/components/ui/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Nossa Trajetória | GESC",
+  title: "Nossa Trajetória",
   description:
     "Linha do tempo do Grupo de Engenharia de Sistemas Complexos (GESC), da FT-UNICAMP, desde a fundação em 2025.",
 };
@@ -87,6 +88,30 @@ export default function HistoricoPage() {
             </div>
           ))}
         </div>
+
+        <section className="mt-14 border-t border-[#eee] pt-8">
+          <h2 className="mb-3 text-[0.8rem] font-bold uppercase tracking-[0.1em] text-brand-red">
+            Próximos passos
+          </h2>
+          <p className="text-[0.92rem] leading-[1.7] text-[#555]">
+            O grupo segue ampliando as colaborações de pesquisa, a formação de
+            bolsistas e as atividades de extensão com o Projeto IDEIA. Conheça as{" "}
+            <Link
+              href="/parceiros"
+              className="font-medium text-brand-blue hover:text-brand-red"
+            >
+              parcerias
+            </Link>{" "}
+            e a{" "}
+            <Link
+              href="/publicacoes"
+              className="font-medium text-brand-blue hover:text-brand-red"
+            >
+              produção do grupo
+            </Link>
+            .
+          </p>
+        </section>
 
         <p className="mt-12 rounded-md border border-[#e6e6e6] bg-[#fafafa] px-4 py-3 text-[0.82rem] leading-relaxed text-[#777]">
           Conteúdo provisório. Datas e marcos serão confirmados pela coordenação

@@ -20,6 +20,8 @@ type Item =
 
 const items: Item[] = [
   { label: "Coordenadores", type: "anchor", href: "#coordenacao", active: true },
+  { label: "Equipe", type: "route", href: "/equipe" },
+  { label: "Linhas de Pesquisa", type: "route", href: "/pesquisa" },
   { label: "Publicações", type: "route", href: "/publicacoes" },
   { label: "Histórico", type: "route", href: "/historico" },
   { label: "Palavra do Coordenador", type: "modal", modal: "palavra" },

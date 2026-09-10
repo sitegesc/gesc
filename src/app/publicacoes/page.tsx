@@ -4,7 +4,7 @@ import { PublicacoesLista } from "@/components/publicacoes/PublicacoesLista";
 import { PageHeader } from "@/components/ui/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Publicações | GESC",
+  title: "Publicações",
   description:
     "Artigos e postagens dos bolsistas do projeto e a produção acadêmica do Grupo de Engenharia de Sistemas Complexos (GESC) — FT-UNICAMP.",
 };

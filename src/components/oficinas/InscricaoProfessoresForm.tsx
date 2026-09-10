@@ -2,7 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 
-import { submitInscricao } from "@/lib/inscricoes";
+import { CONTATO } from "@/data/gesc";
+import { mailtoHref } from "@/lib/mailto";
 
 import {
   ChoiceChip,
@@ -17,6 +18,7 @@ import {
   TextArea,
   TextInput,
   maskPhone,
+  panelActionClass,
 } from "@/components/ui/FormControls";
 import { TimePicker } from "./TimePicker";
 
@@ -31,8 +33,6 @@ const DIAS = [
   { value: "sexta", label: "Sexta" },
   { value: "sabado", label: "Sábado" },
 ];
-
-type Status = "idle" | "sending" | "success";
 
 const EMPTY = {
   isStudent: "",
@@ -50,8 +50,8 @@ const EMPTY = {
 export function InscricaoProfessoresForm() {
   const [values, setValues] = useState(EMPTY);
   const [days, setDays] = useState<string[]>([]);
-  const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [href, setHref] = useState<string | null>(null);
 
   const set = <K extends keyof typeof EMPTY>(key: K, value: string) =>
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -63,55 +63,63 @@ export function InscricaoProfessoresForm() {
 
   const isStudent = values.isStudent === "sim";
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (days.length === 0) {
       setError("Selecione ao menos um dia de interesse para aplicar a oficina.");
       return;
     }
-
     setError(null);
-    setStatus("sending");
 
-    try {
-      await submitInscricao("professores", {
-        eh_aluno: isStudent ? "Sim" : "Não",
-        ra: values.ra,
-        nome_completo: values.fullName,
-        email: values.email,
-        whatsapp: values.whatsapp,
-        nome_oficina: values.workshopName,
-        descricao_oficina: values.workshopDescription,
-        dias_aplicacao: days
-          .map((d) => DIAS.find((day) => day.value === d)?.label ?? d)
-          .join(", "),
-        horario_aplicacao: values.preferredTime,
-        duracao_horas: values.dayDuration,
-        total_oficinas: values.totalWorkshops,
-      });
+    const link = mailtoHref(
+      CONTATO.email,
+      `Inscrição para aplicar oficina — ${values.fullName}`,
+      [
+        ["É aluno(a) da UNICAMP", isStudent ? "Sim" : "Não"],
+        ...(isStudent ? [["RA", values.ra] as [string, string]] : []),
+        ["Nome completo", values.fullName],
+        ["E-mail", values.email],
+        ["WhatsApp", values.whatsapp],
+        ["Nome da oficina", values.workshopName],
+        ["Descrição", values.workshopDescription],
+        [
+          "Dias de interesse",
+          days
+            .map((d) => DIAS.find((day) => day.value === d)?.label ?? d)
+            .join(", "),
+        ],
+        ["Horário", values.preferredTime],
+        ["Duração de cada dia (h)", values.dayDuration],
+        ["Total de oficinas", values.totalWorkshops],
+      ],
+    );
 
-      setStatus("success");
-    } catch {
-      setStatus("idle");
-      setError(
-        "Não foi possível enviar sua inscrição agora. Tente novamente em instantes.",
-      );
-    }
+    setHref(link);
+    window.location.href = link;
   }
 
   function reset() {
     setValues(EMPTY);
     setDays([]);
-    setStatus("idle");
     setError(null);
+    setHref(null);
   }
 
-  if (status === "success") {
+  if (href) {
     return (
-      <SuccessPanel title="Inscrição enviada com sucesso!" onReset={reset}>
-        Recebemos os seus dados. Em breve entraremos em contato para organizar a
-        agenda da oficina.
+      <SuccessPanel
+        title="Falta só enviar o e-mail"
+        resetLabel="Preencher de novo"
+        onReset={reset}
+        action={
+          <a href={href} className={panelActionClass}>
+            Abrir e-mail
+          </a>
+        }
+      >
+        Abrimos seu programa de e-mail com a inscrição já preenchida. Se nada
+        abriu, use o botão abaixo — ou escreva para {CONTATO.email}.
       </SuccessPanel>
     );
   }
@@ -293,7 +301,7 @@ export function InscricaoProfessoresForm() {
           </Field>
         </FormSection>
 
-        <SubmitButton loading={status === "sending"}>Enviar inscrição</SubmitButton>
+        <SubmitButton>Enviar inscrição</SubmitButton>
         <PrivacyNote />
 
         {error && <Feedback message={error} type="error" />}

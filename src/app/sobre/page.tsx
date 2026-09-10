@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { MISSAO, OBJETIVOS, VALORES } from "@/data/gesc";
 
 export const metadata: Metadata = {
-  title: "Sobre Nós | GESC",
+  title: "Sobre Nós",
   description:
     "Missão, objetivos e valores do Grupo de Engenharia de Sistemas Complexos (GESC) da FT-UNICAMP.",
 };

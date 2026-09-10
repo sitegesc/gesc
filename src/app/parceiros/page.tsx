@@ -7,11 +7,11 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import ft from "@/imgs/logos/ft.webp";
 import usp from "@/imgs/logos/usp.webp";
 import ita from "@/imgs/logos/ita.webp";
-import imes from "@/imgs/logos/imes.webp";
+import ime from "@/imgs/logos/ime.webp";
 import sciences from "@/imgs/logos/sciences.webp";
 
 export const metadata: Metadata = {
-  title: "Parceiros | GESC",
+  title: "Parceiros",
   description:
     "Instituições e colaborações de pesquisa do Grupo de Engenharia de Sistemas Complexos (GESC) da FT-UNICAMP.",
 };
@@ -40,8 +40,8 @@ const instituicoes: { logo: StaticImageData; nome: string; nota: string }[] = [
     nota: "Colaboração em sociofísica e dinâmica de opinião (Dr. Serge Galam).",
   },
   {
-    logo: imes,
-    nome: "IMES",
+    logo: ime,
+    nome: "IME",
     nota: "Cooperação acadêmica.",
   },
 ];

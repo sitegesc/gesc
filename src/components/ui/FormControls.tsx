@@ -185,11 +185,14 @@ export function SuccessPanel({
   children,
   onReset,
   resetLabel = "Fazer nova inscrição",
+  action,
 }: {
   title: string;
   children: ReactNode;
   onReset: () => void;
   resetLabel?: string;
+  /** Ação principal opcional (ex.: link "Abrir e-mail"). */
+  action?: ReactNode;
 }) {
   return (
     <div className="px-2 py-8 text-center sm:px-5 sm:py-10">
@@ -198,16 +201,27 @@ export function SuccessPanel({
       <p className="mx-auto mb-6 max-w-[520px] text-[0.95rem] leading-relaxed text-[#444]">
         {children}
       </p>
-      <button
-        type="button"
-        onClick={onReset}
-        className="rounded-lg bg-brand-blue px-5 py-3 text-[0.95rem] font-bold text-white transition-colors hover:bg-[#001a4d]"
-      >
-        {resetLabel}
-      </button>
+      <div className="flex flex-wrap justify-center gap-3">
+        {action}
+        <button
+          type="button"
+          onClick={onReset}
+          className={`rounded-lg px-5 py-3 text-[0.95rem] font-bold transition-colors ${
+            action
+              ? "border border-[#ccc] text-[#555] hover:border-brand-blue hover:text-brand-blue"
+              : "bg-brand-blue text-white hover:bg-[#001a4d]"
+          }`}
+        >
+          {resetLabel}
+        </button>
+      </div>
     </div>
   );
 }
+
+// Estilo do botão de ação principal do SuccessPanel (usar num <a>).
+export const panelActionClass =
+  "rounded-lg bg-brand-blue px-5 py-3 text-[0.95rem] font-bold text-white transition-colors hover:bg-[#001a4d]";
 
 /** Máscara de telefone brasileiro: (19) 99999-9999. */
 export function maskPhone(value: string): string {

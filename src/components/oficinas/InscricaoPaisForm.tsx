@@ -9,8 +9,9 @@ import {
   encontrosLabel,
   type Oficina,
 } from "@/data/oficinas";
+import { CONTATO } from "@/data/gesc";
 import { weekdaysLabel } from "@/lib/calendario";
-import { submitInscricao } from "@/lib/inscricoes";
+import { mailtoHref } from "@/lib/mailto";
 import { Modal } from "@/components/ui/Modal";
 
 import {
@@ -23,6 +24,7 @@ import {
   SuccessPanel,
   TextInput,
   maskPhone,
+  panelActionClass,
 } from "@/components/ui/FormControls";
 import { CalendarIcon, ClockIcon, RepeatIcon } from "@/components/ui/icons";
 
@@ -33,8 +35,6 @@ import { CalendarIcon, ClockIcon, RepeatIcon } from "@/components/ui/icons";
 //   até 9 anos  → Turma 1
 //   10 anos ou + → Turma 2
 // Enquanto a idade não é informada, essas oficinas ficam desabilitadas.
-
-type Status = "idle" | "sending" | "success";
 
 const EMPTY = { fullName: "", age: "", guardianName: "", phone: "" };
 
@@ -47,7 +47,7 @@ export function InscricaoPaisForm() {
   const [values, setValues] = useState(EMPTY);
   const [selected, setSelected] = useState<Record<string, boolean>>({});
   const [availability, setAvailability] = useState<Record<string, string[]>>({});
-  const [status, setStatus] = useState<Status>("idle");
+  const [href, setHref] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const [detailsId, setDetailsId] = useState<string | null>(null);
@@ -125,7 +125,7 @@ export function InscricaoPaisForm() {
     return age <= 9 ? byAge.upTo9 : byAge.from10;
   }
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitted(true);
 
@@ -144,50 +144,57 @@ export function InscricaoPaisForm() {
       );
       return;
     }
-
     setError(null);
-    setStatus("sending");
 
-    try {
-      const oficinasSelecionadas = selectedIds.map((id) => {
-        const o = OFICINAS.find((item) => item.id === id)!;
-        const valor = o.ageBased
-          ? `${o.ageBased.baseValue} - Turma ${turma}`
-          : o.title;
-        return `${valor} [dias disponíveis: ${(availability[id] ?? []).join(", ")}]`;
-      });
+    const oficinasSelecionadas = selectedIds.map((id) => {
+      const o = OFICINAS.find((item) => item.id === id)!;
+      const valor = o.ageBased
+        ? `${o.ageBased.baseValue} - Turma ${turma}`
+        : o.title;
+      return `${valor} [dias: ${(availability[id] ?? []).join(", ")}]`;
+    });
 
-      await submitInscricao("pais", {
-        nome_completo: values.fullName,
-        idade: values.age,
-        nome_responsavel: values.guardianName,
-        telefone_contato: values.phone,
-        oficinas_selecionadas: oficinasSelecionadas.join(" | "),
-      });
+    const link = mailtoHref(
+      CONTATO.email,
+      `Inscrição em oficinas — ${values.fullName}`,
+      [
+        ["Nome do aluno", values.fullName],
+        ["Idade", values.age],
+        ["Responsável", values.guardianName],
+        ["Telefone", values.phone],
+        "",
+        "Oficinas:",
+        ...oficinasSelecionadas,
+      ],
+    );
 
-      setStatus("success");
-    } catch {
-      setStatus("idle");
-      setError(
-        "Não foi possível enviar a inscrição. Verifique sua conexão e tente novamente.",
-      );
-    }
+    setHref(link);
+    window.location.href = link;
   }
 
   function reset() {
     setValues(EMPTY);
     setSelected({});
     setAvailability({});
-    setStatus("idle");
+    setHref(null);
     setError(null);
     setSubmitted(false);
   }
 
-  if (status === "success") {
+  if (href) {
     return (
-      <SuccessPanel title="Inscrição enviada com sucesso!" onReset={reset}>
-        Recebemos os seus dados. Em breve entraremos em contato pelo telefone
-        informado com mais detalhes sobre a(s) oficina(s) selecionada(s).
+      <SuccessPanel
+        title="Falta só enviar o e-mail"
+        resetLabel="Preencher de novo"
+        onReset={reset}
+        action={
+          <a href={href} className={panelActionClass}>
+            Abrir e-mail
+          </a>
+        }
+      >
+        Abrimos seu programa de e-mail com a inscrição já preenchida. Se nada
+        abriu, use o botão abaixo — ou escreva para {CONTATO.email}.
       </SuccessPanel>
     );
   }
@@ -384,7 +391,7 @@ export function InscricaoPaisForm() {
           </p>
         </FormSection>
 
-        <SubmitButton loading={status === "sending"} disabled={!formValid}>
+        <SubmitButton disabled={!formValid}>
           Enviar inscrição
         </SubmitButton>
         <PrivacyNote />

@@ -6,7 +6,7 @@ import { ChevronDownIcon } from "@/components/ui/icons";
 import { CONTATO, CONTATOS_ASSUNTO, FAQ } from "@/data/gesc";
 
 export const metadata: Metadata = {
-  title: "Contato | GESC",
+  title: "Contato",
   description:
     "Contato do Grupo de Engenharia de Sistemas Complexos (GESC) — Faculdade de Tecnologia da UNICAMP, Limeira/SP.",
 };

@@ -5,7 +5,7 @@ import { InscricaoPaisForm } from "@/components/oficinas/InscricaoPaisForm";
 import { GraduationIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
-  title: "Inscrição em Oficinas | GESC",
+  title: "Inscrição em Oficinas",
   description:
     "Formulário para pais e responsáveis inscreverem a criança nas oficinas do Projeto IDEIA.",
 };

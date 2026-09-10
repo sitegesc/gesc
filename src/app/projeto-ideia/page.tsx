@@ -4,7 +4,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/ui/PageHeader";
 
 export const metadata: Metadata = {
-  title: "Projeto IDEIA | GESC",
+  title: "Projeto IDEIA",
   description:
     "O Projeto IDEIA é uma iniciativa de extensão da Faculdade de Tecnologia da UNICAMP voltada a estudantes com altas habilidades, com oficinas gratuitas de ciência e tecnologia.",
 };

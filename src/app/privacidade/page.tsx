@@ -13,7 +13,7 @@ import {
 import { CONTATO } from "@/data/gesc";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade | GESC",
+  title: "Política de Privacidade",
   description:
     "Como o GESC trata os dados pessoais coletados neste site, conforme a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).",
 };

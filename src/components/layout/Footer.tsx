@@ -3,7 +3,8 @@ import Link from "next/link";
 
 const footerNav = [
   { href: "/sobre", label: "Sobre" },
-  { href: "/#linhas-pesquisa", label: "Pesquisa" },
+  { href: "/pesquisa", label: "Linhas de pesquisa" },
+  { href: "/equipe", label: "Equipe" },
   { href: "/publicacoes", label: "Publicações" },
   { href: "/parceiros", label: "Parceiros" },
 ];

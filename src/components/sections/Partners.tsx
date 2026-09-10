@@ -3,14 +3,14 @@ import Image, { type StaticImageData } from "next/image";
 import ft from "@/imgs/logos/ft.webp";
 import usp from "@/imgs/logos/usp.webp";
 import ita from "@/imgs/logos/ita.webp";
-import imes from "@/imgs/logos/imes.webp";
+import ime from "@/imgs/logos/ime.webp";
 import sciences from "@/imgs/logos/sciences.webp";
 
 const partners: { src: StaticImageData; alt: string; height: string }[] = [
   { src: ft, alt: "FT UNICAMP", height: "h-[65px]" },
   { src: usp, alt: "POLI USP", height: "h-[125px]" },
   { src: ita, alt: "ITA", height: "h-[70px]" },
-  { src: imes, alt: "IMES", height: "h-[125px]" },
+  { src: ime, alt: "IME", height: "h-[125px]" },
   { src: sciences, alt: "Sciences Po Paris", height: "h-[120px]" },
 ];
 

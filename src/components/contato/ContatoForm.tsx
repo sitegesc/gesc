@@ -4,7 +4,6 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 
 import {
-  Feedback,
   Field,
   FieldRow,
   SubmitButton,
@@ -12,11 +11,10 @@ import {
   TextArea,
   TextInput,
   inputClass,
+  panelActionClass,
 } from "@/components/ui/FormControls";
-import { AREAS_INTERESSE } from "@/data/gesc";
-import { submitContato } from "@/lib/contato";
-
-type Status = "idle" | "sending" | "success";
+import { AREAS_INTERESSE, CONTATO } from "@/data/gesc";
+import { mailtoHref } from "@/lib/mailto";
 
 const EMPTY = {
   nome: "",
@@ -28,45 +26,45 @@ const EMPTY = {
 
 export function ContatoForm() {
   const [values, setValues] = useState(EMPTY);
-  const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState<string | null>(null);
+  const [href, setHref] = useState<string | null>(null);
 
   const set = <K extends keyof typeof EMPTY>(key: K, value: string) =>
     setValues((prev) => ({ ...prev, [key]: value }));
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError(null);
-    setStatus("sending");
 
-    try {
-      await submitContato({
-        nome: values.nome,
-        email: values.email,
-        instituicao: values.instituicao,
-        area_interesse: values.area,
-        mensagem: values.mensagem,
-      });
-      setStatus("success");
-    } catch {
-      setStatus("idle");
-      setError(
-        "Não foi possível enviar a mensagem agora. Tente novamente em instantes.",
-      );
-    }
+    const link = mailtoHref(CONTATO.email, `Contato pelo site — ${values.nome}`, [
+      ["Nome", values.nome],
+      ["E-mail", values.email],
+      ["Instituição/empresa", values.instituicao || "—"],
+      ["Área de interesse", values.area || "—"],
+      "",
+      "Mensagem:",
+      values.mensagem,
+    ]);
+
+    setHref(link);
+    window.location.href = link;
   }
 
-  if (status === "success") {
+  if (href) {
     return (
       <SuccessPanel
-        title="Mensagem enviada"
-        resetLabel="Enviar outra mensagem"
+        title="Falta só enviar o e-mail"
+        resetLabel="Preencher de novo"
         onReset={() => {
           setValues(EMPTY);
-          setStatus("idle");
+          setHref(null);
         }}
+        action={
+          <a href={href} className={panelActionClass}>
+            Abrir e-mail
+          </a>
+        }
       >
-        Recebemos o seu contato e retornaremos pelo e-mail informado.
+        Abrimos seu programa de e-mail com a mensagem já preenchida. Se nada
+        abriu, use o botão abaixo — ou escreva direto para {CONTATO.email}.
       </SuccessPanel>
     );
   }
@@ -141,17 +139,15 @@ export function ContatoForm() {
         />
       </Field>
 
-      <SubmitButton loading={status === "sending"}>Enviar mensagem</SubmitButton>
+      <SubmitButton>Enviar mensagem</SubmitButton>
       <p className="text-center text-[0.75rem] text-[#999]">
-        Os dados informados são usados apenas para responder ao seu contato. Veja
-        a{" "}
+        O envio abre seu programa de e-mail com os dados preenchidos. Eles são
+        usados apenas para responder ao seu contato — veja a{" "}
         <Link href="/privacidade" className="underline hover:text-brand-red">
           Política de Privacidade
         </Link>
         .
       </p>
-
-      {error && <Feedback message={error} type="error" />}
     </form>
   );
 }

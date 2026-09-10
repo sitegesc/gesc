@@ -12,7 +12,7 @@ import {
 import { CONTATO } from "@/data/gesc";
 
 export const metadata: Metadata = {
-  title: "Acessibilidade | GESC",
+  title: "Acessibilidade",
   description:
     "Declaração de acessibilidade do site do Grupo de Engenharia de Sistemas Complexos (GESC) da FT-UNICAMP.",
 };

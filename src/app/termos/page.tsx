@@ -12,7 +12,7 @@ import {
 import { CONTATO } from "@/data/gesc";
 
 export const metadata: Metadata = {
-  title: "Termos de Uso | GESC",
+  title: "Termos de Uso",
   description:
     "Termos de uso do site do Grupo de Engenharia de Sistemas Complexos (GESC) da FT-UNICAMP.",
 };

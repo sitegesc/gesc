@@ -234,3 +234,17 @@ export const PUBLICACOES: ItemPublicacao[] = [
       "Capítulo introdutório que organiza os métodos usados pelo grupo — teoria dos jogos, física estatística, redes e otimização — em torno da noção de emergência.",
   },
 ];
+
+// "12 de março de 2026" a partir de uma data ISO (YYYY-MM-DD).
+export function formatarData(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("pt-BR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export function getPublicacao(slug: string): ItemPublicacao | undefined {
+  return PUBLICACOES.find((p) => p.slug === slug);
+}

@@ -1,11 +1,13 @@
 "use client";
 
 import { useMemo, useState, type ReactNode } from "react";
+import Link from "next/link";
 
 import {
   CATEGORIAS_POST,
   CATEGORIAS_PUBLICACAO,
   PUBLICACOES,
+  formatarData,
   type ItemPublicacao,
 } from "@/data/publicacoes";
 import { FilterIcon } from "@/components/ui/icons";
@@ -16,19 +18,6 @@ import { FilterIcon } from "@/components/ui/icons";
 // sóbrio das páginas novas). Filtros: Categoria / Ano / Autor.
 
 const ORDEM_CATEGORIAS = [...CATEGORIAS_POST, ...CATEGORIAS_PUBLICACAO];
-
-function parseData(iso: string) {
-  const [y, m, d] = iso.split("-").map(Number);
-  return new Date(y, m - 1, d);
-}
-
-function formatarData(iso: string) {
-  return parseData(iso).toLocaleDateString("pt-BR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
 
 const ordChave = (p: ItemPublicacao) => p.data ?? String(p.ano);
 
@@ -265,7 +254,12 @@ export function PublicacoesLista() {
                 </div>
 
                 <h2 className="text-[1.05rem] font-bold leading-snug text-brand-blue">
-                  {p.titulo}
+                  <Link
+                    href={`/publicacoes/${p.slug}`}
+                    className="transition-colors hover:text-brand-red"
+                  >
+                    {p.titulo}
+                  </Link>
                 </h2>
 
                 {p.tipo === "post" ? (
