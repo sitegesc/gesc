@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Modal } from "@/components/ui/Modal";
+import { OBJETIVOS } from "@/data/gesc";
 
 import yuri from "@/imgs/pessoas/coordenadores/yuri.webp";
 
@@ -32,18 +33,6 @@ const linkClass =
   "block py-3 text-[0.95rem] text-white transition duration-200 hover:translate-x-[5px] hover:font-bold hover:text-[#ffdbe0] aria-[current=page]:translate-x-[5px] aria-[current=page]:font-bold aria-[current=page]:text-[#ffdbe0]";
 
 const buttonClass = `${linkClass} w-full cursor-pointer text-left`;
-
-const objetivos = [
-  "desenvolver e aplicar métodos de Teoria dos Jogos, Sistemas Dinâmicos, Física Estatística, Redes Complexas, Cadeias de Markov, simulação, otimização e ciência de dados;",
-  "investigar sistemas complexos em áreas como transportes, mobilidade, energia, materiais, infraestrutura, economia, segurança e políticas públicas;",
-  "desenvolver modelos capazes de apoiar processos de decisão sob incerteza;",
-  "aproximar fundamentos matemáticos e computacionais de problemas reais de engenharia e da sociedade;",
-  "promover a formação de estudantes de graduação, pós-graduação e pesquisadores em estágio de pós-doutorado em pesquisa interdisciplinar;",
-  "estimular projetos de iniciação científica, mestrado, doutorado, pós-doutorado e extensão;",
-  "ampliar a cooperação entre pesquisadores de diferentes áreas, universidades e países;",
-  "produzir conhecimento científico com potencial de impacto acadêmico, tecnológico, econômico e social;",
-  "fortalecer a divulgação científica e a aproximação entre universidade e sociedade.",
-];
 
 const MODAIS: Record<ModalKey, { title: string; content: ReactNode }> = {
   palavra: {
@@ -99,7 +88,7 @@ const MODAIS: Record<ModalKey, { title: string; content: ReactNode }> = {
         </p>
         <p>Entre seus principais objetivos estão:</p>
         <ul className="list-disc pl-5 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-1">
-          {objetivos.map((objetivo) => (
+          {OBJETIVOS.map((objetivo) => (
             <li key={objetivo}>{objetivo}</li>
           ))}
         </ul>

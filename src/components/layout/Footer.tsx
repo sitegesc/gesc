@@ -4,7 +4,15 @@ import Link from "next/link";
 const footerNav = [
   { href: "/sobre", label: "Sobre" },
   { href: "/#linhas-pesquisa", label: "Pesquisa" },
+  { href: "/publicacoes", label: "Publicações" },
   { href: "/parceiros", label: "Parceiros" },
+];
+
+const institucionalNav = [
+  { href: "/historico", label: "Nossa trajetória" },
+  { href: "/privacidade", label: "Política de Privacidade" },
+  { href: "/termos", label: "Termos de Uso" },
+  { href: "/acessibilidade", label: "Acessibilidade" },
 ];
 
 const headingClass =
@@ -44,6 +52,22 @@ export function Footer() {
           <h4 className={headingClass}>Navegação</h4>
           <ul className="space-y-2.5">
             {footerNav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="transition-colors duration-300 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="min-w-[150px] flex-1 max-md:w-full max-md:min-w-0">
+          <h4 className={headingClass}>Institucional</h4>
+          <ul className="space-y-2.5">
+            {institucionalNav.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
