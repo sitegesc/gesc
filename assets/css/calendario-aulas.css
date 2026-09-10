@@ -1,0 +1,621 @@
+/* --- CALENDÁRIO DE AULAS ---
+   Reaproveita o hero, o card (.enrollment-form-container) e os botões
+   das telas de inscrição. Aqui ficam só os estilos do calendário. */
+
+.enrollment-page.container {
+    max-width: 1080px;
+}
+
+/* --- RESUMO (chips) --- */
+.calendar-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    margin-bottom: 22px;
+}
+
+.calendar-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid #e2e5ea;
+    border-radius: 999px;
+    background: #f7f9fc;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #3f4652;
+}
+
+.calendar-chip strong {
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+}
+
+.calendar-chip-sep {
+    color: #9aa1ac;
+}
+
+/* --- LAYOUT --- */
+.calendar-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+@media (min-width: 900px) {
+    .calendar-layout {
+        grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+        align-items: start;
+    }
+}
+
+.calendar-main,
+.calendar-side {
+    min-width: 0;
+}
+
+/* --- NAVEGAÇÃO DE MÊS --- */
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.calendar-nav button {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #dce1e9;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--primary-blue);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.calendar-nav button:hover:not(:disabled) {
+    background: #eef2f9;
+    border-color: var(--primary-blue);
+}
+
+.calendar-nav button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.calendar-month-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-align: center;
+}
+
+/* --- GRADE --- */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 4px;
+}
+
+.calendar-weekday {
+    padding: 6px 0;
+    text-align: center;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #5f6775;
+}
+
+.calendar-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    min-height: 94px;
+    padding: 5px;
+    border: 1px solid #e6e8ec;
+    border-radius: 8px;
+    background: #fafafa;
+    overflow: hidden;
+    cursor: default;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.calendar-cell.has-classes {
+    background: #fff;
+    cursor: pointer;
+}
+
+.calendar-cell.has-classes:hover {
+    border-color: var(--primary-blue);
+}
+
+.calendar-cell.is-empty {
+    border-color: transparent;
+    background: transparent;
+    cursor: default;
+}
+
+.calendar-cell.is-selected {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 34, 102, 0.15);
+}
+
+.calendar-daynum {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.calendar-cell.is-today .calendar-daynum {
+    background: var(--primary-blue);
+    color: #fff;
+}
+
+.calendar-pill {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.calendar-more {
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: #5f6775;
+}
+
+/* --- AGENDA SEMANAL (celular) --- */
+.calendar-grid--week {
+    display: block;
+}
+
+.agenda-day {
+    padding: 12px;
+    border: 1px solid #e6e8ec;
+    border-radius: 10px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.agenda-day + .agenda-day {
+    margin-top: 8px;
+}
+
+.agenda-day:hover,
+.agenda-day:focus-visible {
+    border-color: var(--primary-blue);
+    outline: none;
+}
+
+.agenda-day.is-today {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 34, 102, 0.12);
+}
+
+.agenda-day-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.agenda-dow {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+}
+
+.agenda-day.is-today .agenda-dow::after {
+    content: ' · hoje';
+    color: #888;
+}
+
+.agenda-date {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #555;
+}
+
+.agenda-classes {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.agenda-class {
+    display: flex;
+    gap: 9px;
+}
+
+.agenda-bar {
+    flex: none;
+    width: 4px;
+    border-radius: 4px;
+}
+
+.agenda-class-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.agenda-class-time {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.agenda-class-name {
+    font-size: 0.85rem;
+    color: #333;
+    line-height: 1.35;
+}
+
+/* --- NOTA --- */
+.calendar-note {
+    margin: 12px 0 0;
+    font-size: 0.72rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+/* --- MODAL DO DIA (mesmo padrão do modal de oficinas) --- */
+.day-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+}
+
+.day-modal[hidden] {
+    display: none;
+}
+
+.day-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 14, 35, 0.68);
+}
+
+.day-modal-dialog {
+    position: relative;
+    width: min(100%, 520px);
+    max-height: min(82vh, 640px);
+    overflow-y: auto;
+    padding: 28px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+}
+
+.day-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: #f0f2f5;
+    color: #333;
+    cursor: pointer;
+}
+
+.day-modal-close:hover,
+.day-modal-close:focus-visible {
+    background: #e1e5eb;
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
+
+.day-modal-label {
+    margin: 0 48px 7px 0;
+    color: var(--primary-blue);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.day-modal-dialog h2 {
+    margin: 0 48px 16px 0;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+    line-height: 1.3;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Conteúdo do modal quando é a descrição de uma oficina. */
+.workshop-modal-facts {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 7px;
+}
+
+.workshop-modal-facts li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: #3f4652;
+}
+
+.workshop-modal-facts i {
+    flex: none;
+    width: 14px;
+    text-align: center;
+    color: var(--primary-blue);
+}
+
+.workshop-modal-desc {
+    padding-top: 14px;
+    border-top: 1px solid #f0f2f5;
+}
+
+.workshop-modal-desc p {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #3f4652;
+}
+
+.workshop-modal-desc p:last-child {
+    margin-bottom: 0;
+}
+
+.day-class {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-top: 1px solid #f0f2f5;
+}
+
+.day-class:first-of-type {
+    border-top: 0;
+    padding-top: 2px;
+}
+
+.day-class-bar {
+    flex: none;
+    width: 4px;
+    border-radius: 4px;
+}
+
+.day-class-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.day-class-time {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.day-class-title {
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.day-class-meta {
+    font-size: 0.72rem;
+    color: #888;
+}
+
+.day-class-room {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+}
+
+.day-class-room i {
+    font-size: 0.72rem;
+}
+
+.day-detail-empty {
+    margin: 0;
+    font-size: 0.82rem;
+    color: #888;
+}
+
+/* --- BARRA LATERAL --- */
+.calendar-side {
+    display: grid;
+    gap: 20px;
+}
+
+.side-block h3 {
+    margin: 0 0 12px;
+    font-size: 0.92rem;
+    color: var(--primary-blue);
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f2f5;
+}
+
+.upcoming-list {
+    display: grid;
+    gap: 8px;
+}
+
+.upcoming-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    font-size: 0.8rem;
+    color: #3f4652;
+    cursor: pointer;
+}
+
+.upcoming-item:hover .upcoming-text {
+    color: var(--primary-blue);
+}
+
+.upcoming-date {
+    flex: none;
+    min-width: 46px;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+
+.upcoming-dot {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.upcoming-text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.side-hint {
+    margin: 0 0 10px;
+    font-size: 0.74rem;
+    color: #888;
+    line-height: 1.4;
+}
+
+.legend-list {
+    display: grid;
+    gap: 2px;
+}
+
+.legend-item {
+    display: flex;
+    gap: 10px;
+    min-width: 0;
+    width: 100%;
+    padding: 8px 6px;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    font: inherit;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.legend-item:hover,
+.legend-item:focus-visible {
+    background: #f2f5fa;
+    outline: none;
+}
+
+.legend-arrow {
+    flex: none;
+    align-self: center;
+    margin-left: auto;
+    color: #b7bec9;
+    font-size: 0.7rem;
+}
+
+.legend-swatch {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    margin-top: 2px;
+    border-radius: 4px;
+}
+
+.legend-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.legend-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.35;
+}
+
+.legend-meta {
+    font-size: 0.72rem;
+    color: #777;
+    line-height: 1.4;
+}
+
+/* --- CELULAR --- */
+@media (max-width: 620px) {
+    .calendar-cell {
+        min-height: 62px;
+        padding: 4px;
+        gap: 2px;
+    }
+
+    .calendar-pill {
+        height: 6px;
+        padding: 0;
+        border-radius: 3px;
+        text-indent: -999px;
+    }
+
+    .calendar-weekday {
+        font-size: 0.6rem;
+    }
+
+    .calendar-daynum {
+        width: 20px;
+        height: 20px;
+        font-size: 0.68rem;
+    }
+
+    /* No celular a lista de oficinas mostra só o nome; o restante
+       aparece no modal ao tocar. */
+    .legend-meta {
+        display: none;
+    }
+
+    .legend-item {
+        padding: 10px 6px;
+    }
+
+    .legend-name {
+        font-size: 0.83rem;
+    }
+}

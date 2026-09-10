@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Aulas | GESC</title>
+
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="icon" type="image/png" href="assets/images/logo2.png">
+    <link rel="stylesheet" href="assets/css/inscricao-oficina.css">
+    <link rel="stylesheet" href="assets/css/calendario-aulas.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <main class="enrollment-page container">
+
+        <section class="enrollment-hero">
+            <span class="mini-tag grey">
+                <i class="fas fa-calendar-days"></i>
+                AGENDA DAS OFICINAS
+            </span>
+
+            <h1>Calendário de Aulas</h1>
+
+            <p>
+                Todos os encontros de todas as oficinas do GESC, semana a semana,
+                a partir de 21 de setembro de 2026. O dia definitivo de cada turma
+                é confirmado pela organização.
+            </p>
+        </section>
+
+        <section class="enrollment-form-container">
+
+            <div class="calendar-summary" id="calendar-summary"></div>
+
+            <div class="calendar-layout">
+
+                <div class="calendar-main">
+
+                    <div class="calendar-nav">
+                        <button type="button" id="calendar-prev" aria-label="Mês anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="calendar-month-label" id="calendar-month-label"></span>
+                        <button type="button" id="calendar-next" aria-label="Próximo mês">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="calendar-grid" id="calendar-grid"></div>
+
+                    <p class="calendar-note">
+                        Cada oficina aparece uma vez por semana, no primeiro dia
+                        possível informado pelo aplicador, durante a quantidade de
+                        encontros prevista. Clique num dia com aula para ver os
+                        detalhes.
+                    </p>
+
+                </div>
+
+                <aside class="calendar-side">
+
+                    <div class="side-block">
+                        <h3>Próximas aulas</h3>
+                        <div class="upcoming-list" id="upcoming-list"></div>
+                    </div>
+
+                    <div class="side-block">
+                        <h3>Oficinas</h3>
+                        <p class="side-hint">Clique em uma oficina para ver a descrição completa.</p>
+                        <div class="legend-list" id="legend-list"></div>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div class="day-modal" id="day-modal" hidden>
+        <div class="day-modal-backdrop" data-close-day-modal></div>
+
+        <section
+            class="day-modal-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="day-modal-title"
+        >
+            <button
+                type="button"
+                class="day-modal-close"
+                id="day-modal-close"
+                aria-label="Fechar detalhes do dia"
+            >
+                <i class="fas fa-xmark"></i>
+            </button>
+
+            <p class="day-modal-label" id="day-modal-label">Aulas do dia</p>
+            <h2 id="day-modal-title"></h2>
+
+            <div class="day-modal-body" id="day-modal-body"></div>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/calendario-aulas.js"></script>
+
+</body>
+</html>
