@@ -82,6 +82,17 @@ const WORKSHOP_DETAILS = {
             'As atividades são voltadas a desenvolver e consolidar o raciocínio lógico das crianças.'
         ]
     },
+    'explorar-habilidades': {
+        title: 'Explorar Habilidades a partir de Card Games Modernos',
+        days: 'Quarta-feira',
+        availableDays: ['Quarta-feira'],
+        time: '14:00',
+        duration: '1 hora',
+        sessions: 6,
+        description: [
+            'Nas oficinas usaremos jogos de cartas modernos para explorar habilidades lógicas, social e cognitiva.'
+        ]
+    },
     ia: {
         title: 'Introdução a IA/Letramento em IA',
         days: 'Segunda-feira a sábado',
