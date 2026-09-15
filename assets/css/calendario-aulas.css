@@ -619,3 +619,11 @@ body.modal-open {
         font-size: 0.83rem;
     }
 }
+
+/* O calendário é uma página ativa: restaura o cursor da navegação global. */
+#header-placeholder a,
+#header-placeholder button,
+#footer-placeholder a,
+#footer-placeholder button {
+    cursor: pointer;
+}

@@ -3,17 +3,11 @@
  * CALENDÁRIO DE AULAS
  * ============================================================
  *
- * As oficinas não têm data de início cadastrada (só dia da semana,
- * horário, duração e quantidade de encontros). Por isso o calendário
- * assume um início único, configurável abaixo.
+ * Os dias, horários, duração e quantidade de encontros abaixo
+ * seguem o calendário oficial das oficinas.
  *
- * Se alguma oficina passar a ter data própria, basta adicionar
- * "startDate: '2026-09-16'" no item dela em WORKSHOPS.
- *
- * Regra de montagem:
- *   - cada oficina acontece 1x por semana;
- *   - no primeiro "dia possível" a partir da data de início;
- *   - repetindo pela "quantidade proposta" de encontros.
+ * A agenda começa na semana de 21 de setembro de 2026 e repete
+ * cada turma semanalmente, sempre no respectivo dia oficial.
  *
  * Mantenha esta lista em sintonia com WORKSHOP_DETAILS de
  * assets/js/inscricao-nas-oficinas.js.
@@ -27,132 +21,209 @@ const WORKSHOP_ROOM = 'SA10 - Explora';
 // Segunda = 1 ... Sábado = 6 (padrão de Date.getDay()).
 const WORKSHOPS = [
     {
-        id: 'criando-jogos',
-        title: 'Criando Jogos com MIT App Inventor',
-        short: 'Criando Jogos',
-        weekdays: [1],
-        time: '14:00',
-        durationMin: 120,
-        sessions: 6,
-        description: [
-            'As crianças aprendem programação em blocos criando jogos no MIT App Inventor.',
-            'A atividade trabalha variáveis, condições, raciocínio lógico, criatividade e autonomia na resolução de problemas.',
+        "id": "logica-programacao",
+        "group": "logica-programacao",
+        "title": "Introdução à Lógica de Programação e Algoritmos",
+        "short": "Lógica de Programação",
+        "weekdays": [
+            1
         ],
+        "time": "08:00",
+        "durationMin": 120,
+        "sessions": 2,
+        "description": [
+            "Uma introdução objetiva aos conceitos fundamentais de lógica de programação e algoritmos.",
+            "As atividades são voltadas a desenvolver e consolidar o raciocínio lógico das crianças."
+        ]
     },
     {
-        id: 'detetives-ciencia',
-        title: 'Detetives da Ciência: Investigação Forense e Dados',
-        short: 'Detetives da Ciência',
-        weekdays: [4],
-        time: '16:00',
-        durationMin: 120,
-        sessions: 4,
-        description: [
-            'Os participantes investigam casos fictícios usando conceitos de ciência forense, química, biologia, física e lógica matemática.',
-            'A oficina combina explicação teórica e aplicação prática em desafios investigativos.',
+        "id": "mapa-cidade",
+        "group": "mapa-cidade",
+        "title": "Do Mapa à Cidade: Como projetar um bairro?",
+        "short": "Do Mapa à Cidade",
+        "weekdays": [
+            1
         ],
+        "time": "14:00",
+        "durationMin": 120,
+        "sessions": 1,
+        "description": [
+            "A partir de uma planta topográfica simplificada, as crianças planejam um pequeno bairro, definindo ruas, lotes, áreas verdes e soluções para o escoamento da água da chuva.",
+            "A atividade trabalha interpretação do relevo, raciocínio espacial, criatividade e tomada de decisões."
+        ]
     },
     {
-        id: 'mapa-cidade',
-        title: 'Do Mapa à Cidade: Como projetar um bairro?',
-        short: 'Do Mapa à Cidade',
-        weekdays: [1],
-        time: '14:00',
-        durationMin: 120,
-        sessions: 1,
-        description: [
-            'A partir de uma planta topográfica simplificada, as crianças planejam um pequeno bairro, definindo ruas, lotes, áreas verdes e soluções para o escoamento da água da chuva.',
-            'A atividade trabalha interpretação do relevo, raciocínio espacial, criatividade e tomada de decisões.',
+        "id": "criando-jogos",
+        "group": "criando-jogos",
+        "title": "Criando Jogos com MIT App Inventor",
+        "short": "Criando Jogos",
+        "weekdays": [
+            1
         ],
+        "time": "14:00",
+        "durationMin": 120,
+        "sessions": 6,
+        "description": [
+            "As crianças aprendem programação em blocos criando jogos no MIT App Inventor.",
+            "A atividade trabalha variáveis, condições, raciocínio lógico, criatividade e autonomia na resolução de problemas."
+        ]
     },
     {
-        id: 'missao-ingles',
-        title: 'Missão Inglês: Uma jornada de diversão',
-        short: 'Missão Inglês',
-        weekdays: [4, 5],
-        time: '16:00',
-        durationMin: 120,
-        sessions: 4,
-        description: [
-            'Atividades como caça-palavras, dublagens, jogos e curiosidades aproximam as crianças da língua inglesa de forma leve e divertida.',
-            'A oficina ajuda a desenvolver vocabulário, compreensão e confiança para se expressar.',
+        "id": "historias-turma-1",
+        "group": "historias",
+        "title": "Criando Histórias de uma Forma Lógica — Turma 1 (até 9 anos)",
+        "short": "Histórias — Turma 1",
+        "weekdays": [
+            2
         ],
+        "time": "17:00",
+        "durationMin": 120,
+        "sessions": 5,
+        "description": [
+            "As crianças usam o Scratch para aprender lógica e criar histórias por meio de programação em blocos, sem precisar escrever código."
+        ]
     },
     {
-        id: 'ferrovias',
-        title: 'Workshop de Trens e Ferrovias',
-        short: 'Trens e Ferrovias',
-        weekdays: [1, 2, 3, 4, 5, 6],
-        time: '17:00',
-        durationMin: 120,
-        sessions: 2,
-        description: [
-            'As crianças assumem o papel de engenheiros para conhecer trens, infraestrutura e os princípios de um projeto ferroviário.',
-            'Experimentos e desafios exploram força, atrito, velocidade, frenagem, inclinação, curvas, rampas, pontes e operação ferroviária. Ao final, os participantes constroem e testam uma solução.',
+        "id": "calculo-turma-1",
+        "group": "calculo",
+        "title": "Cálculo — Turma 1 (até 9 anos)",
+        "short": "Cálculo — Turma 1",
+        "weekdays": [
+            3
         ],
+        "time": "13:00",
+        "durationMin": 120,
+        "sessions": 10,
+        "description": [
+            "Uma oficina de introdução aos conceitos de cálculo."
+        ]
     },
     {
-        id: 'logica-programacao',
-        title: 'Introdução a Lógica de Programação e Algoritmos',
-        short: 'Lógica de Programação',
-        weekdays: [1, 2],
-        time: '08:00',
-        durationMin: 120,
-        sessions: 2,
-        description: [
-            'Uma introdução objetiva aos conceitos fundamentais de lógica de programação e algoritmos.',
-            'As atividades são voltadas a desenvolver e consolidar o raciocínio lógico das crianças.',
+        "id": "ferrovias",
+        "group": "ferrovias",
+        "title": "Workshop de Trens e Ferrovias / Workshop de Rodovias",
+        "short": "Trens e Rodovias",
+        "weekdays": [
+            3
         ],
+        "time": "17:00",
+        "durationMin": 120,
+        "sessions": 2,
+        "description": [
+            "As crianças assumem o papel de engenheiros para conhecer trens, infraestrutura e os princípios de um projeto ferroviário.",
+            "Experimentos e desafios exploram força, atrito, velocidade, frenagem, inclinação, curvas, rampas, pontes e operação ferroviária.",
+            "Na parte de rodovias, os participantes aprendem como uma estrada é planejada, construída e operada, considerando pavimento, drenagem, custos e segurança."
+        ]
     },
     {
-        id: 'explorar-habilidades',
-        title: 'Explorar Habilidades a partir de Card Games Modernos',
-        short: 'Card Games Modernos',
-        weekdays: [3],
-        time: '14:00',
-        durationMin: 60,
-        sessions: 6,
-        description: [
-            'Nas oficinas usaremos jogos de cartas modernos para explorar habilidades lógicas, sociais e cognitivas.',
+        "id": "explorar-habilidades",
+        "group": "explorar-habilidades",
+        "title": "Desenvolvimento de Habilidades a partir de Jogos",
+        "short": "Habilidades com Jogos",
+        "weekdays": [
+            4
         ],
+        "time": "15:00",
+        "durationMin": 120,
+        "sessions": 6,
+        "description": [
+            "Jogos modernos e board games são usados para desenvolver habilidades lógicas, sociais e cognitivas de forma prática e divertida."
+        ]
     },
     {
-        id: 'ia',
-        title: 'Introdução a IA / Letramento em IA',
-        short: 'Introdução a IA',
-        weekdays: [1, 2, 3, 4, 5, 6],
-        time: '08:00',
-        durationMin: 90,
-        sessions: 8,
-        description: [
-            'Uma introdução lúdica aos conceitos e à história da inteligência artificial, explicando como ela funciona e como escrever bons comandos.',
-            'As crianças exploram diferentes ferramentas de IA e criam uma árvore de decisão no Scratch. O conteúdo é ajustado conforme a idade da turma.',
+        "id": "detetives-ciencia",
+        "group": "detetives-ciencia",
+        "title": "Detetives da Ciência: Investigação Forense e Dados",
+        "short": "Detetives da Ciência",
+        "weekdays": [
+            4
         ],
+        "time": "16:00",
+        "durationMin": 120,
+        "sessions": 4,
+        "description": [
+            "Os participantes investigam casos fictícios usando conceitos de ciência forense, química, biologia, física e lógica matemática.",
+            "A oficina combina explicação teórica e aplicação prática em desafios investigativos."
+        ]
     },
     {
-        id: 'historias',
-        title: 'Criando Histórias de uma forma lógica',
-        short: 'Criando Histórias',
-        weekdays: [2],
-        time: '17:00',
-        durationMin: 120,
-        sessions: 5,
-        description: [
-            'As crianças usam o Scratch para aprender lógica e criar histórias por meio de programação em blocos, sem precisar escrever código.',
+        "id": "ia-turma-1",
+        "group": "ia",
+        "title": "Introdução à IA/Letramento em IA — Turma 1 (até 9 anos)",
+        "short": "IA — Turma 1",
+        "weekdays": [
+            5
         ],
+        "time": "08:00",
+        "durationMin": 120,
+        "sessions": 8,
+        "description": [
+            "Uma introdução lúdica aos conceitos e à história da inteligência artificial, explicando como ela funciona e como escrever bons comandos.",
+            "As crianças também criam uma árvore de decisão no Scratch e experimentam diferentes ferramentas de IA."
+        ]
     },
     {
-        id: 'calculo',
-        title: 'Cálculo',
-        short: 'Cálculo',
-        weekdays: [3],
-        time: '14:00',
-        durationMin: 90,
-        sessions: 10,
-        description: [
-            'Uma oficina de introdução aos conceitos de cálculo.',
+        "id": "calculo-turma-2",
+        "group": "calculo",
+        "title": "Cálculo — Turma 2 (10 anos ou mais)",
+        "short": "Cálculo — Turma 2",
+        "weekdays": [
+            5
         ],
+        "time": "13:00",
+        "durationMin": 120,
+        "sessions": 10,
+        "description": [
+            "Uma oficina de introdução aos conceitos de cálculo."
+        ]
     },
+    {
+        "id": "missao-ingles",
+        "group": "missao-ingles",
+        "title": "Missão Inglês: Uma jornada de diversão",
+        "short": "Missão Inglês",
+        "weekdays": [
+            5
+        ],
+        "time": "16:00",
+        "durationMin": 120,
+        "sessions": 4,
+        "description": [
+            "Atividades como caça-palavras, dublagens, jogos e curiosidades aproximam as crianças da língua inglesa de forma leve e divertida.",
+            "A oficina ajuda a desenvolver vocabulário, compreensão e confiança para se expressar."
+        ]
+    },
+    {
+        "id": "historias-turma-2",
+        "group": "historias",
+        "title": "Criando Histórias de uma Forma Lógica — Turma 2 (10 anos ou mais)",
+        "short": "Histórias — Turma 2",
+        "weekdays": [
+            5
+        ],
+        "time": "17:00",
+        "durationMin": 120,
+        "sessions": 5,
+        "description": [
+            "As crianças usam o Scratch para aprender lógica e criar histórias por meio de programação em blocos, sem precisar escrever código."
+        ]
+    },
+    {
+        "id": "ia-turma-2",
+        "group": "ia",
+        "title": "Introdução à IA/Letramento em IA — Turma 2 (10 anos ou mais)",
+        "short": "IA — Turma 2",
+        "weekdays": [
+            6
+        ],
+        "time": "08:00",
+        "durationMin": 120,
+        "sessions": 8,
+        "description": [
+            "A oficina apresenta conceitos e a história da inteligência artificial com atividades de análise de gráficos e dados.",
+            "Os participantes treinam um modelo simples de aprendizado de máquina e buscam maneiras de melhorar seus resultados."
+        ]
+    }
 ];
 
 // Cores fixas por oficina (todas escuras o bastante para texto branco).
@@ -318,11 +389,6 @@ function buildSchedule() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Mesmo padrão das telas de inscrição: header e footer visíveis,
-    // mas com a navegação inerte.
-    disableLinksAndButtonsWhenReady('header-placeholder', '.mobile-menu-btn');
-    disableLinksAndButtonsWhenReady('footer-placeholder');
-
     const grid = document.getElementById('calendar-grid');
     const monthLabel = document.getElementById('calendar-month-label');
     const prevButton = document.getElementById('calendar-prev');
@@ -373,7 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
         summary.replaceChildren();
 
         const chips = [
-            `<strong>${WORKSHOPS.length}</strong> oficinas`,
+            `<strong>${new Set(WORKSHOPS.map((workshop) => workshop.group)).size}</strong> oficinas`,
+            `<strong>${WORKSHOPS.length}</strong> turmas`,
             `<strong>${schedule.sessions.length}</strong> encontros`,
             `${formatDate(firstSession)} <span class="calendar-chip-sep">→</span> ${formatDate(lastSession)}`,
         ];
@@ -769,55 +836,3 @@ document.addEventListener('DOMContentLoaded', () => {
     renderUpcoming();
     renderLegend();
 });
-
-
-/*
- * ============================================================
- * NAVEGAÇÃO INERTE (copiado de inscricao-oficina.js)
- * ============================================================
- *
- * Header e footer são carregados de forma assíncrona (script.js).
- * Assim que chegam, bloqueamos clique/ativação por teclado — o CSS
- * de inscricao-oficina.css já cuida do cursor "not-allowed".
- */
-
-function preventDisabledClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-}
-
-function preventDisabledActivation(event) {
-    if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-}
-
-function disableLinksAndButtonsWhenReady(placeholderId, excludeSelector) {
-    const placeholder = document.getElementById(placeholderId);
-    if (!placeholder) return;
-
-    const disableInteractiveElements = () => {
-        placeholder.querySelectorAll('a, button').forEach((el) => {
-            if (excludeSelector && el.matches(excludeSelector)) return;
-            el.setAttribute('tabindex', '-1');
-            el.setAttribute('aria-disabled', 'true');
-            el.addEventListener('click', preventDisabledClick);
-            el.addEventListener('keydown', preventDisabledActivation);
-        });
-    };
-
-    if (placeholder.children.length > 0) {
-        disableInteractiveElements();
-        return;
-    }
-
-    const observer = new MutationObserver(() => {
-        if (placeholder.children.length > 0) {
-            disableInteractiveElements();
-            observer.disconnect();
-        }
-    });
-
-    observer.observe(placeholder, { childList: true });
-}
