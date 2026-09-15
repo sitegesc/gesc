@@ -118,57 +118,6 @@
             text-align: center;
         }
 
-        .workshop-availability {
-            grid-column: 1 / -1;
-            min-width: 0;
-            margin: 0;
-            padding: 12px;
-            border: 0;
-            border-top: 1px solid #dce1e9;
-            background: #f7f9fc;
-        }
-
-        .workshop-availability[hidden] {
-            display: none;
-        }
-
-        .workshop-availability.invalid {
-            background: #fff5f5;
-        }
-
-        .workshop-availability legend {
-            padding: 0;
-            color: #333;
-            font-size: 0.78rem;
-            font-weight: 700;
-            line-height: 1.4;
-        }
-
-        .workshop-day-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 9px;
-        }
-
-        .choice-group .workshop-day-option,
-        .choice-group .workshop-day-option:has(input:checked) {
-            margin: 0;
-            padding: 7px 10px;
-            border: 1px solid #cfd5df;
-            border-radius: 999px;
-            background: #fff;
-            color: #394150;
-            font-size: 0.78rem;
-            font-weight: 600;
-        }
-
-        .choice-group .workshop-day-option:has(input:checked) {
-            border-color: var(--primary-blue);
-            background: #e7edf8;
-            color: var(--primary-blue);
-        }
-
         .workshop-details-button {
             align-self: center;
             min-height: 44px;
@@ -435,32 +384,16 @@
 
                             <div class="workshop-option">
                                 <label>
-                                    <input type="checkbox" name="workshops" value="Criando Jogos" data-workshop="criando-jogos">
+                                    <input type="checkbox" name="workshops" value="Introdução à Lógica de Programação e Algoritmos" data-workshop="logica-programacao">
                                     <span class="workshop-copy">
-                                        <span class="workshop-title">Criando Jogos com MIT App Inventor</span>
+                                        <span class="workshop-title">Introdução à Lógica de Programação e Algoritmos</span>
                                         <span class="workshop-time">
-                                            <span><i class="far fa-calendar"></i> Dias possíveis: segunda</span>
-                                            <span><i class="far fa-clock"></i> Horário proposto: 14:00 • Duração: 2h</span>
-                                            <span><i class="fas fa-repeat"></i> Quantidade proposta: 6 encontros</span>
+                                            <span><i class="far fa-calendar"></i> Segunda-feira • 08:00–10:00 • duração: 2h</span>
+                                            <span><i class="fas fa-repeat"></i> 2 encontros propostos</span>
                                         </span>
                                     </span>
                                 </label>
-                                <button type="button" class="workshop-details-button" data-workshop-details="criando-jogos" aria-label="Ver detalhes de Criando Jogos com MIT App Inventor">Detalhes</button>
-                            </div>
-
-                            <div class="workshop-option">
-                                <label>
-                                    <input type="checkbox" name="workshops" value="Detetives da Ciência" data-workshop="detetives-ciencia">
-                                    <span class="workshop-copy">
-                                        <span class="workshop-title">Detetives da Ciência: Investigação Forense e Dados</span>
-                                        <span class="workshop-time">
-                                            <span><i class="far fa-calendar"></i> Dias possíveis: quinta</span>
-                                            <span><i class="far fa-clock"></i> Horário proposto: 16:00 • Duração: 2h</span>
-                                            <span><i class="fas fa-repeat"></i> Quantidade proposta: 4 encontros</span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <button type="button" class="workshop-details-button" data-workshop-details="detetives-ciencia" aria-label="Ver detalhes de Detetives da Ciência">Detalhes</button>
+                                <button type="button" class="workshop-details-button" data-workshop-details="logica-programacao" aria-label="Ver detalhes de Introdução à Lógica de Programação e Algoritmos">Detalhes</button>
                             </div>
 
                             <div class="workshop-option">
@@ -469,9 +402,8 @@
                                     <span class="workshop-copy">
                                         <span class="workshop-title">Do Mapa à Cidade: Como projetar um bairro?</span>
                                         <span class="workshop-time">
-                                            <span><i class="far fa-calendar"></i> Dias possíveis: segunda</span>
-                                            <span><i class="far fa-clock"></i> Horário proposto: 14:00 • Duração: 2h</span>
-                                            <span><i class="fas fa-repeat"></i> Quantidade proposta: 1 encontro</span>
+                                            <span><i class="far fa-calendar"></i> Segunda-feira • 14:00–16:00 • duração: 2h</span>
+                                            <span><i class="fas fa-repeat"></i> 1 encontro proposto</span>
                                         </span>
                                     </span>
                                 </label>
@@ -480,16 +412,16 @@
 
                             <div class="workshop-option">
                                 <label>
-                                    <input type="checkbox" name="workshops" value="Missão Inglês" data-workshop="missao-ingles">
+                                    <input type="checkbox" name="workshops" value="Criando Jogos com MIT App Inventor" data-workshop="criando-jogos">
                                     <span class="workshop-copy">
-                                        <span class="workshop-title">Missão Inglês: Uma jornada de diversão</span>
+                                        <span class="workshop-title">Criando Jogos com MIT App Inventor</span>
                                         <span class="workshop-time">
-                                            <span><i class="far fa-calendar"></i> Dias possíveis: quinta e sexta</span>
-                                            <span><i class="far fa-clock"></i> Horário proposto: 16:00 • Duração: 2h</span>
-                                            <span><i class="fas fa-repeat"></i> Quantidade proposta: 4 encontros</span>
+                                            <span><i class="far fa-calendar"></i> Segunda-feira • 14:00–16:00 • duração: 2h</span>
+                                            <span><i class="fas fa-repeat"></i> 6 encontros propostos</span>
                                         </span>
                                     </span>
                                 </label>
+<<<<<<< HEAD
                                 <button type="button" class="workshop-details-button" data-workshop-details="missao-ingles" aria-label="Ver detalhes de Missão Inglês">Detalhes</button>
                             </div>
 
@@ -550,32 +482,33 @@
                                     </span>
                                 </label>
                                 <button type="button" class="workshop-details-button" data-workshop-details="ia" aria-label="Ver detalhes de Introdução a IA/Letramento em IA">Detalhes</button>
+=======
+                                <button type="button" class="workshop-details-button" data-workshop-details="criando-jogos" aria-label="Ver detalhes de Criando Jogos com MIT App Inventor">Detalhes</button>
+>>>>>>> 1bbf720 (Atualiza formulário com calendário oficial)
                             </div>
 
                             <div class="workshop-option">
                                 <label data-workshop-label="historias">
-                                    <input type="checkbox" name="workshops" value="Criando Histórias de uma forma lógica - Turma 1" data-workshop="historias" data-base-value="Criando Histórias de uma forma lógica">
+                                    <input type="checkbox" name="workshops" value="Criando Histórias de uma Forma Lógica" data-workshop="historias" data-base-value="Criando Histórias de uma Forma Lógica">
                                     <span class="workshop-copy">
-                                        <span class="workshop-title" data-workshop-text="historias">Criando Histórias de uma forma lógica</span>
+                                        <span class="workshop-title" data-workshop-text="historias">Criando Histórias de uma Forma Lógica</span>
                                         <span class="workshop-time">
-                                            <span><i class="far fa-calendar"></i> Dias possíveis: terça</span>
-                                            <span><i class="far fa-clock"></i> Horário proposto: 17:00 • Duração: 2h</span>
-                                            <span><i class="fas fa-repeat"></i> Quantidade proposta: 5 encontros</span>
+                                            <span><i class="far fa-calendar"></i> <span data-workshop-schedule="historias">Preencha a idade para ver a turma e o horário</span></span>
+                                            <span><i class="fas fa-repeat"></i> 5 encontros propostos</span>
                                         </span>
                                     </span>
                                 </label>
-                                <button type="button" class="workshop-details-button" data-workshop-details="historias" aria-label="Ver detalhes de Criando Histórias de uma forma lógica">Detalhes</button>
+                                <button type="button" class="workshop-details-button" data-workshop-details="historias" aria-label="Ver detalhes de Criando Histórias de uma Forma Lógica">Detalhes</button>
                             </div>
 
                             <div class="workshop-option">
                                 <label data-workshop-label="calculo">
-                                    <input type="checkbox" name="workshops" value="Cálculo - Turma 1" data-workshop="calculo" data-base-value="Cálculo">
+                                    <input type="checkbox" name="workshops" value="Cálculo" data-workshop="calculo" data-base-value="Cálculo">
                                     <span class="workshop-copy">
                                         <span class="workshop-title" data-workshop-text="calculo">Cálculo</span>
                                         <span class="workshop-time">
-                                            <span><i class="far fa-calendar"></i> Dias possíveis: quarta</span>
-                                            <span><i class="far fa-clock"></i> Horário proposto: 14:00 • Duração: 1h30</span>
-                                            <span><i class="fas fa-repeat"></i> Quantidade proposta: 10 encontros</span>
+                                            <span><i class="far fa-calendar"></i> <span data-workshop-schedule="calculo">Preencha a idade para ver a turma e o horário</span></span>
+                                            <span><i class="fas fa-repeat"></i> 10 encontros propostos</span>
                                         </span>
                                     </span>
                                 </label>
@@ -583,10 +516,81 @@
                             </div>
                             
 
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Workshop de Trens e Ferrovias / Workshop de Rodovias" data-workshop="ferrovias">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Workshop de Trens e Ferrovias / Workshop de Rodovias</span>
+                                        <span class="workshop-time">
+                                            <span><i class="far fa-calendar"></i> Quarta-feira • 17:00–19:00 • duração: 2h</span>
+                                            <span><i class="fas fa-repeat"></i> 2 encontros propostos</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="ferrovias" aria-label="Ver detalhes dos workshops de Trens, Ferrovias e Rodovias">Detalhes</button>
+                            </div>
+
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Desenvolvimento de Habilidades a partir de Jogos" data-workshop="explorar-habilidades">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Desenvolvimento de Habilidades a partir de Jogos</span>
+                                        <span class="workshop-time">
+                                            <span><i class="far fa-calendar"></i> Quinta-feira • 15:00–17:00 • duração: 2h</span>
+                                            <span><i class="fas fa-repeat"></i> 6 encontros propostos</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="explorar-habilidades" aria-label="Ver detalhes de Desenvolvimento de Habilidades a partir de Jogos">Detalhes</button>
+                            </div>
+
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Detetives da Ciência" data-workshop="detetives-ciencia">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Detetives da Ciência: Investigação Forense e Dados</span>
+                                        <span class="workshop-time">
+                                            <span><i class="far fa-calendar"></i> Quinta-feira • 16:00–18:00 • duração: 2h</span>
+                                            <span><i class="fas fa-repeat"></i> 4 encontros propostos</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="detetives-ciencia" aria-label="Ver detalhes de Detetives da Ciência">Detalhes</button>
+                            </div>
+
+                            <div class="workshop-option">
+                                <label data-workshop-label="ia">
+                                    <input type="checkbox" name="workshops" value="Introdução à IA" data-workshop="ia" data-base-value="Introdução à IA">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title" data-workshop-text="ia">Introdução à IA/Letramento em IA</span>
+                                        <span class="workshop-time">
+                                            <span><i class="far fa-calendar"></i> <span data-workshop-schedule="ia">Preencha a idade para ver a turma e o horário</span></span>
+                                            <span><i class="fas fa-repeat"></i> 8 encontros propostos</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="ia" aria-label="Ver detalhes de Introdução à IA/Letramento em IA">Detalhes</button>
+                            </div>
+
+                            <div class="workshop-option">
+                                <label>
+                                    <input type="checkbox" name="workshops" value="Missão Inglês" data-workshop="missao-ingles">
+                                    <span class="workshop-copy">
+                                        <span class="workshop-title">Missão Inglês: Uma jornada de diversão</span>
+                                        <span class="workshop-time">
+                                            <span><i class="far fa-calendar"></i> Sexta-feira • 16:00–18:00 • duração: 2h</span>
+                                            <span><i class="fas fa-repeat"></i> 4 encontros propostos</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <button type="button" class="workshop-details-button" data-workshop-details="missao-ingles" aria-label="Ver detalhes de Missão Inglês">Detalhes</button>
+                            </div>
+                            
+
                         </div>
 
                         <span class="field-hint">
-                            Os dias indicam quando o aplicador pode oferecer cada oficina. Selecione a oficina e marque todos os dias em que a criança pode participar. A organização confirmará o dia da turma posteriormente.
+                            Os dias e horários exibidos são os definidos no calendário oficial; a quantidade de encontros é a proposta de cada oficina. Nas oficinas divididas por idade, a turma é selecionada automaticamente.
                         </span>
 
                     </div>
