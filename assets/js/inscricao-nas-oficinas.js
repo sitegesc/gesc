@@ -59,22 +59,11 @@ const WORKSHOP_DETAILS = {
         ]
     },
     'explorar-habilidades': {
-<<<<<<< HEAD
-        title: 'Explorar Habilidades a partir de Card Games Modernos',
-        days: 'Quarta-feira',
-        availableDays: ['Quarta-feira'],
-        time: '14:00',
-        duration: '1 hora',
-        sessions: 6,
-        description: [
-            'Nas oficinas usaremos jogos de cartas modernos para explorar habilidades lógicas, social e cognitiva.'
-=======
         title: 'Desenvolvimento de Habilidades a partir de Jogos',
         schedule: { day: 'Quinta-feira', time: '15:00–17:00' },
         sessions: 6,
         description: [
             'Jogos modernos e board games são usados para desenvolver habilidades lógicas, sociais e cognitivas de forma prática e divertida.'
->>>>>>> 1bbf720 (Atualiza formulário com calendário oficial)
         ]
     },
     ia: {
