@@ -118,6 +118,93 @@
             text-align: center;
         }
 
+        .schedule-guidance {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin: 10px 0 14px;
+        }
+
+        .schedule-guidance-card {
+            padding: 12px 14px;
+            border: 1px solid #cfd7e6;
+            border-radius: 9px;
+            background: #f6f8fc;
+            color: #343b48;
+            font-size: 0.8rem;
+            line-height: 1.45;
+        }
+
+        .schedule-guidance-card strong {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--primary-blue);
+            font-size: 0.86rem;
+        }
+
+        .schedule-guidance-card.warning {
+            border-color: #e6b8b8;
+            background: #fff7f7;
+        }
+
+        .schedule-guidance-card.warning strong {
+            color: #b42318;
+        }
+
+        .schedule-guidance-card ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .schedule-guidance-card li + li {
+            margin-top: 5px;
+        }
+
+        .age-schedule-table {
+            display: grid;
+            gap: 7px;
+        }
+
+        .age-schedule-row {
+            display: grid;
+            grid-template-columns: minmax(115px, 0.8fr) minmax(0, 1fr) minmax(0, 1fr);
+            gap: 8px;
+            align-items: start;
+        }
+
+        .age-schedule-row:first-child {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #dce1e9;
+            font-weight: 700;
+        }
+
+        .age-schedule-name {
+            font-weight: 700;
+        }
+
+        .workshop-option.conflict-disabled {
+            border-color: #e6b8b8;
+            background: #fff7f7;
+        }
+
+        .workshop-option.conflict-disabled > label {
+            cursor: not-allowed;
+        }
+
+        .workshop-conflict-message {
+            display: flex;
+            gap: 6px;
+            margin-top: 3px;
+            color: #b42318;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .workshop-conflict-message[hidden] {
+            display: none;
+        }
+
         .workshop-details-button {
             align-self: center;
             min-height: 44px;
@@ -242,6 +329,15 @@
         @media (max-width: 768px) {
             #workshops-choice-group {
                 grid-template-columns: 1fr;
+            }
+
+            .schedule-guidance {
+                grid-template-columns: 1fr;
+            }
+
+            .age-schedule-row {
+                grid-template-columns: minmax(105px, 0.8fr) minmax(0, 1fr) minmax(0, 1fr);
+                font-size: 0.75rem;
             }
 
             .workshop-modal-dialog {
@@ -373,6 +469,43 @@
                             Selecione uma ou mais oficinas
                             <span class="text-red">*</span>
                         </label>
+
+                        <div class="schedule-guidance" aria-label="Informações importantes sobre os horários">
+                            <section class="schedule-guidance-card">
+                                <strong>Horários diferentes conforme a idade</strong>
+                                <div class="age-schedule-table">
+                                    <div class="age-schedule-row">
+                                        <span>Oficina</span>
+                                        <span>Até 9 anos</span>
+                                        <span>10 anos ou mais</span>
+                                    </div>
+                                    <div class="age-schedule-row">
+                                        <span class="age-schedule-name">IA</span>
+                                        <span>Sexta, 08h–10h</span>
+                                        <span>Sábado, 08h–10h</span>
+                                    </div>
+                                    <div class="age-schedule-row">
+                                        <span class="age-schedule-name">Histórias</span>
+                                        <span>Terça, 17h–19h</span>
+                                        <span>Sexta, 17h–19h</span>
+                                    </div>
+                                    <div class="age-schedule-row">
+                                        <span class="age-schedule-name">Cálculo</span>
+                                        <span>Quarta, 13h–15h</span>
+                                        <span>Sexta, 13h–15h</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="schedule-guidance-card warning">
+                                <strong>Oficinas que não podem ser escolhidas juntas</strong>
+                                <ul>
+                                    <li>Do Mapa à Cidade e Criando Jogos: segunda, 14h–16h.</li>
+                                    <li>Desenvolvimento de Habilidades e Detetives da Ciência: sobreposição na quinta, 16h–17h.</li>
+                                    <li>Para alunos com 10 anos ou mais, Missão Inglês e Histórias: sobreposição na sexta, 17h–18h.</li>
+                                </ul>
+                            </section>
+                        </div>
 
                         <div
                             class="choice-group"

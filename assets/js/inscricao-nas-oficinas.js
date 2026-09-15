@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const workshopModalTime = document.getElementById('workshop-modal-time');
     const workshopModalDescription = document.getElementById('workshop-modal-description');
     let lastFocusedElement = null;
+    let selectedAgeGroup = null;
 
     if (!form) return;
 
@@ -265,6 +266,179 @@ document.addEventListener('DOMContentLoaded', () => {
         scheduleElement.textContent = schedule
             ? `${schedule.day} • ${schedule.time} • duração: 2h`
             : 'Preencha a idade para ver a turma e o horário';
+    }
+
+
+    function timeToMinutes(time) {
+
+        const [hours, minutes] = time.split(':').map(Number);
+
+        return (hours * 60) + minutes;
+    }
+
+
+    function workshopsOverlap(firstWorkshopId, secondWorkshopId) {
+
+        const firstSchedule = getWorkshopSchedule(firstWorkshopId);
+        const secondSchedule = getWorkshopSchedule(secondWorkshopId);
+
+        if (
+            !firstSchedule
+            || !secondSchedule
+            || firstSchedule.day !== secondSchedule.day
+        ) {
+            return false;
+        }
+
+        const [firstStart, firstEnd] = firstSchedule.time
+            .split('–')
+            .map(timeToMinutes);
+
+        const [secondStart, secondEnd] = secondSchedule.time
+            .split('–')
+            .map(timeToMinutes);
+
+        return Math.max(firstStart, secondStart)
+            < Math.min(firstEnd, secondEnd);
+    }
+
+
+    function findSelectedConflict() {
+
+        const selected = getWorkshopCheckboxes()
+            .filter(checkbox => checkbox.checked);
+
+        for (let firstIndex = 0; firstIndex < selected.length; firstIndex += 1) {
+            for (
+                let secondIndex = firstIndex + 1;
+                secondIndex < selected.length;
+                secondIndex += 1
+            ) {
+                const first = selected[firstIndex];
+                const second = selected[secondIndex];
+
+                if (
+                    workshopsOverlap(
+                        first.dataset.workshop,
+                        second.dataset.workshop
+                    )
+                ) {
+                    return { first, second };
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    function getConflictMessageElement(workshopCheckbox) {
+
+        const option = workshopCheckbox.closest('.workshop-option');
+        const copy = option?.querySelector('.workshop-copy');
+
+        if (!option || !copy) return null;
+
+        let message = option.querySelector('.workshop-conflict-message');
+
+        if (!message) {
+            message = document.createElement('span');
+            message.className = 'workshop-conflict-message';
+            message.hidden = true;
+            copy.appendChild(message);
+        }
+
+        return message;
+    }
+
+
+    function updateWorkshopConflictStates() {
+
+        const selected = getWorkshopCheckboxes()
+            .filter(checkbox => checkbox.checked);
+
+        getWorkshopCheckboxes().forEach((checkbox) => {
+
+            const workshopId = checkbox.dataset.workshop;
+            const isAgeUnavailable =
+                !!ageBasedWorkshops[workshopId]
+                && !getWorkshopClassNumber();
+
+            const conflictingSelection = checkbox.checked
+                ? null
+                : selected.find(selectedCheckbox => (
+                    workshopsOverlap(
+                        workshopId,
+                        selectedCheckbox.dataset.workshop
+                    )
+                ));
+
+            const option = checkbox.closest('.workshop-option');
+            const label = document.querySelector(
+                `[data-workshop-label="${workshopId}"]`
+            );
+            const message = getConflictMessageElement(checkbox);
+
+            checkbox.disabled = isAgeUnavailable || !!conflictingSelection;
+            label?.classList.toggle('workshop-disabled', isAgeUnavailable);
+            option?.classList.toggle(
+                'conflict-disabled',
+                !!conflictingSelection
+            );
+
+            if (!message) return;
+
+            if (conflictingSelection) {
+                const conflictingId =
+                    conflictingSelection.dataset.workshop;
+                const conflictingSchedule =
+                    getWorkshopSchedule(conflictingId);
+
+                message.textContent =
+                    `Indisponível: conflito com ${getWorkshopTitle(conflictingId)} (${conflictingSchedule.day}, ${conflictingSchedule.time}).`;
+                message.hidden = false;
+            } else {
+                message.textContent = '';
+                message.hidden = true;
+            }
+        });
+    }
+
+
+    function resolveConflictsAfterAgeChange(previousGroup, currentGroup) {
+
+        if (!previousGroup || previousGroup === currentGroup) return [];
+
+        const removed = [];
+
+        Object.keys(ageBasedWorkshops).forEach((workshopId) => {
+
+            const checkbox = document.querySelector(
+                `input[data-workshop="${workshopId}"]`
+            );
+
+            if (!checkbox?.checked) return;
+
+            const conflictingSelection = getWorkshopCheckboxes()
+                .find(otherCheckbox => (
+                    otherCheckbox !== checkbox
+                    && otherCheckbox.checked
+                    && workshopsOverlap(
+                        workshopId,
+                        otherCheckbox.dataset.workshop
+                    )
+                ));
+
+            if (!conflictingSelection) return;
+
+            checkbox.checked = false;
+            removed.push({
+                workshopId,
+                conflictingId: conflictingSelection.dataset.workshop
+            });
+        });
+
+        return removed;
     }
 
 
@@ -481,6 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateWorkshopClasses() {
 
         const age = Number(ageInput?.value);
+        const previousGroup = selectedAgeGroup;
 
         /*
          * Se a idade não estiver preenchida, não escolhemos
@@ -526,6 +701,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateWorkshopSchedule(workshopId);
             });
 
+            selectedAgeGroup = null;
+            updateWorkshopConflictStates();
             updateWorkshopValidationState();
 
             return;
@@ -593,8 +770,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         );
 
+        selectedAgeGroup = turma;
+        const removedWorkshops = resolveConflictsAfterAgeChange(
+            previousGroup,
+            turma
+        );
 
+        updateWorkshopConflictStates();
         updateWorkshopValidationState();
+
+        if (removedWorkshops.length > 0) {
+            const removed = removedWorkshops[0];
+
+            showFeedback(
+                `${getWorkshopTitle(removed.workshopId)} foi desmarcada porque a mudança de idade alterou seu horário e criou conflito com ${getWorkshopTitle(removed.conflictingId)}. Revise as oficinas selecionadas.`,
+                true
+            );
+        }
     }
 
 
@@ -607,7 +799,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateWorkshopValidationState() {
 
         const hasWorkshop = hasAtLeastOneWorkshop();
-        const valid = hasWorkshop;
+        const hasConflict = !!findSelectedConflict();
+        const valid = hasWorkshop && !hasConflict;
 
         if (submitButton) {
             submitButton.disabled = !valid;
@@ -617,7 +810,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             workshopsGroup.classList.toggle(
                 'invalid',
-                !hasWorkshop
+                !valid
             );
         }
 
@@ -641,7 +834,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             checkbox.addEventListener(
                 'change',
-                updateWorkshopValidationState
+                () => {
+                    let blockedMessage = '';
+
+                    if (checkbox.checked) {
+                        const conflict = findSelectedConflict();
+
+                        if (conflict) {
+                            const otherCheckbox = conflict.first === checkbox
+                                ? conflict.second
+                                : conflict.first;
+                            const schedule = getWorkshopSchedule(
+                                checkbox.dataset.workshop
+                            );
+
+                            checkbox.checked = false;
+                            blockedMessage =
+                                `Não é possível selecionar ${getWorkshopTitle(checkbox.dataset.workshop)} junto com ${getWorkshopTitle(otherCheckbox.dataset.workshop)}: os horários se sobrepõem em ${schedule.day}.`;
+                        }
+                    }
+
+                    updateWorkshopConflictStates();
+                    updateWorkshopValidationState();
+
+                    if (blockedMessage) {
+                        showFeedback(blockedMessage, true);
+                    }
+                }
             );
 
         });
@@ -763,8 +982,12 @@ document.addEventListener('DOMContentLoaded', () => {
              */
             if (!updateWorkshopValidationState()) {
 
+                const conflict = findSelectedConflict();
+
                 showFeedback(
-                    'Selecione pelo menos uma oficina para continuar.',
+                    conflict
+                        ? `${getWorkshopTitle(conflict.first.dataset.workshop)} e ${getWorkshopTitle(conflict.second.dataset.workshop)} possuem horários sobrepostos. Escolha apenas uma delas.`
+                        : 'Selecione pelo menos uma oficina para continuar.',
                     true
                 );
 
